@@ -10,7 +10,7 @@ let appContent = document.getElementById("appContent");
 
 // AJAX HANDLER - FETCH
 //////////////////////////////////
-function ajaxHandler(url) {
+function ajaxHandler(url, action) {
     addLoader(appContent);
 
     fetch(url)
@@ -26,7 +26,9 @@ function ajaxHandler(url) {
 
             let timer = setInterval(function () {
                 removeLoader(appContent);
-                insertNavAppContent(appContent, data);
+                
+                setAction(action, appContent, data);
+                
                 clearInterval(timer);
             }, 3000);
 
@@ -65,6 +67,12 @@ function removeLoader(elementDom) {
 
 // RESULT - FETCH
 //////////////////////////////////
+function setAction(action, elementDom, dataResponse){
+    if(action === "insertFilter"){
+        insertNavAppContent(elementDom, dataResponse);
+    }
+}
+
 function insertNavAppContent(elementDom, responseData) {
     let navId = document.getElementById("filter");
 
@@ -123,7 +131,7 @@ function insertAppContent(url) {
 appButton.addEventListener("click", function () {
     // alert("Get data API");
     insertAppContent(urlAPI);
-    ajaxHandler(urlAPI, function (data) {
+    ajaxHandler(urlAPI, 'insertFilter', function (data) {
         console.info("Data:", data);
     });
 });
