@@ -42,7 +42,7 @@ function ajaxHandler(url) {
 
 // LOADER
 //////////////////////////////////
-function addLoader(elementDom){
+function addLoader(elementDom) {
     let template = `
         <div class="spinner">
             <div class="double-bounce1"></div>
@@ -55,7 +55,7 @@ function addLoader(elementDom){
     document.getElementById("loader").innerHTML = template;
 }
 
-function removeLoader(elementDom){
+function removeLoader(elementDom) {
     let loader = document.getElementById("loader");
     elementDom.removeChild(loader);
 }
@@ -66,30 +66,35 @@ function removeLoader(elementDom){
 // RESULT - FETCH
 //////////////////////////////////
 function insertNavAppContent(elementDom, responseData) {
-    let list = document.createElement("ul");
-    list.setAttribute("class", "filter");
+    let navId = document.getElementById("filter");
 
-    let stylesItem = `
-        text-transform: capitalize;
-    `;
+    if (!navId) {
+        let list = document.createElement("ul");
+        list.setAttribute("id", "filter");
+        list.setAttribute("class", "filter");
 
-    for (const key in responseData) {
-        const element = responseData[key];
-        let item = document.createElement("li");
-        let link = document.createElement("a");
-        let linkText = document.createTextNode(key);
+        let stylesItem = `
+            text-transform: capitalize;
+        `;
 
-        link.setAttribute("href", element);
-        link.appendChild(linkText);
+        for (const key in responseData) {
+            const element = responseData[key];
+            let item = document.createElement("li");
+            let link = document.createElement("a");
+            let linkText = document.createTextNode(key);
 
-        item.setAttribute("class", "filter__item");
-        item.style += `; ${stylesItem}`;
-        item.appendChild(link);
-        
-        list.appendChild(item);
+            link.setAttribute("href", element);
+            link.appendChild(linkText);
+
+            item.setAttribute("class", "filter__item");
+            item.style += `; ${stylesItem}`;
+            item.appendChild(link);
+
+            list.appendChild(item);
+        }
+
+        elementDom.appendChild(list);
     }
-
-    elementDom.appendChild(list);
 }
 
 
@@ -98,14 +103,19 @@ function insertNavAppContent(elementDom, responseData) {
 
 
 function insertAppContent(url) {
-    let linkElementDom = document.createElement("a");
-    let linkTextElementDom = document.createTextNode(url);
+    let linkId = document.getElementById("linkApi");
 
-    linkElementDom.setAttribute("class", "link--api");
-    linkElementDom.setAttribute("href", url);
-    linkElementDom.setAttribute("target", "_blank");
-    linkElementDom.appendChild(linkTextElementDom);
-    appContent.appendChild(linkElementDom);
+    if (!linkId) {
+        let link = document.createElement("a");
+        let linkText = document.createTextNode(url);
+
+        link.setAttribute("id", "linkApi");
+        link.setAttribute("class", "link--api");
+        link.setAttribute("href", url);
+        link.setAttribute("target", "_blank");
+        link.appendChild(linkText);
+        appContent.appendChild(link);
+    }
 }
 
 
