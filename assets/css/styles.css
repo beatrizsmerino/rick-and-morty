@@ -146,7 +146,7 @@ hr{
 
 /* FILTER */
 .filter{
-    margin: 1rem 0 0 2rem;
+    margin: 2rem 0;
     display: flex;
     justify-content: center;;
     font-size: 3rem;
@@ -161,10 +161,21 @@ hr{
 .filter a{
     text-transform: lowercase;
     text-decoration: none;
-    color: var(--color-brand-2);
+    color: var(--color-brand-3);
 }
 .filter a:hover{
-    color: var(--color-brand-3);
+    color: var(--color-brand-1);
+}
+
+@media (max-width: 600px){
+    .filter{
+        text-align: center;
+        flex-direction: column;
+    }
+    .filter__item:not(:last-of-type){
+        margin-right: 0;
+        margin-bottom: 0.8rem;
+    }
 }
 
 
