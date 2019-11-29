@@ -11,6 +11,7 @@ let appContent = document.getElementById("appContent");
 // AJAX HANDLER - FETCH
 //////////////////////////////////
 function ajaxHandler(url) {
+    addLoader(appContent);
 
     fetch(url)
         .then(function (response) {
@@ -24,6 +25,7 @@ function ajaxHandler(url) {
             console.info(data);
 
             let timer = setInterval(function () {
+                removeLoader(appContent);
                 insertNavAppContent(appContent, data);
                 clearInterval(timer);
             }, 3000);
@@ -38,6 +40,29 @@ function ajaxHandler(url) {
 
 
 
+// LOADER
+//////////////////////////////////
+function addLoader(elementDom){
+    let template = `
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        `;
+    let loader = document.createElement("div");
+    loader.setAttribute("id", "loader");
+    elementDom.appendChild(loader);
+    document.getElementById("loader").innerHTML = template;
+}
+
+function removeLoader(elementDom){
+    let loader = document.getElementById("loader");
+    elementDom.removeChild(loader);
+}
+
+
+
+
 // RESULT - FETCH
 //////////////////////////////////
 function insertNavAppContent(elementDom, responseData) {
@@ -46,7 +71,6 @@ function insertNavAppContent(elementDom, responseData) {
 
     let stylesItem = `
         text-transform: capitalize;
-        font-weight: 700;
     `;
 
     for (const key in responseData) {
@@ -58,6 +82,7 @@ function insertNavAppContent(elementDom, responseData) {
         link.setAttribute("href", element);
         link.appendChild(linkText);
 
+        item.setAttribute("class", "filter__item");
         item.style += `; ${stylesItem}`;
         item.appendChild(link);
         
@@ -76,6 +101,7 @@ function insertAppContent(url) {
     let linkElementDom = document.createElement("a");
     let linkTextElementDom = document.createTextNode(url);
 
+    linkElementDom.setAttribute("class", "link--api");
     linkElementDom.setAttribute("href", url);
     linkElementDom.setAttribute("target", "_blank");
     linkElementDom.appendChild(linkTextElementDom);

@@ -1,0 +1,147 @@
+/* COLOR */
+:root{
+    --color-brand-1: #88CA5F;
+    --color-brand-2: #2D8642;
+    --color-brand-3: #2B2C6C;
+}
+
+
+
+
+
+/* RESET */
+*,
+*:after,
+*:before{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+/* GENERAL */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 2rem;
+}
+
+a{
+    color: black;
+    font-weight: 900;
+}
+
+a:hover{
+    color: var(--color-brand-2);
+}
+
+section:not(:last-of-type){
+    margin: 4rem 0;
+}
+
+article{
+    margin-left: 2rem;
+}
+
+hr{
+    margin: 1rem 0;
+}
+
+
+
+
+
+/* PAGE */
+.page__title{
+    font-weight: 900;
+    color: var(--color-brand-3);
+}
+
+
+
+
+/* BUTTON */
+.button {
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    font-size: 1.4rem;
+    color: black;
+    border: 2px solid black;
+    background-color: white;
+    cursor: pointer;
+}
+.button:hover{
+    color: white;
+    border-color: var(--color-brand-3);
+    background-color: var(--color-brand-3);
+}
+
+
+
+
+
+/* LOADER */
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 100px auto;
+}
+
+.double-bounce1,
+.double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--color-brand-1);
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+    animation-delay: -1.0s;
+}
+
+@keyframes sk-bounce {
+    0%,
+    100% {
+        transform: scale(0.0);
+    }
+
+    50% {
+        transform: scale(4.0);
+    }
+}
+
+
+
+
+
+/* LINK */
+.link--api{
+    font-weight: 300;
+    font-style: italic;
+}
+
+
+
+
+/* FILTER */
+.filter{
+    margin: 1rem 0 0 2rem;
+    font-size: 1.3rem;
+}
+.filter__item{
+    font-weight: 700;
+}
+.filter a{
+    text-decoration: none;
+    color: var(--color-brand-2);
+}
+.filter a:hover{
+    color: var(--color-brand-3);
+}
