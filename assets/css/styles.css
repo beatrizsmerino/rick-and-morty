@@ -73,8 +73,8 @@ hr{
 
 /* BUTTON */
 .button {
-    margin-top: 1rem;
     padding: 1rem 3rem;
+    display: inline-block;
     font-size: 2rem;
     color: var(--color-brand-3);
     border: 0.2rem solid var(--color-brand-3);
@@ -194,5 +194,5 @@ hr{
 }
 
 #appButton{
-    margin: 0 auto;
+    margin: 3rem auto;
 }
