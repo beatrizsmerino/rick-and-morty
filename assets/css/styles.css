@@ -3,6 +3,8 @@
     --color-brand-1: #88CA5F;
     --color-brand-2: #2D8642;
     --color-brand-3: #2B2C6C;
+    --color-brand-4: #11B0C8;
+    --color-brand-5: #6dcad6;
 }
 
 
@@ -22,6 +24,10 @@
 
 
 /* GENERAL */
+html{
+    font-size: 10px;
+}
+
 body {
     font-family: 'Ubuntu', sans-serif;
     margin: 2rem;
@@ -45,7 +51,8 @@ article{
 }
 
 hr{
-    margin: 1rem 0;
+    margin: 3rem 0;
+    color: var(--color-brand-3);
 }
 
 
@@ -53,6 +60,9 @@ hr{
 
 
 /* PAGE */
+.page__header{
+    text-align: center;
+}
 .page__title{
     font-weight: 900;
     color: var(--color-brand-3);
@@ -64,10 +74,10 @@ hr{
 /* BUTTON */
 .button {
     margin-top: 1rem;
-    padding: 0.5rem 2rem;
-    font-size: 1.4rem;
-    color: black;
-    border: 2px solid black;
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    color: var(--color-brand-3);
+    border: 0.2rem solid var(--color-brand-3);
     background-color: white;
     cursor: pointer;
 }
@@ -123,8 +133,12 @@ hr{
 
 /* LINK */
 .link--api{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
     font-weight: 300;
     font-style: italic;
+    font-size: 1.5rem;
 }
 
 
@@ -133,15 +147,41 @@ hr{
 /* FILTER */
 .filter{
     margin: 1rem 0 0 2rem;
-    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;;
+    font-size: 3rem;
+    list-style: none;
 }
 .filter__item{
     font-weight: 700;
 }
+.filter__item:not(:last-of-type){
+    margin-right: 3rem;
+}
 .filter a{
+    text-transform: lowercase;
     text-decoration: none;
     color: var(--color-brand-2);
 }
 .filter a:hover{
     color: var(--color-brand-3);
+}
+
+
+
+
+
+/* IDS */
+#rickAndMorty{
+    width: 100%;
+    max-width: 60rem;
+    filter: drop-shadow(1rem 1rem 0.5rem rgba(0,0,0,0.2));
+}
+
+#rickAndMorty path:nth-child(4){
+    fill: var(--color-brand-5);
+}
+
+#appButton{
+    margin: 0 auto;
 }
