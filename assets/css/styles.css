@@ -1,9 +1,9 @@
 /* COLOR */
 :root{
-    --color-brand-1: #88CA5F;
-    --color-brand-2: #2D8642;
-    --color-brand-3: #2B2C6C;
-    --color-brand-4: #11B0C8;
+    --color-brand-1: #87c95e;
+    --color-brand-2: #2d8642;
+    --color-brand-3: #2b2c6c;
+    --color-brand-4: #11b0c8;
     --color-brand-5: #6dcad6;
 }
 
@@ -184,9 +184,9 @@ hr{
 
 /* IDS */
 #rickAndMorty{
-    width: 100%;
+    width: 90%;
     max-width: 60rem;
-    filter: drop-shadow(1rem 1rem 0.5rem rgba(0,0,0,0.2));
+    filter: drop-shadow(0.8rem 0.8rem 0.5rem rgba(135, 201, 94, 0.8));
 }
 
 #rickAndMorty path:nth-child(4){
