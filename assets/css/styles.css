@@ -205,6 +205,10 @@ hr {
 .card__list {
   margin-left: 3rem;
 }
+.card img {
+  width: 100%;
+  display: inline-block;
+}
 .card:not(.is-view)
   .card__data:not([data-type="name"]):not([data-type="image"]) {
   display: none;

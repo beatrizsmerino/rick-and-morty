@@ -235,11 +235,19 @@ function insertFilterContent(elementDom, responseData) {
 				cardItemDom.setAttribute("class", "card__data");
 				cardItemDom.setAttribute("data-type", titleData);
 
-				let cardParagraphDom = document.createElement("h4");
-				cardParagraphDom.setAttribute("class", "card__subtitle");
-				let cardParagraphTextDom = document.createTextNode(firstUpperCase(titleData) + ": ");
-				cardParagraphDom.appendChild(cardParagraphTextDom);
-				cardItemDom.appendChild(cardParagraphDom);
+				if (titleData !== "image") {
+					let cardParagraphDom = document.createElement("h4");
+					cardParagraphDom.setAttribute("class", "card__subtitle");
+					let cardParagraphTextDom = document.createTextNode(firstUpperCase(titleData) + ": ");
+					cardParagraphDom.appendChild(cardParagraphTextDom);
+					cardItemDom.appendChild(cardParagraphDom);
+				} else {
+					let cardImageDom = document.createElement("img");
+					cardImageDom.setAttribute("src", cardItemData);
+					cardItemDom.appendChild(cardImageDom);
+				}
+
+
 
 				console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
 
@@ -277,11 +285,13 @@ function insertFilterContent(elementDom, responseData) {
 						cardItemDom.appendChild(cardUlDom);
 					}
 				} else {
-					let cardParagraphDom = document.createElement("p");
-					let cardParagraphTextDom = document.createTextNode(cardItemData);
+					if (titleData !== "image") {
+						let cardParagraphDom = document.createElement("p");
+						let cardParagraphTextDom = document.createTextNode(cardItemData);
 
-					cardParagraphDom.appendChild(cardParagraphTextDom);
-					cardItemDom.appendChild(cardParagraphDom);
+						cardParagraphDom.appendChild(cardParagraphTextDom);
+						cardItemDom.appendChild(cardParagraphDom);
+					}
 				}
 
 				card.appendChild(cardItemDom);
