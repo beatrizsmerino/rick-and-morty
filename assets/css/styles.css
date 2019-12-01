@@ -162,7 +162,11 @@ hr {
 }
 
 /* LIST */
+.list {
+  margin-top: 5rem;
+}
 .list-info {
+  padding: 3rem 1rem;
   text-align: center;
   font-size: 2rem;
   color: var(--color-brand-3);
