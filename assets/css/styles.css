@@ -190,6 +190,7 @@ hr {
   font-size: 1.8rem;
   font-weight: 300;
   color: white;
+  border: 0.5rem solid transparent;
   border-radius: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
@@ -212,6 +213,10 @@ hr {
   width: 100%;
   display: inline-block;
   border-radius: 1rem;
+}
+.card:hover {
+  border-color: var(--color-brand-4);
+  background-color: black;
 }
 .card:not(.is-view)
   .card__data:not([data-type="name"]):not([data-type="image"]) {
