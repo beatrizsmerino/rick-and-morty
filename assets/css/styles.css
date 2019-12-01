@@ -240,8 +240,15 @@ hr {
 /* IDS */
 #rickAndMorty {
   width: 90%;
-  max-width: 90rem;
+  max-width: 80rem;
   filter: drop-shadow(0 0 1rem var(--color-brand-1));
+}
+
+#portal {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  display: flex;
 }
 
 #appButton {

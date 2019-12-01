@@ -364,6 +364,7 @@ function viewCard(item, thisView) {
 appButton.addEventListener("click", function () {
 	// alert("Get data API");
 	insertAppContent(urlAPI);
+	appContent.removeChild(document.getElementById("portal"));
 	ajaxHandler(urlAPI, "insertFilter", function (data) {
 		console.info("Data:", data);
 	});
