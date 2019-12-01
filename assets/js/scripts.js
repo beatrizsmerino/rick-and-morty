@@ -310,6 +310,14 @@ function removeFilterContent() {
 	}
 }
 
+function viewCard(item, thisView) {
+	for (let index = 0; index < item.length; index++) {
+		const element = item[index];
+		if (element.classList.contains("is-view")) {
+			//console.log("has class");
+			element.classList.remove("is-view");
+		}
+		thisView.classList.add("is-view");
 	}
 }
 
@@ -352,4 +360,23 @@ appButton.addEventListener("click", function () {
 			}
 		}
 	});
+
+
+	let timerCard = setInterval(function () {
+		let cardItem = document.getElementsByClassName("card");
+
+		if (cardItem.length > 0) {
+			clearInterval(timerCard);
+			for (let index = 0; index < cardItem.length; index++) {
+				const element = cardItem[index];
+
+				element.addEventListener("click", function (e) {
+					viewCard(cardItem, this);
+				});
+			}
+		}
+	});
+
 })();
+
+
