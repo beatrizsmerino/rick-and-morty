@@ -132,7 +132,7 @@ function removeLoader(elementDom) {
 
 
 
-// RESULT - FETCH
+// FILTER
 //////////////////////////////////
 function insertAppContent(url) {
 	let linkId = document.getElementById("linkApi");
@@ -309,7 +309,19 @@ function insertFilterContent(elementDom, responseData) {
 	list.appendChild(resultsContent());
 	elementDom.appendChild(list);
 
+	let moveImage = function () {
+		let card = document.querySelectorAll(".card");
+		for (let index = 0; index < card.length; index++) {
+			const element = card[index];
+			let imageItem = element.querySelector(".card__data[data-type='image']");
+			if (imageItem) {
+				element.removeChild(imageItem);
+				element.insertBefore(imageItem, element.firstChild);
+			}
+		}
+	};
 	moveImage();
+
 
 	let timerCard = setInterval(function () {
 		let cardItem = document.getElementsByClassName("card");
@@ -345,17 +357,6 @@ function viewCard(item, thisView) {
 	thisView.classList.toggle("is-view");
 }
 
-function moveImage() {
-	let card = document.querySelectorAll(".card");
-	for (let index = 0; index < card.length; index++) {
-		const element = card[index];
-		let imageItem = element.querySelector(".card__data[data-type='image']");
-		if (imageItem) {
-			element.removeChild(imageItem);
-			element.insertBefore(imageItem, element.firstChild);
-		}
-	}
-}
 
 
 
