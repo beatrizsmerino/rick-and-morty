@@ -302,6 +302,12 @@ function insertFilterContent(elementDom, responseData) {
 	elementDom.appendChild(list);
 }
 
+function removeFilterContent() {
+	let list = document.getElementsByClassName("list")[0];
+	if (list && list.innerHTML !== "") {
+		appContent.removeChild(list);
+	}
+}
 
 	}
 }
@@ -330,6 +336,7 @@ appButton.addEventListener("click", function () {
 				const element = filterItem[index];
 
 				element.addEventListener("click", function () {
+					removeFilterContent();
 
 					activeFilter(filterItem, this);
 
