@@ -233,6 +233,7 @@ function insertFilterContent(elementDom, responseData) {
 
 				let cardItemDom = document.createElement("div");
 				cardItemDom.setAttribute("class", "card__data");
+				cardItemDom.setAttribute("data-type", titleData);
 
 				let cardParagraphDom = document.createElement("h4");
 				cardParagraphDom.setAttribute("class", "card__subtitle");
