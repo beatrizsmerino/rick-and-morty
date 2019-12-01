@@ -199,7 +199,7 @@ function insertFilterContent(elementDom, responseData) {
 	list.setAttribute("class", "list");
 
 	function info() {
-		console.info(responseData.info);
+		console.table(responseData.info);
 		let info = document.createElement("div");
 		info.setAttribute("class", "list-info");
 		info.innerHTML = "<p><strong>Results: </strong>" + responseData.info.count + "</p>";
@@ -208,7 +208,7 @@ function insertFilterContent(elementDom, responseData) {
 	}
 
 	function results() {
-		console.log(responseData.results);
+		console.table(responseData.results);
 		let listCards = document.createElement("div")
 		let listCardsInner = document.createElement("div");
 
@@ -241,8 +241,7 @@ function insertFilterContent(elementDom, responseData) {
 				cardParagraphDom.appendChild(cardParagraphTextDom);
 				cardItemDom.appendChild(cardParagraphDom);
 
-				// console.log(typeof cardItem);
-				// console.assert(Array.isArray(cardItem), true);
+				console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
 
 				if (typeof cardItemData === "object") {
 
