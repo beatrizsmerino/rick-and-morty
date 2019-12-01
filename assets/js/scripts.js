@@ -203,7 +203,7 @@ function insertFilterContent(elementDom, responseData) {
 		let info = document.createElement("div");
 		info.setAttribute("class", "list-info");
 		info.innerHTML = "<p><strong>Results: </strong>" + responseData.info.count + "</p>";
-		info.innerHTML += "<p><strong>Pages: <strong>" + responseData.info.pages + "</p>";
+		info.innerHTML += "<p><strong>Pages: </strong>" + responseData.info.pages + "</p>";
 		return info;
 	}
 
@@ -322,12 +322,12 @@ function removeFilterContent() {
 function viewCard(item, thisView) {
 	for (let index = 0; index < item.length; index++) {
 		const element = item[index];
-		if (element.classList.contains("is-view")) {
-			//console.log("has class");
+		if (!thisView.classList.contains("is-view")) {
+			console.log(element);
 			element.classList.remove("is-view");
 		}
-		thisView.classList.add("is-view");
 	}
+	thisView.classList.toggle("is-view");
 }
 
 

@@ -185,7 +185,7 @@ hr {
 .card {
   width: calc(25% - 2rem);
   margin: 1rem;
-  padding: 2rem;
+  padding: 2.5rem;
   overflow-wrap: break-word;
   font-size: 1.8rem;
   font-weight: 300;
@@ -205,9 +205,13 @@ hr {
 .card__list {
   margin-left: 3rem;
 }
+.card__data[data-type="image"] {
+  padding: 0;
+}
 .card img {
   width: 100%;
   display: inline-block;
+  border-radius: 1rem;
 }
 .card:not(.is-view)
   .card__data:not([data-type="name"]):not([data-type="image"]) {
