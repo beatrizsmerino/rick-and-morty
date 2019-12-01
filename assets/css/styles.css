@@ -115,16 +115,6 @@ hr {
   }
 }
 
-/* LINK */
-.link--api {
-  width: 100%;
-  display: inline-block;
-  text-align: center;
-  font-weight: 300;
-  font-style: italic;
-  font-size: 1.5rem;
-}
-
 /* FILTER */
 .filter {
   margin: 2rem 0;
@@ -190,6 +180,7 @@ hr {
   font-size: 1.8rem;
   font-weight: 300;
   color: white;
+  border: 0.5rem solid transparent;
   border-radius: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
@@ -212,6 +203,10 @@ hr {
   width: 100%;
   display: inline-block;
   border-radius: 1rem;
+}
+.card:hover {
+  border-color: var(--color-brand-4);
+  background-color: black;
 }
 .card:not(.is-view)
   .card__data:not([data-type="name"]):not([data-type="image"]) {
@@ -245,10 +240,26 @@ hr {
 /* IDS */
 #rickAndMorty {
   width: 90%;
-  max-width: 90rem;
+  max-width: 80rem;
   filter: drop-shadow(0 0 1rem var(--color-brand-1));
+}
+
+#portal {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 50rem;
+  display: flex;
 }
 
 #appButton {
   margin: 3rem auto;
+}
+
+#linkApi {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.8rem;
 }

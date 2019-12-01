@@ -132,7 +132,7 @@ function removeLoader(elementDom) {
 
 
 
-// RESULT - FETCH
+// FILTER
 //////////////////////////////////
 function insertAppContent(url) {
 	let linkId = document.getElementById("linkApi");
@@ -142,7 +142,6 @@ function insertAppContent(url) {
 		let linkText = document.createTextNode(url);
 
 		link.setAttribute("id", "linkApi");
-		link.setAttribute("class", "link--api");
 		link.setAttribute("href", url);
 		link.setAttribute("target", "_blank");
 		link.appendChild(linkText);
@@ -248,7 +247,7 @@ function insertFilterContent(elementDom, responseData) {
 					cardItemDom.appendChild(cardImageDom);
 				}
 
-				console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
+				//console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
 
 				if (typeof cardItemData === "object") {
 
@@ -309,7 +308,36 @@ function insertFilterContent(elementDom, responseData) {
 	list.appendChild(infoContent());
 	list.appendChild(resultsContent());
 	elementDom.appendChild(list);
+
+	let moveImage = function () {
+		let card = document.querySelectorAll(".card");
+		for (let index = 0; index < card.length; index++) {
+			const element = card[index];
+			let imageItem = element.querySelector(".card__data[data-type='image']");
+			if (imageItem) {
+				element.removeChild(imageItem);
+				element.insertBefore(imageItem, element.firstChild);
+			}
+		}
+	};
 	moveImage();
+
+
+	let timerCard = setInterval(function () {
+		let cardItem = document.getElementsByClassName("card");
+
+		if (cardItem.length > 0) {
+			clearInterval(timerCard);
+			for (let index = 0; index < cardItem.length; index++) {
+				const element = cardItem[index];
+
+				element.addEventListener("click", function (e) {
+					console.log("se ejecuta");
+					viewCard(cardItem, this);
+				});
+			}
+		}
+	});
 }
 
 function removeFilterContent() {
@@ -323,22 +351,12 @@ function viewCard(item, thisView) {
 	for (let index = 0; index < item.length; index++) {
 		const element = item[index];
 		if (!thisView.classList.contains("is-view")) {
-			console.log(element);
 			element.classList.remove("is-view");
 		}
 	}
 	thisView.classList.toggle("is-view");
 }
 
-function moveImage() {
-	let card = document.querySelectorAll(".card");
-	for (let index = 0; index < card.length; index++) {
-		const element = card[index];
-		let imageItem = element.querySelector(".card__data[data-type='image']");
-		element.removeChild(imageItem);
-		element.insertBefore(imageItem, element.firstChild);
-	}
-}
 
 
 
@@ -346,6 +364,7 @@ function moveImage() {
 appButton.addEventListener("click", function () {
 	// alert("Get data API");
 	insertAppContent(urlAPI);
+	appContent.removeChild(document.getElementById("portal"));
 	ajaxHandler(urlAPI, "insertFilter", function (data) {
 		console.info("Data:", data);
 	});
@@ -374,22 +393,6 @@ appButton.addEventListener("click", function () {
 							console.info(key, data);
 						}
 					);
-				});
-			}
-		}
-	});
-
-
-	let timerCard = setInterval(function () {
-		let cardItem = document.getElementsByClassName("card");
-
-		if (cardItem.length > 0) {
-			clearInterval(timerCard);
-			for (let index = 0; index < cardItem.length; index++) {
-				const element = cardItem[index];
-
-				element.addEventListener("click", function (e) {
-					viewCard(cardItem, this);
 				});
 			}
 		}
