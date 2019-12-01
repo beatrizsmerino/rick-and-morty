@@ -115,16 +115,6 @@ hr {
   }
 }
 
-/* LINK */
-.link--api {
-  width: 100%;
-  display: inline-block;
-  text-align: center;
-  font-weight: 300;
-  font-style: italic;
-  font-size: 1.5rem;
-}
-
 /* FILTER */
 .filter {
   margin: 2rem 0;
@@ -256,4 +246,13 @@ hr {
 
 #appButton {
   margin: 3rem auto;
+}
+
+#linkApi {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.8rem;
 }

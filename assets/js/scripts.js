@@ -142,7 +142,6 @@ function insertAppContent(url) {
 		let linkText = document.createTextNode(url);
 
 		link.setAttribute("id", "linkApi");
-		link.setAttribute("class", "link--api");
 		link.setAttribute("href", url);
 		link.setAttribute("target", "_blank");
 		link.appendChild(linkText);
