@@ -131,36 +131,35 @@ function setAction(action, elementDom, dataResponse) {
     }
 }
 
-function insertNavAppContent(elementDom, responseData) {
-    let navId = document.getElementById("filter");
+function insertFilter(elementDom, responseData) {
+	let navId = document.getElementById("filter");
 
-    if (!navId) {
-        let list = document.createElement("ul");
-        list.setAttribute("id", "filter");
-        list.setAttribute("class", "filter");
+	if (!navId) {
+		let list = document.createElement("ul");
+		list.setAttribute("id", "filter");
+		list.setAttribute("class", "filter");
 
         let stylesItem = `
             text-transform: capitalize;
         `;
 
-        for (const key in responseData) {
-            const element = responseData[key];
-            let item = document.createElement("li");
-            let link = document.createElement("a");
-            let linkText = document.createTextNode(key);
+		for (const key in responseData) {
+			const element = responseData[key];
+			let item = document.createElement("li");
+			let itemText = document.createTextNode(key);
 
-            link.setAttribute("href", element);
-            link.appendChild(linkText);
-
-            item.setAttribute("class", "filter__item");
+			item.setAttribute("data-filter", key);
+			item.setAttribute("data-url", element);
+			item.setAttribute("class", "filter__item");
             item.style += `; ${stylesItem}`;
             item.appendChild(link);
 
-            list.appendChild(item);
-        }
+			item.appendChild(itemText);
+			list.appendChild(item);
+		}
 
-        elementDom.appendChild(list);
-    }
+		elementDom.appendChild(list);
+	}
 }
 
 

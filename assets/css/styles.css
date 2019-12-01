@@ -134,17 +134,17 @@ hr {
   list-style: none;
 }
 .filter__item {
+  text-transform: lowercase;
+  text-decoration: none;
   font-weight: 700;
+  color: var(--color-brand-4);
+  cursor: pointer;
 }
 .filter__item:not(:last-of-type) {
   margin-right: 3rem;
 }
-.filter a {
-  text-transform: lowercase;
-  text-decoration: none;
-  color: var(--color-brand-4);
-}
-.filter a:hover {
+
+.filter__item:hover {
   color: var(--color-brand-1);
 }
 
