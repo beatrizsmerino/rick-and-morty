@@ -56,6 +56,11 @@ hr {
   font-weight: 900;
   color: var(--color-brand-3);
 }
+.page__container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
 
 /* BUTTON */
 .button {
@@ -129,17 +134,19 @@ hr {
   list-style: none;
 }
 .filter__item {
+  text-transform: lowercase;
+  text-decoration: none;
   font-weight: 700;
+  color: var(--color-brand-4);
+  cursor: pointer;
 }
+
 .filter__item:not(:last-of-type) {
   margin-right: 3rem;
 }
-.filter a {
-  text-transform: lowercase;
-  text-decoration: none;
-  color: var(--color-brand-4);
-}
-.filter a:hover {
+
+.filter__item.is-active,
+.filter__item:hover {
   color: var(--color-brand-1);
 }
 
@@ -151,6 +158,87 @@ hr {
   .filter__item:not(:last-of-type) {
     margin-right: 0;
     margin-bottom: 0.8rem;
+  }
+}
+
+/* LIST */
+.list {
+  margin-top: 5rem;
+}
+.list-info {
+  padding: 3rem 1rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-brand-3);
+}
+
+.list-cards {
+  display: flex;
+  justify-content: center;
+}
+.list-cards__inner {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(25% - 2rem);
+  margin: 1rem;
+  padding: 2.5rem;
+  overflow-wrap: break-word;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: white;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+.card__data {
+  padding: 1rem 0;
+}
+
+.card__subtitle {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.card__list {
+  margin-left: 3rem;
+}
+.card__data[data-type="image"] {
+  padding: 0;
+}
+.card img {
+  width: 100%;
+  display: inline-block;
+  border-radius: 1rem;
+}
+.card:not(.is-view)
+  .card__data:not([data-type="name"]):not([data-type="image"]) {
+  display: none;
+}
+.card.is-view .card__data:not(:last-of-type) {
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.5);
+}
+.card.is-view .card__data:only-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 1280px) {
+  .card {
+    width: calc(33.333% - 2rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: calc(100% - 2rem);
   }
 }
 
