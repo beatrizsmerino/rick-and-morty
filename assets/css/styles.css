@@ -169,3 +169,62 @@ hr {
 #appButton {
   margin: 3rem auto;
 }
+
+/* LIST */
+.list-info {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-brand-3);
+}
+
+.list-cards {
+  display: flex;
+  justify-content: center;
+}
+.list-cards__inner {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(25% - 2rem);
+  margin: 1rem;
+  padding: 2rem;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: white;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.card__data {
+  padding: 1rem 0;
+}
+.card__data:not(:last-of-type) {
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.5);
+}
+.card__subtitle {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.card__list {
+  margin-left: 3rem;
+}
+
+@media (max-width: 1280px) {
+  .card {
+    width: calc(33.333% - 2rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: calc(100% - 2rem);
+  }
+}
