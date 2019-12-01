@@ -159,17 +159,6 @@ hr {
   }
 }
 
-/* IDS */
-#rickAndMorty {
-  width: 90%;
-  max-width: 90rem;
-  filter: drop-shadow(0 0 1rem var(--color-brand-1));
-}
-
-#appButton {
-  margin: 3rem auto;
-}
-
 /* LIST */
 .list-info {
   text-align: center;
@@ -228,4 +217,15 @@ hr {
   .card {
     width: calc(100% - 2rem);
   }
+}
+
+/* IDS */
+#rickAndMorty {
+  width: 90%;
+  max-width: 90rem;
+  filter: drop-shadow(0 0 1rem var(--color-brand-1));
+}
+
+#appButton {
+  margin: 3rem auto;
 }
