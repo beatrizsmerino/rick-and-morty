@@ -306,9 +306,10 @@ function insertFilterContent(elementDom, responseData) {
 		return listCards;
 	}
 
-	list.appendChild(info());
-	list.appendChild(results());
+	list.appendChild(infoContent());
+	list.appendChild(resultsContent());
 	elementDom.appendChild(list);
+	moveImage();
 }
 
 function removeFilterContent() {
@@ -329,6 +330,15 @@ function viewCard(item, thisView) {
 	thisView.classList.toggle("is-view");
 }
 
+function moveImage() {
+	let card = document.querySelectorAll(".card");
+	for (let index = 0; index < card.length; index++) {
+		const element = card[index];
+		let imageItem = element.querySelector(".card__data[data-type='image']");
+		element.removeChild(imageItem);
+		element.insertBefore(imageItem, element.firstChild);
+	}
+}
 
 
 
