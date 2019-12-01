@@ -134,6 +134,22 @@ function removeLoader(elementDom) {
 
 // RESULT - FETCH
 //////////////////////////////////
+function insertAppContent(url) {
+	let linkId = document.getElementById("linkApi");
+
+	if (!linkId) {
+		let link = document.createElement("a");
+		let linkText = document.createTextNode(url);
+
+		link.setAttribute("id", "linkApi");
+		link.setAttribute("class", "link--api");
+		link.setAttribute("href", url);
+		link.setAttribute("target", "_blank");
+		link.appendChild(linkText);
+		appContent.appendChild(link);
+	}
+}
+
 function setAction(action, elementDom, dataResponse) {
 	if (action === "insertFilter") {
 		insertFilter(elementDom, dataResponse);
@@ -275,19 +291,7 @@ function insertFilterContent(elementDom, responseData) {
 	elementDom.appendChild(list);
 }
 
-function insertAppContent(url) {
-	let linkId = document.getElementById("linkApi");
 
-	if (!linkId) {
-		let link = document.createElement("a");
-		let linkText = document.createTextNode(url);
-
-		link.setAttribute("id", "linkApi");
-		link.setAttribute("class", "link--api");
-		link.setAttribute("href", url);
-		link.setAttribute("target", "_blank");
-		link.appendChild(linkText);
-		appContent.appendChild(link);
 	}
 }
 
