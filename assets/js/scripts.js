@@ -198,16 +198,17 @@ function insertFilterContent(elementDom, responseData) {
 	let list = document.createElement("section");
 	list.setAttribute("class", "list");
 
-	function info() {
+	const infoContent = function () {
 		console.table(responseData.info);
-		let info = document.createElement("div");
-		info.setAttribute("class", "list-info");
-		info.innerHTML = "<p><strong>Results: </strong>" + responseData.info.count + "</p>";
-		info.innerHTML += "<p><strong>Pages: </strong>" + responseData.info.pages + "</p>";
-		return info;
+		let listInfo = document.createElement("div");
+		listInfo.setAttribute("class", "list-info");
+		listInfo.innerHTML = "<p><strong>Results: </strong>" + responseData.info.count + "</p>";
+		listInfo.innerHTML += "<p><strong>Pages: </strong>" + responseData.info.pages + "</p>";
+
+		return listInfo;
 	}
 
-	function results() {
+	const resultsContent = function () {
 		console.table(responseData.results);
 		let listCards = document.createElement("div")
 		let listCardsInner = document.createElement("div");
@@ -246,8 +247,6 @@ function insertFilterContent(elementDom, responseData) {
 					cardImageDom.setAttribute("src", cardItemData);
 					cardItemDom.appendChild(cardImageDom);
 				}
-
-
 
 				console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
 
