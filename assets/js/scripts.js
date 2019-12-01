@@ -183,6 +183,17 @@ function insertFilter(elementDom, responseData) {
 	}
 }
 
+function activeFilter(item, thisActive) {
+	for (let index = 0; index < item.length; index++) {
+		const element = item[index];
+		if (element.classList.contains("is-active")) {
+			//console.log("has class");
+			element.classList.remove("is-active");
+		}
+		thisActive.classList.add("is-active");
+	}
+}
+
 function insertFilterContent(elementDom, responseData) {
 	let list = document.createElement("section");
 	list.setAttribute("class", "list");
@@ -319,6 +330,9 @@ appButton.addEventListener("click", function () {
 				const element = filterItem[index];
 
 				element.addEventListener("click", function () {
+
+					activeFilter(filterItem, this);
+
 					ajaxHandler(
 						this.getAttribute("data-url"),
 						"insertFilterContent",

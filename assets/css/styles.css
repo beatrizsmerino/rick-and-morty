@@ -140,10 +140,12 @@ hr {
   color: var(--color-brand-4);
   cursor: pointer;
 }
+
 .filter__item:not(:last-of-type) {
   margin-right: 3rem;
 }
 
+.filter__item.is-active,
 .filter__item:hover {
   color: var(--color-brand-1);
 }
