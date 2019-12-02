@@ -71,6 +71,14 @@ function firstUpperCase(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function delay(fn, ms) {
+	let timer = 0;
+	return function (...args) {
+		clearTimeout(timer);
+		timer = setTimeout(fn.bind(this, ...args), ms || 0);
+	}
+}
+
 
 
 
@@ -154,6 +162,8 @@ function setAction(action, elementDom, dataResponse) {
 		insertFilter(elementDom, dataResponse);
 	} else if (action === "insertFilterContent") {
 		insertFilterContent(elementDom, dataResponse);
+	} else if (action === "insertSearchContent") {
+		insertSearchContent(elementDom, dataResponse);
 	}
 }
 
@@ -364,29 +374,71 @@ function viewCard(item, thisView) {
 
 // SEARCH
 //////////////////////////////////
-function search(activeFilter){
+function addSearch(activeFilter) {
 	let searchDom = document.createElement("div");
 	let searchInnerDom = document.createElement("div");
 	let searchIconDom = document.createElement("div");
 	let searchInput = document.createElement("input");
 	let activeFilterText = activeFilter.getAttribute("data-filter");
 
-	searchDom.setAttribute("class","search");
-	searchInnerDom.setAttribute("class","search__inner");
-	searchIconDom.setAttribute("class","search__icon icon-magnifying-glass");
+	searchDom.setAttribute("id", "search");
+	searchDom.setAttribute("class", "search");
+	searchInnerDom.setAttribute("class", "search__inner");
+	searchIconDom.setAttribute("class", "search__icon icon-magnifying-glass");
 
-	searchInput.setAttribute("id","search");
-	searchInput.setAttribute("class","search__input");
-	searchInput.setAttribute("placeholder", "Search by " + activeFilterText);
+	searchInput.setAttribute("id", "searchInput");
+	searchInput.setAttribute("class", "search__input");
+	searchInput.setAttribute("placeholder", "Search by name of " + activeFilterText);
 
 	searchInnerDom.appendChild(searchIconDom);
 	searchInnerDom.appendChild(searchInput);
 	searchDom.appendChild(searchInnerDom);
 	appContent.appendChild(searchDom);
 
-	document.getElementById("search").addEventListener("keyup", function(){
+	let searchBy;
+	switch (activeFilterText) {
+		case "characters":
+			searchBy = "character";
+			break;
+		case "episodies":
+			searchBy = "episode";
+			break;
+		case "locations":
+			searchBy = "location";
+			break;
+		default:
+			break;
+	}
 
-	});
+	console.assert(searchBy !== "", "Not Search");
+	console.log(searchBy);
+
+	document.getElementById("searchInput").addEventListener("keyup", delay(function (e) {
+		let valueInput = this.value;
+		// console.log(this);
+		// console.log(this.value);
+		console.log(urlAPI + searchBy + "/?" + "name" + "=" + valueInput);
+		console.assert(valueInput, "Input hasn`t value");
+
+
+		removeFilterContent();
+		removePagination();
+		ajaxHandler(
+			urlAPI + searchBy + "/?" + "name" + "=" + valueInput,
+			"insertFilterContent",
+			function (data) {
+				console.info("Data: ", data);
+			}
+		);
+
+	}, 500));
+}
+
+function removeSearch() {
+	let search = document.getElementById("search");
+	if (search) {
+		appContent.removeChild(search);
+	}
 }
 
 
@@ -484,8 +536,9 @@ appButton.addEventListener("click", function () {
 				element.addEventListener("click", function () {
 					removeFilterContent();
 					removePagination();
+					removeSearch();
 					activeFilter(filterItem, this);
-					search(this);
+					addSearch(this);
 
 					ajaxHandler(
 						this.getAttribute("data-url"),
