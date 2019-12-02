@@ -1,4 +1,4 @@
-/* COLOR */
+/****** COLOR ******/
 :root {
   --color-brand-1: #87c95e;
   --color-brand-2: #2d8642;
@@ -7,7 +7,7 @@
   --color-brand-5: #6dcad6;
 }
 
-/* RESET */
+/****** RESET ******/
 *,
 *:after,
 *:before {
@@ -16,13 +16,13 @@
   box-sizing: border-box;
 }
 
-/* GENERAL */
+/****** GENERAL ******/
 html {
   font-size: 10px;
 }
 
 body {
-  margin: 4rem 2rem;
+  padding: 4rem 2rem 18rem 2rem;
   font-family: "Ubuntu", sans-serif;
 }
 
@@ -61,7 +61,7 @@ footer {
   background-color: white;
 }
 
-/* PAGE */
+/****** PAGE ******/
 .page__header {
   text-align: center;
 }
@@ -75,7 +75,7 @@ footer {
   margin: 0 auto;
 }
 
-/* BUTTON */
+/****** BUTTON ******/
 .button {
   padding: 1rem 3rem;
   display: inline-block;
@@ -92,7 +92,7 @@ footer {
   background-color: var(--color-brand-3);
 }
 
-/* LOADER */
+/****** LOADER ******/
 .spinner {
   width: 40px;
   height: 40px;
@@ -128,7 +128,59 @@ footer {
   }
 }
 
-/* FILTER */
+/****** SEARCH ******/
+.search{
+  display: flex;
+  justify-content: center;
+}
+.search__inner{
+  width: 100%;
+  max-width: 50rem;
+  position: relative;
+}
+.search__icon{
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  font-size: 3rem;
+  color: var(--color-brand-3);
+  pointer-events: none;
+}
+.search__input{
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-brand-3);
+  border: 0.2rem solid var(--color-brand-3);
+  outline: none;
+}
+.search__input:focus{
+  background-color: var(--color-brand-5);
+}
+.search__input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-brand-2);
+}
+.search__input::-moz-placeholder { /* Firefox 19+ */
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-brand-2);
+}
+.search__input:-ms-input-placeholder { /* IE 10+ */
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-brand-2);
+}
+.search__input:-moz-placeholder { /* Firefox 18- */
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-brand-2);
+}
+
+/****** FILTER ******/
 .filter {
   margin: 2rem 0;
   display: flex;
@@ -164,9 +216,9 @@ footer {
   }
 }
 
-/* LIST */
+/****** LIST ******/
 .list {
-  margin: 5rem auto 25rem;
+  margin: 5rem auto 0;
 }
 .list-info {
   padding: 3rem 1rem;
@@ -270,21 +322,22 @@ footer {
   }
 }
 
-/* PAGINATION */
+/****** PAGINATION ******/
 .pagination {
   width: 100%;
-  padding: 2rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   left: 0;
-  bottom: 6rem;
+  bottom: 8.3rem;
+  background-color: rgba(255,255,255, 0.5);
 }
 .pagination__button {
   width: 6rem;
   height: 6rem;
-  margin: 2rem;
+  margin: 1rem 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -299,7 +352,7 @@ footer {
   background-color: #ccc;
 }
 .pagination__counter {
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 2rem;
   font-size: 3rem;
   font-weight: 300;
   color: var(--color-brand-4);
@@ -307,8 +360,9 @@ footer {
   background-color: white;
 }
 
-/* IDS */
+/****** IDS ******/
 #rickAndMorty {
+  width: 100%;
   height: 30vh;
   filter: drop-shadow(0 0 1rem var(--color-brand-1));
 }
