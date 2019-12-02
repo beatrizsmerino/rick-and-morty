@@ -3,6 +3,10 @@ let urlAPI = "https://rickandmortyapi.com/api/";
 let appButton = document.getElementById("appButton");
 let appContent = document.getElementById("appContent");
 
+
+
+
+
 // TOOLS
 //////////////////////////////////
 function svgMe() {
@@ -63,9 +67,42 @@ function svgMe() {
 		request.send();
 	});
 }
+
 function firstUpperCase(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+function delay(fn, ms) {
+	let timer = 0;
+	return function (...args) {
+		clearTimeout(timer);
+		timer = setTimeout(fn.bind(this, ...args), ms || 0);
+	}
+}
+
+function getParametersURL(urlString) {
+	let urlArray = urlString.split("?");
+	let urlArrayParametters = urlArray[1].split("&");
+	// console.log("urlString: " + urlString);
+	// console.log("urlArray:  " + urlArray.length);
+	// console.log("urlArray[1]: " + urlArray[1]);
+
+	console.info(urlArray);
+	console.info(urlArrayParametters);
+
+	return urlArrayParametters;
+ }
+ function getValueParameterURL(arrayParametters, parameterToFound){
+	let found = arrayParametters.find(a =>a.includes(parameterToFound));
+	let parameter = found.split("=");
+	let value = parameter[1];
+
+	return value;
+ }
+
+
+
+
 
 // AJAX HANDLER - FETCH
 //////////////////////////////////
@@ -96,6 +133,10 @@ function ajaxHandler(url, action) {
 		});
 }
 
+
+
+
+
 // LOADER
 //////////////////////////////////
 function addLoader(elementDom) {
@@ -115,6 +156,10 @@ function removeLoader(elementDom) {
 	let loader = document.getElementById("loader");
 	elementDom.removeChild(loader);
 }
+
+
+
+
 
 // FILTER
 //////////////////////////////////
@@ -138,6 +183,8 @@ function setAction(action, elementDom, dataResponse) {
 		insertFilter(elementDom, dataResponse);
 	} else if (action === "insertFilterContent") {
 		insertFilterContent(elementDom, dataResponse);
+	} else if (action === "insertSearchContent") {
+		insertSearchContent(elementDom, dataResponse);
 	}
 }
 
@@ -346,6 +393,77 @@ function viewCard(item, thisView) {
 
 
 
+// SEARCH
+//////////////////////////////////
+function addSearch(activeFilter) {
+	let searchDom = document.createElement("div");
+	let searchInnerDom = document.createElement("div");
+	let searchIconDom = document.createElement("div");
+	let searchInput = document.createElement("input");
+	let activeFilterText = activeFilter.getAttribute("data-filter");
+
+	searchDom.setAttribute("id", "search");
+	searchDom.setAttribute("class", "search");
+	searchInnerDom.setAttribute("class", "search__inner");
+	searchIconDom.setAttribute("class", "search__icon icon-magnifying-glass");
+
+	searchInput.setAttribute("id", "searchInput");
+	searchInput.setAttribute("class", "search__input");
+	searchInput.setAttribute("placeholder", "Search by name of " + activeFilterText);
+
+	searchInnerDom.appendChild(searchIconDom);
+	searchInnerDom.appendChild(searchInput);
+	searchDom.appendChild(searchInnerDom);
+	appContent.appendChild(searchDom);
+
+	let searchBy;
+	switch (activeFilterText) {
+		case "characters":
+			searchBy = "character";
+			break;
+		case "episodies":
+			searchBy = "episode";
+			break;
+		case "locations":
+			searchBy = "location";
+			break;
+		default:
+			break;
+	}
+
+	console.assert(searchBy !== "", "Not Search");
+	console.log(searchBy);
+
+	document.getElementById("searchInput").addEventListener("keyup", delay(function (e) {
+		let valueInput = this.value;
+		// console.log(this);
+		// console.log(this.value);
+		console.log(urlAPI + searchBy + "/?" + "name" + "=" + valueInput);
+		console.assert(valueInput, "Input hasn`t value");
+
+		removeFilterContent();
+		removePagination();
+		ajaxHandler(
+			urlAPI + searchBy + "/?" + "name" + "=" + valueInput,
+			"insertFilterContent",
+			function (data) {
+				console.info("Data: ", data);
+			}
+		);
+
+	}, 500));
+}
+
+function removeSearch() {
+	let search = document.getElementById("search");
+	if (search) {
+		appContent.removeChild(search);
+	}
+}
+
+
+
+
 // PAGINATION
 //////////////////////////////////
 function addPagination(responseData) {
@@ -370,9 +488,11 @@ function addPagination(responseData) {
 	(function () {
 		let filterActive = document.querySelector(".filter__item.is-active");
 		let filterActiveUrl = filterActive.getAttribute("data-url");
+
 		let paginationNext = responseData.info.next;
-		let paginationNow = paginationNext.substr(paginationNext.search("page") + 5, paginationNext.length - (paginationNext.search("page") + 5)) - 1;
-		if (paginationNow < 0) {
+		let paginationNow = getValueParameterURL(getParametersURL(paginationNext), "page") - 1;
+
+		if (paginationNow < 0 || isNaN(paginationNow) || paginationNow == "undefined" || paginationNow == "") {
 			paginationNow = 1;
 		}
 		let paginationTotal = responseData.info.pages;
@@ -438,7 +558,9 @@ appButton.addEventListener("click", function () {
 				element.addEventListener("click", function () {
 					removeFilterContent();
 					removePagination();
+					removeSearch();
 					activeFilter(filterItem, this);
+					addSearch(this);
 
 					ajaxHandler(
 						this.getAttribute("data-url"),
