@@ -166,7 +166,7 @@ footer {
 
 /* LIST */
 .list {
-  margin-top: 5rem;
+  margin: 5rem auto 25rem;
 }
 .list-info {
   padding: 3rem 1rem;
@@ -256,9 +256,10 @@ footer {
   padding: 2rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   position: fixed;
   left: 0;
-  bottom: 6rem;
+  bottom: 10rem;
 }
 .pagination__button {
   width: 6rem;
@@ -273,6 +274,17 @@ footer {
   border-radius: 50%;
   background-color: var(--color-brand-4);
   cursor: pointer;
+}
+.pagination__button[data-url=""] {
+  background-color: #ccc;
+}
+.pagination__counter {
+  padding: 0.8rem 1rem;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--color-brand-4);
+  border-radius: 1rem;
+  background-color: white;
 }
 
 /* IDS */
