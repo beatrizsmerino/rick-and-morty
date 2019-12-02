@@ -292,18 +292,8 @@ function insertFilterContent(elementDom, responseData) {
 	list.appendChild(resultsContent());
 	elementDom.appendChild(list);
 
-	let moveImage = function () {
-		let card = document.querySelectorAll(".card");
-		for (let index = 0; index < card.length; index++) {
-			const element = card[index];
-			let imageItem = element.querySelector(".card__data[data-type='image']");
-			if (imageItem) {
-				element.removeChild(imageItem);
-				element.insertBefore(imageItem, element.firstChild);
-			}
-		}
-	};
-	moveImage();
+	moveImageFilterContent();
+
 
 	let timerCard = setInterval(function () {
 		let cardItem = document.getElementsByClassName("card");
@@ -314,7 +304,6 @@ function insertFilterContent(elementDom, responseData) {
 				const element = cardItem[index];
 
 				element.addEventListener("click", function (e) {
-					console.log("se ejecuta");
 					viewCard(cardItem, this);
 				});
 			}
@@ -323,6 +312,18 @@ function insertFilterContent(elementDom, responseData) {
 
 	addPagination(responseData);
 }
+
+function moveImageFilterContent() {
+	let card = document.querySelectorAll(".card");
+	for (let index = 0; index < card.length; index++) {
+		const element = card[index];
+		let imageItem = element.querySelector(".card__data[data-type='image']");
+		if (imageItem) {
+			element.removeChild(imageItem);
+			element.insertBefore(imageItem, element.firstChild);
+		}
+	}
+};
 
 function removeFilterContent() {
 	let list = document.getElementsByClassName("list")[0];

@@ -187,6 +187,7 @@ footer {
 
 .card {
   width: calc(25% - 2rem);
+  height: fit-content;
   margin: 1rem;
   padding: 2.5rem;
   overflow-wrap: break-word;
@@ -203,13 +204,32 @@ footer {
 }
 
 .card__subtitle {
+  margin-bottom: 0.5rem;
   font-size: 2rem;
   font-weight: 700;
 }
 .card__list {
   margin-left: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card__data[data-type="characters"],
+.card__data[data-type="residents"],
+.card__data[data-type="episode"],
+.card__data[data-type="url"] {
+  display: none;
+}
+.card__data[data-type="origin"] ul,
+.card__data[data-type="location"] ul {
+  margin-left: 0;
+  list-style: none;
+}
+.card__data[data-type="origin"] ul li:nth-child(2),
+.card__data[data-type="location"] ul li:nth-child(2) {
+  display: none;
 }
 .card__data[data-type="image"] {
+  margin-bottom: 1rem;
   padding: 0;
 }
 .card img {
@@ -225,7 +245,7 @@ footer {
   .card__data:not([data-type="name"]):not([data-type="image"]) {
   display: none;
 }
-.card.is-view .card__data:not(:last-of-type) {
+.card.is-view .card__data:not(:last-of-type):not([data-type="image"]) {
   border-bottom: 0.1rem solid rgba(255, 255, 255, 0.5);
 }
 .card.is-view .card__data:only-child {
@@ -259,7 +279,7 @@ footer {
   align-items: center;
   position: fixed;
   left: 0;
-  bottom: 10rem;
+  bottom: 6rem;
 }
 .pagination__button {
   width: 6rem;
