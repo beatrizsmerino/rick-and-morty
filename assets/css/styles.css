@@ -274,18 +274,19 @@ footer {
 /****** PAGINATION ******/
 .pagination {
   width: 100%;
-  padding: 2rem;
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   left: 0;
-  bottom: 6rem;
+  bottom: 8.3rem;
+  background-color: rgba(255,255,255, 0.5);
 }
 .pagination__button {
   width: 6rem;
   height: 6rem;
-  margin: 2rem;
+  margin: 1rem 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -300,7 +301,7 @@ footer {
   background-color: #ccc;
 }
 .pagination__counter {
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 2rem;
   font-size: 3rem;
   font-weight: 300;
   color: var(--color-brand-4);
