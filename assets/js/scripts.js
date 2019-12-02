@@ -3,6 +3,10 @@ let urlAPI = "https://rickandmortyapi.com/api/";
 let appButton = document.getElementById("appButton");
 let appContent = document.getElementById("appContent");
 
+
+
+
+
 // TOOLS
 //////////////////////////////////
 function svgMe() {
@@ -67,6 +71,10 @@ function firstUpperCase(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+
+
+
+
 // AJAX HANDLER - FETCH
 //////////////////////////////////
 function ajaxHandler(url, action) {
@@ -96,6 +104,10 @@ function ajaxHandler(url, action) {
 		});
 }
 
+
+
+
+
 // LOADER
 //////////////////////////////////
 function addLoader(elementDom) {
@@ -115,6 +127,10 @@ function removeLoader(elementDom) {
 	let loader = document.getElementById("loader");
 	elementDom.removeChild(loader);
 }
+
+
+
+
 
 // FILTER
 //////////////////////////////////
