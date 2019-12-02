@@ -362,6 +362,7 @@ footer {
 
 /****** IDS ******/
 #rickAndMorty {
+  width: 100%;
   height: 30vh;
   filter: drop-shadow(0 0 1rem var(--color-brand-1));
 }
