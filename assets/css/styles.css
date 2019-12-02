@@ -22,8 +22,8 @@ html {
 }
 
 body {
+  margin: 4rem 2rem;
   font-family: "Ubuntu", sans-serif;
-  margin: 2rem;
 }
 
 a {
@@ -46,6 +46,19 @@ article {
 hr {
   margin: 3rem 0;
   color: var(--color-brand-3);
+}
+
+footer {
+  width: 100%;
+  padding: 3rem 2rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 100;
+  color: var(--color-brand-4);
+  background-color: white;
 }
 
 /* PAGE */
@@ -277,7 +290,7 @@ hr {
 }
 
 #appButton {
-  margin: 3rem auto;
+  margin: 3rem auto 1rem;
 }
 
 #linkApi {
