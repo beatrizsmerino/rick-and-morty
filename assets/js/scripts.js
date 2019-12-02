@@ -441,7 +441,6 @@ function addSearch(activeFilter) {
 		console.log(urlAPI + searchBy + "/?" + "name" + "=" + valueInput);
 		console.assert(valueInput, "Input hasn`t value");
 
-
 		removeFilterContent();
 		removePagination();
 		ajaxHandler(
@@ -489,9 +488,11 @@ function addPagination(responseData) {
 	(function () {
 		let filterActive = document.querySelector(".filter__item.is-active");
 		let filterActiveUrl = filterActive.getAttribute("data-url");
+
 		let paginationNext = responseData.info.next;
-		let paginationNow = paginationNext.substr(paginationNext.search("page") + 5, paginationNext.length - (paginationNext.search("page") + 5)) - 1;
-		if (paginationNow < 0) {
+		let paginationNow = getValueParameterURL(getParametersURL(paginationNext), "page") - 1;
+
+		if (paginationNow < 0 || isNaN(paginationNow) || paginationNow == "undefined" || paginationNow == "") {
 			paginationNow = 1;
 		}
 		let paginationTotal = responseData.info.pages;
