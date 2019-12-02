@@ -67,6 +67,7 @@ function svgMe() {
 		request.send();
 	});
 }
+
 function firstUpperCase(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -78,6 +79,26 @@ function delay(fn, ms) {
 		timer = setTimeout(fn.bind(this, ...args), ms || 0);
 	}
 }
+
+function getParametersURL(urlString) {
+	let urlArray = urlString.split("?");
+	let urlArrayParametters = urlArray[1].split("&");
+	// console.log("urlString: " + urlString);
+	// console.log("urlArray:  " + urlArray.length);
+	// console.log("urlArray[1]: " + urlArray[1]);
+
+	console.info(urlArray);
+	console.info(urlArrayParametters);
+
+	return urlArrayParametters;
+ }
+ function getValueParameterURL(arrayParametters, parameterToFound){
+	let found = arrayParametters.find(a =>a.includes(parameterToFound));
+	let parameter = found.split("=");
+	let value = parameter[1];
+
+	return value;
+ }
 
 
 
