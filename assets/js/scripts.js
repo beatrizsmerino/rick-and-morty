@@ -185,10 +185,7 @@ function insertFilterContent(elementDom, responseData) {
 		console.table(responseData.info);
 		let listInfo = document.createElement("div");
 		listInfo.setAttribute("class", "list-info");
-		listInfo.innerHTML =
-			"<p><strong>Results: </strong>" + responseData.info.count + "</p>";
-		listInfo.innerHTML +=
-			"<p><strong>Pages: </strong>" + responseData.info.pages + "</p>";
+		listInfo.innerHTML = "<p><strong>Results: </strong>" + responseData.info.count + "</p>";
 
 		return listInfo;
 	};
