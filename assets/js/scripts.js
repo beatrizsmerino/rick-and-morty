@@ -3,10 +3,6 @@ let urlAPI = "https://rickandmortyapi.com/api/";
 let appButton = document.getElementById("appButton");
 let appContent = document.getElementById("appContent");
 
-
-
-
-
 // TOOLS
 //////////////////////////////////
 function svgMe() {
@@ -71,10 +67,6 @@ function firstUpperCase(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
-
-
-
 // AJAX HANDLER - FETCH
 //////////////////////////////////
 function ajaxHandler(url, action) {
@@ -104,10 +96,6 @@ function ajaxHandler(url, action) {
 		});
 }
 
-
-
-
-
 // LOADER
 //////////////////////////////////
 function addLoader(elementDom) {
@@ -127,10 +115,6 @@ function removeLoader(elementDom) {
 	let loader = document.getElementById("loader");
 	elementDom.removeChild(loader);
 }
-
-
-
-
 
 // FILTER
 //////////////////////////////////
@@ -171,7 +155,7 @@ function insertFilter(elementDom, responseData) {
 			let itemText = document.createTextNode(key);
 
 			item.setAttribute("data-filter", key);
-			item.setAttribute("data-url", element);
+			item.setAttribute("data-url", element + "?page=1");
 			item.setAttribute("class", "filter__item");
 
 			item.appendChild(itemText);
@@ -202,14 +186,13 @@ function insertFilterContent(elementDom, responseData) {
 		let listInfo = document.createElement("div");
 		listInfo.setAttribute("class", "list-info");
 		listInfo.innerHTML = "<p><strong>Results: </strong>" + responseData.info.count + "</p>";
-		listInfo.innerHTML += "<p><strong>Pages: </strong>" + responseData.info.pages + "</p>";
 
 		return listInfo;
-	}
+	};
 
 	const resultsContent = function () {
 		console.table(responseData.results);
-		let listCards = document.createElement("div")
+		let listCards = document.createElement("div");
 		let listCardsInner = document.createElement("div");
 
 		listCards.setAttribute("class", "list-cards");
@@ -227,7 +210,6 @@ function insertFilterContent(elementDom, responseData) {
 
 			console.group("Result " + key);
 			for (const titleData in element) {
-
 				const cardItemData = element[titleData];
 				console.info(firstUpperCase(titleData) + ": " + cardItemData);
 
@@ -238,7 +220,9 @@ function insertFilterContent(elementDom, responseData) {
 				if (titleData !== "image") {
 					let cardParagraphDom = document.createElement("h4");
 					cardParagraphDom.setAttribute("class", "card__subtitle");
-					let cardParagraphTextDom = document.createTextNode(firstUpperCase(titleData) + ": ");
+					let cardParagraphTextDom = document.createTextNode(
+						firstUpperCase(titleData) + ": "
+					);
 					cardParagraphDom.appendChild(cardParagraphTextDom);
 					cardItemDom.appendChild(cardParagraphDom);
 				} else {
@@ -250,7 +234,6 @@ function insertFilterContent(elementDom, responseData) {
 				//console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
 
 				if (typeof cardItemData === "object") {
-
 					if (Array.isArray(cardItemData)) {
 						let cardUlDom = document.createElement("ul");
 						cardUlDom.setAttribute("class", "card__list");
@@ -303,7 +286,7 @@ function insertFilterContent(elementDom, responseData) {
 		listCards.appendChild(listCardsInner);
 
 		return listCards;
-	}
+	};
 
 	list.appendChild(infoContent());
 	list.appendChild(resultsContent());
@@ -322,7 +305,6 @@ function insertFilterContent(elementDom, responseData) {
 	};
 	moveImage();
 
-
 	let timerCard = setInterval(function () {
 		let cardItem = document.getElementsByClassName("card");
 
@@ -338,6 +320,8 @@ function insertFilterContent(elementDom, responseData) {
 			}
 		}
 	});
+
+	addPagination(responseData);
 }
 
 function removeFilterContent() {
@@ -361,6 +345,76 @@ function viewCard(item, thisView) {
 
 
 
+// PAGINATION
+//////////////////////////////////
+function addPagination(responseData) {
+	let pagination, buttonNext, buttonPrev, paginationCounter;
+
+	(function () {
+		pagination = document.createElement("div");
+		pagination.setAttribute("class", "pagination");
+		pagination.setAttribute("id", "pagination");
+
+		buttonNext = document.createElement("div");
+		buttonNext.setAttribute("class", "pagination__button icon-chevron-right");
+		buttonNext.setAttribute("id", "buttonNext");
+		buttonNext.setAttribute("data-url", responseData.info.next);
+
+		buttonPrev = document.createElement("div");
+		buttonPrev.setAttribute("class", "pagination__button icon-chevron-left");
+		buttonPrev.setAttribute("id", "buttonPrev");
+		buttonPrev.setAttribute("data-url", responseData.info.prev);
+	})();
+
+	(function () {
+		let filterActive = document.querySelector(".filter__item.is-active");
+		let filterActiveUrl = filterActive.getAttribute("data-url");
+		let paginationNext = responseData.info.next;
+		let paginationNow = paginationNext.substr(paginationNext.search("page") + 5, paginationNext.length - (paginationNext.search("page") + 5)) - 1;
+		if (paginationNow < 0) {
+			paginationNow = 1;
+		}
+		let paginationTotal = responseData.info.pages;
+		paginationCounter = document.createElement("div");
+		let paginationCounterText = document.createTextNode(
+			paginationNow + " - " + paginationTotal
+		);
+
+		paginationCounter.setAttribute("class", "pagination__counter");
+		paginationCounter.appendChild(paginationCounterText);
+	})();
+
+	pagination.appendChild(buttonPrev);
+	pagination.appendChild(paginationCounter);
+	pagination.appendChild(buttonNext);
+	appContent.appendChild(pagination);
+
+	let button = document.getElementsByClassName("pagination__button");
+	for (let index = 0; index < button.length; index++) {
+		const element = button[index];
+		element.addEventListener("click", function () {
+			let url = this.getAttribute("data-url");
+
+			if (url !== "") {
+				removeFilterContent();
+				removePagination();
+				ajaxHandler(url, "insertFilterContent", function (data) {
+					console.info("Data:", data);
+				});
+			}
+		});
+	}
+}
+
+function removePagination() {
+	let pagination = document.getElementById("pagination");
+	if (pagination) {
+		appContent.removeChild(pagination);
+	}
+}
+
+
+
 appButton.addEventListener("click", function () {
 	// alert("Get data API");
 	insertAppContent(urlAPI);
@@ -369,7 +423,6 @@ appButton.addEventListener("click", function () {
 		console.info("Data:", data);
 	});
 });
-
 
 (function () {
 	svgMe();
@@ -383,7 +436,7 @@ appButton.addEventListener("click", function () {
 
 				element.addEventListener("click", function () {
 					removeFilterContent();
-
+					removePagination();
 					activeFilter(filterItem, this);
 
 					ajaxHandler(
@@ -397,7 +450,4 @@ appButton.addEventListener("click", function () {
 			}
 		}
 	});
-
 })();
-
-

@@ -22,8 +22,8 @@ html {
 }
 
 body {
+  margin: 4rem 2rem;
   font-family: "Ubuntu", sans-serif;
-  margin: 2rem;
 }
 
 a {
@@ -46,6 +46,19 @@ article {
 hr {
   margin: 3rem 0;
   color: var(--color-brand-3);
+}
+
+footer {
+  width: 100%;
+  padding: 3rem 2rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 100;
+  color: var(--color-brand-4);
+  background-color: white;
 }
 
 /* PAGE */
@@ -153,7 +166,7 @@ hr {
 
 /* LIST */
 .list {
-  margin-top: 5rem;
+  margin: 5rem auto 25rem;
 }
 .list-info {
   padding: 3rem 1rem;
@@ -237,6 +250,43 @@ hr {
   }
 }
 
+/* PAGINATION */
+.pagination {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 10rem;
+}
+.pagination__button {
+  width: 6rem;
+  height: 6rem;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+  border: 0.5rem solid white;
+  border-radius: 50%;
+  background-color: var(--color-brand-4);
+  cursor: pointer;
+}
+.pagination__button[data-url=""] {
+  background-color: #ccc;
+}
+.pagination__counter {
+  padding: 0.8rem 1rem;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--color-brand-4);
+  border-radius: 1rem;
+  background-color: white;
+}
+
 /* IDS */
 #rickAndMorty {
   width: 90%;
@@ -245,14 +295,13 @@ hr {
 }
 
 #portal {
-  width: 100%;
   margin: 0 auto;
-  max-width: 50rem;
+  height: 50vh;
   display: flex;
 }
 
 #appButton {
-  margin: 3rem auto;
+  margin: 3rem auto 1rem;
 }
 
 #linkApi {
