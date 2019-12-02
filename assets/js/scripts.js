@@ -362,6 +362,36 @@ function viewCard(item, thisView) {
 
 
 
+// SEARCH
+//////////////////////////////////
+function search(activeFilter){
+	let searchDom = document.createElement("div");
+	let searchInnerDom = document.createElement("div");
+	let searchIconDom = document.createElement("div");
+	let searchInput = document.createElement("input");
+	let activeFilterText = activeFilter.getAttribute("data-filter");
+
+	searchDom.setAttribute("class","search");
+	searchInnerDom.setAttribute("class","search__inner");
+	searchIconDom.setAttribute("class","search__icon icon-magnifying-glass");
+
+	searchInput.setAttribute("id","search");
+	searchInput.setAttribute("class","search__input");
+	searchInput.setAttribute("placeholder", "Search by " + activeFilterText);
+
+	searchInnerDom.appendChild(searchIconDom);
+	searchInnerDom.appendChild(searchInput);
+	searchDom.appendChild(searchInnerDom);
+	appContent.appendChild(searchDom);
+
+	document.getElementById("search").addEventListener("keyup", function(){
+
+	});
+}
+
+
+
+
 // PAGINATION
 //////////////////////////////////
 function addPagination(responseData) {
@@ -455,6 +485,7 @@ appButton.addEventListener("click", function () {
 					removeFilterContent();
 					removePagination();
 					activeFilter(filterItem, this);
+					search(this);
 
 					ajaxHandler(
 						this.getAttribute("data-url"),
