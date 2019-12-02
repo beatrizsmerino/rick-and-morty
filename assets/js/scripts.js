@@ -338,6 +338,8 @@ function insertFilterContent(elementDom, responseData) {
 			}
 		}
 	});
+
+	pagination();
 }
 
 function removeFilterContent() {
@@ -357,6 +359,18 @@ function viewCard(item, thisView) {
 	thisView.classList.toggle("is-view");
 }
 
+function pagination() {
+	let pagination = document.createElement("div");
+	pagination.setAttribute("class", "pagination");
+	let buttonNext = document.createElement("div");
+	buttonNext.setAttribute("class", "pagination__button pagination__next icon-chevron-right");
+	let buttonPrev = document.createElement("div");
+	buttonPrev.setAttribute("class", "pagination__button pagination__prev icon-chevron-left");
+
+	pagination.appendChild(buttonPrev);
+	pagination.appendChild(buttonNext);
+	appContent.appendChild(pagination);
+}
 
 
 

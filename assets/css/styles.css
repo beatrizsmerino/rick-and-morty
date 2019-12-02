@@ -237,6 +237,31 @@ hr {
   }
 }
 
+/* PAGINATION */
+.pagination {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  bottom: 6rem;
+}
+.pagination__button {
+  width: 6rem;
+  height: 6rem;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: white;
+  border: 0.5rem solid white;
+  border-radius: 50%;
+  background-color: var(--color-brand-4);
+  cursor: pointer;
+}
+
 /* IDS */
 #rickAndMorty {
   width: 90%;
