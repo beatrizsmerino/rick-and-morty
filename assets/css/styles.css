@@ -283,9 +283,8 @@ footer {
 }
 
 #portal {
-  width: 100%;
   margin: 0 auto;
-  max-width: 50rem;
+  height: 50vh;
   display: flex;
 }
 
