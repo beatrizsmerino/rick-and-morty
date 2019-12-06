@@ -91,14 +91,14 @@ function getParametersURL(urlString) {
 	console.info(urlArrayParametters);
 
 	return urlArrayParametters;
- }
- function getValueParameterURL(arrayParametters, parameterToFound){
-	let found = arrayParametters.find(a =>a.includes(parameterToFound));
+}
+function getValueParameterURL(arrayParametters, parameterToFound) {
+	let found = arrayParametters.find(a => a.includes(parameterToFound));
 	let parameter = found.split("=");
 	let value = parameter[1];
 
 	return value;
- }
+}
 
 
 
