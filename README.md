@@ -2,4 +2,4 @@
 
 ## Dependencies
 
-Proyect develop with the API [https://rickandmortyapi.com/)(https://rickandmortyapi.com/)
+Proyect develop with the API [https://rickandmortyapi.com/](https://rickandmortyapi.com/)
