@@ -11,12 +11,21 @@
   "plugins": [
     "plugins/markdown"
   ],
+  "tags": {
+    "allowUnknownTags": false,
+    "dictionaries": [
+      "jsdoc",
+      "closure"
+    ]
+  },
+  "sourceType": "module",
   "templates": {
-    "cleverLinks": true,
-    "monospaceLinks": true
+    "cleverLinks": false,
+    "monospaceLinks": false
   },
   "opts": {
     "destination": "./docs/",
-    "recurse": true
+    "recurse": true,
+    "readme": "./README.md"
   }
 }
