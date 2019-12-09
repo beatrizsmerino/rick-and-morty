@@ -145,7 +145,7 @@ function delay(fn, ms) {
 /**
  * @function ajaxHandler
  * @description API request
- * @param {string} url 
+ * @param {string} url
  * @param {string} action
  * @return {object}
  * @example
@@ -157,28 +157,61 @@ function ajaxHandler(url, action) {
 	loaderAdd(appContent);
 
 	fetch(url)
-		.then(function (response) {
-			//console.log("%c--- Promise 1 ---", "padding: 0.5rem 1rem; color: #C0C0C0; background-color: #454545;");
-			// console.info(response);
-			// Conversion to JSON
-			//console.info(response.json());
-			return response.json();
-		})
+		.then(handleResponse)
 		.then(function (data) {
 			//console.log("%c--- Promise 2 ---", "padding: 0.5rem 1rem; color: #C0C0C0; background-color: #454545;");
 			// console.info(data);
-
+			console.log('data is', data);
 			let timer = setInterval(function () {
-				loaderRemove(appContent);
-
-				setAction(action, appContent, data);
-
 				clearInterval(timer);
+				loaderRemove(appContent);
+				setAction(action, appContent, data);
 			}, 2000);
 		})
 		.catch(function (error) {
-			console.warn(error);
+			console.warn('error is', error);
 		});
+
+	function handleResponse(response) {
+		let contentType = response.headers.get('content-type')
+		if (contentType.includes('application/json')) {
+			return handleJSONResponse(response);
+		} else if (contentType.includes('text/html')) {
+			return handleTextResponse(response);
+		} else {
+			// Other response types as necessary. I haven't found a need for them yet though.
+			throw new Error(`Sorry, content-type ${contentType} not supported`);
+		}
+	}
+
+	function handleJSONResponse(response) {
+		return response.json()
+			.then(json => {
+				if (response.ok) {
+					return json;
+				} else {
+					return Promise.reject(Object.assign({}, json, {
+						status: response.status,
+						statusText: response.statusText
+					}));
+				}
+			});
+	}
+
+	function handleTextResponse(response) {
+		return response.text()
+			.then(text => {
+				if (response.ok) {
+					return json;
+				} else {
+					return Promise.reject({
+						status: response.status,
+						statusText: response.statusText,
+						err: text
+					});
+				}
+			});
+	}
 }
 
 
@@ -220,7 +253,13 @@ function loaderCreate() {
 function loaderAdd(elementDom) {
 	let loader = loaderCreate();
 	if (loader) {
-		elementDom.appendChild(loader);
+		let timer = setInterval(function(){
+			let loaderDom = document.getElementById("loader");
+			if(!loaderDom){
+				clearInterval(timer);
+				elementDom.appendChild(loader);
+			}
+		}, 100);
 	}
 }
 
@@ -248,7 +287,7 @@ function loaderRemove(elementDom) {
 /**
  * @function appContentAdd
  * @description Add link of the API to the app content
- * @param {string} url 
+ * @param {string} url
  */
 function appContentAdd(url) {
 	let linkId = document.getElementById("linkApi");
@@ -269,7 +308,7 @@ function appContentAdd(url) {
 /**
  * @function setAction
  * @description List of functions to choose from
- * @param {string} action 
+ * @param {string} action
  * @param {HTMLElement} elementDom
  * @param {object} dataResponse
  * @see ajaxHandler
@@ -287,7 +326,7 @@ function setAction(action, elementDom, dataResponse) {
  * @function filterAdd
  * @description Add navigation menu filtering through the 3 types of data (characters, locations and episodes) to the app content.
  * @param {HTMLElement} elementDom
- * @param {object} responseData 
+ * @param {object} responseData
  */
 function filterAdd(elementDom, responseData) {
 	let navId = document.getElementById("filter");
@@ -375,22 +414,47 @@ function filterAddContentResults(responseData) {
 
 /**
  * @function filterAddContent
- * @description Add the filter content application when clicked it.
- * @param {HTMLElement} elementDom 
- * @param {object} responseData 
+ * @description Add the filter content application
+ * @param {HTMLElement} elementDom
+ * @param {object} responseData
  */
 function filterAddContent(elementDom, responseData) {
 	let list = document.createElement("section");
 	list.setAttribute("class", "list");
+	list.setAttribute("id", "list");
 
 	const infoContent = filterAddContentInfo(responseData);
 	const resultsContent = filterAddContentResults(responseData);
 
-	list.appendChild(infoContent);
-	list.appendChild(resultsContent);
-	elementDom.appendChild(list);
+	function contentAdd(){
+		list.appendChild(infoContent);
+		list.appendChild(resultsContent);
+		elementDom.appendChild(list);
+	}
 
-	paginationAdd(responseData);
+	function elementFound() {
+		let element = document.querySelectorAll(".list");
+		if (element != undefined) {
+			console.dir(element);
+			console.log(element.length);
+			if(element.length == 0){
+				contentAdd();
+				paginationAdd(responseData);
+			}else{
+				filterRemoveContent();
+				paginationRemove();
+				contentAdd();
+				paginationAdd(responseData);
+				return true;
+			}
+		}
+	}
+
+	let timer = setInterval(function () {
+		if(elementFound()){
+			clearInterval(timer);
+		}
+	}, 100);
 }
 
 /**
@@ -398,9 +462,12 @@ function filterAddContent(elementDom, responseData) {
  * @description Remove the selected filter content of the application content
  */
 function filterRemoveContent() {
-	let list = document.getElementsByClassName("list")[0];
-	if (list && list.innerHTML !== "") {
-		appContent.removeChild(list);
+	let list = document.querySelectorAll(".list");
+	for (let index = 0; index < list.length; index++) {
+		const element = list[index];
+		if (element && element.innerHTML !== "") {
+			appContent.removeChild(element);
+		}
 	}
 }
 
@@ -414,8 +481,8 @@ function filterRemoveContent() {
 /**
  * @function cardCreate
  * @description Create card with the data response
- * @param {Element} listCardsInner 
- * @param {object} responseData 
+ * @param {Element} listCardsInner
+ * @param {object} responseData
  */
 function cardCreate(listCardsInner, responseData) {
 	// console.group("Results");
@@ -512,23 +579,29 @@ function cardCreate(listCardsInner, responseData) {
  * @description Move the card image up.
  */
 function cardMoveImage() {
-	let card = document.querySelectorAll(".card");
-	for (let index = 0; index < card.length; index++) {
-		const element = card[index];
-		let imageItem = element.querySelector(".card__data[data-type='image']");
-		if (imageItem) {
-			element.removeChild(imageItem);
-			element.insertBefore(imageItem, element.firstChild);
+	let timer = setInterval(function () {
+		let cardData = document.querySelectorAll(".card__data");
+		if (cardData) {
+			clearInterval(timer);
+			let card = document.querySelectorAll(".card");
+			for (let index = 0; index < card.length; index++) {
+				const element = card[index];
+				let imageItem = element.querySelector(".card__data[data-type='image']");
+				if (imageItem) {
+					element.removeChild(imageItem);
+					element.insertBefore(imageItem, element.firstChild);
+				}
+			}
 		}
-	}
-};
+	}, 300);
+}
 
 
 /**
  * @function cardToggleView
  * @description See more card info
  * @param {HTMLCollectionOf} item
- * @param {Element} thisView 
+ * @param {Element} thisView
  */
 function cardToggleView(item, thisView) {
 	for (let index = 0; index < item.length; index++) {
@@ -649,12 +722,12 @@ function searchAdd(filterActive) {
 	* @event keyup
 	* @type {object}
 	*/
+
 	document.getElementById("searchInput").addEventListener("keyup", delay(function (e) {
 		let valueInput = this.value;
 
 		filterRemoveContent();
 		paginationRemove();
-
 		ajaxHandler(urlAPI + searchBy + "/?" + "name" + "=" + valueInput, "filterAddContent");
 
 		// console.log(this);
@@ -755,7 +828,7 @@ function paginationSetCounter(responseData) {
 /**
  * @function paginationAdd
  * @description Add pagination
- * @param {object} responseData 
+ * @param {object} responseData
  */
 function paginationAdd(responseData) {
 	paginationCreate(responseData);
