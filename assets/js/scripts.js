@@ -255,6 +255,9 @@ function insertFilterContent(elementDom, responseData) {
 			card.setAttribute("class", "card");
 			card.setAttribute("data-index", key);
 
+			let cardButton = document.createElement("span");
+			cardButton.setAttribute("class", "card__button icon-eye");
+
 			console.group("Result " + key);
 			for (const titleData in element) {
 				const cardItemData = element[titleData];
@@ -322,6 +325,7 @@ function insertFilterContent(elementDom, responseData) {
 					}
 				}
 
+				card.appendChild(cardButton);
 				card.appendChild(cardItemDom);
 			}
 			console.groupEnd();

@@ -236,16 +236,19 @@ footer {
   justify-content: center;
 }
 .list-cards__inner {
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
   width: calc(25% - 2rem);
   height: fit-content;
+  min-height: 15rem;
   margin: 1rem;
-  padding: 2.5rem;
+  padding: 2rem;
+  position: relative;
   overflow-wrap: break-word;
   font-size: 1.8rem;
   font-weight: 300;
@@ -254,6 +257,21 @@ footer {
   border-radius: 1rem;
   background-color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
+}
+.card__button {
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.8rem;
+  border: 0.2rem solid white;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 .card__data {
   padding: 1rem 0;
@@ -297,6 +315,9 @@ footer {
   border-color: var(--color-brand-4);
   background-color: black;
 }
+.card:hover .card__button {
+  background-color: var(--color-brand-4);
+}
 .card:not(.is-view)
   .card__data:not([data-type="name"]):not([data-type="image"]) {
   display: none;
@@ -336,7 +357,7 @@ footer {
   position: fixed;
   left: 0;
   bottom: 8.3rem;
-  background-color: rgba(255,255,255, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .pagination__button {
   width: 6rem;
