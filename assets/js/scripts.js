@@ -166,7 +166,7 @@ function ajaxHandler(url, action) {
 				clearInterval(timer);
 				loaderRemove(appContent);
 				setAction(action, appContent, data);
-			}, 2000);
+			}, 3000);
 		})
 		.catch(function (error) {
 			console.warn('error is', error);
@@ -237,6 +237,7 @@ function loaderCreate() {
 	let loader = document.createElement("div");
 
 	loader.setAttribute("id", "loader");
+	loader.setAttribute("class", "loader");
 	loader.innerHTML = template;
 
 	return loader;
@@ -246,18 +247,19 @@ function loaderCreate() {
 /**
  * @function loaderAdd
  * @description Add loading animation
- * @param {HTMLElement} elementDom
  * @example
- * loaderAdd(appContent);
+ * loaderAdd();
  */
-function loaderAdd(elementDom) {
+function loaderAdd() {
 	let loader = loaderCreate();
 	if (loader) {
 		let timer = setInterval(function(){
 			let loaderDom = document.getElementById("loader");
 			if(!loaderDom){
 				clearInterval(timer);
-				elementDom.appendChild(loader);
+				// document.querySelectorAll(".page__item").style.filter = "blur(1rem)";
+				document.body.classList.add("is-searching");
+				document.body.appendChild(loader);
 			}
 		}, 100);
 	}
@@ -267,14 +269,15 @@ function loaderAdd(elementDom) {
 /**
  * @function loaderRemove
  * @description Remove loading animation
- * @param {HTMLElement} elementDom
  * @example
- * loaderRemove(appContent);
+ * loaderRemove();
  */
-function loaderRemove(elementDom) {
-	let loader = document.getElementById("loader");
-	if (loader) {
-		elementDom.removeChild(loader);
+function loaderRemove() {
+	let loaderDom = document.getElementById("loader");
+	if (loaderDom) {
+		//scripts.jsdocument.querySelectorAll(".page__item").style.filter = "none";
+		document.body.classList.remove("is-searching");
+		document.body.removeChild(loaderDom);
 	}
 }
 
