@@ -159,9 +159,9 @@ function ajaxHandler(url, action) {
 	fetch(url)
 		.then(handleResponse)
 		.then(function (data) {
-			//console.log("%c--- Promise 2 ---", "padding: 0.5rem 1rem; color: #C0C0C0; background-color: #454545;");
+			// console.log("%c--- Promise 2 ---", "padding: 0.5rem 1rem; color: #C0C0C0; background-color: #454545;");
 			// console.info(data);
-			console.info('data is', data);
+			// console.info('data is', data);
 			let timer = setInterval(function () {
 				clearInterval(timer);
 				loaderRemove();
@@ -369,7 +369,7 @@ function filterActive(item, thisActive) {
 	for (let index = 0; index < item.length; index++) {
 		const element = item[index];
 		if (element.classList.contains("is-active")) {
-			//console.log("has class");
+			// console.log("has class");
 			element.classList.remove("is-active");
 		}
 		thisActive.classList.add("is-active");
@@ -385,7 +385,7 @@ function filterActive(item, thisActive) {
  * @see Used in: {@link filterAddContent}
  */
 function filterAddContentInfo(responseData) {
-	console.table(responseData.info);
+	// console.table(responseData.info);
 	let listInfo = document.createElement("div");
 	listInfo.setAttribute("class", "list-info");
 	listInfo.innerHTML = "<p><strong>Results: </strong>" + responseData.info.count + "</p>";
@@ -403,7 +403,7 @@ function filterAddContentInfo(responseData) {
  * @see Used in: {@link filterAddContent}
  */
 function filterAddContentResults(responseData) {
-	console.table(responseData.results);
+	// console.table(responseData.results);
 	let listCards = document.createElement("div");
 	let listCardsInner = document.createElement("div");
 
@@ -545,7 +545,7 @@ function cardCreate(listCardsInner, responseData) {
 				cardItemDom.appendChild(cardImageDom);
 			}
 
-			//console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
+			// console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
 
 			if (typeof cardItemData === "object") {
 				if (Array.isArray(cardItemData)) {
@@ -829,7 +829,7 @@ function paginationSetCounter(responseData) {
 	let paginationNext = responseData.info.next;
 	let paginationNow;
 
-	//console.log(paginationNext);
+	// console.log(paginationNext);
 	if (paginationNext == "") {
 		paginationNow = paginationTotal;
 	} else {
@@ -854,7 +854,7 @@ function paginationSetCounter(responseData) {
 
 	paginationCounter.setAttribute("class", "pagination__counter");
 	paginationCounter.appendChild(paginationCounterText);
-	//console.log(paginationCounter);
+	// console.log(paginationCounter);
 
 	buttonPrev.parentNode.insertBefore(paginationCounter, buttonPrev.nextSibling);
 }
