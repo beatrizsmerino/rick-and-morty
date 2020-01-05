@@ -251,9 +251,9 @@ function loaderCreate() {
 function loaderAdd() {
 	let loader = loaderCreate();
 	if (loader) {
-		let timer = setInterval(function(){
+		let timer = setInterval(function () {
 			let loaderDom = document.getElementById("loader");
-			if(!loaderDom){
+			if (!loaderDom) {
 				clearInterval(timer);
 				// document.querySelectorAll(".page__item").style.filter = "blur(1rem)";
 				document.body.classList.add("is-searching");
@@ -443,7 +443,7 @@ function filterAddContent(elementDom, responseData) {
 	* @description Insert the content
 	* @see {@link filterFoundContent}
 	*/
-	function filterAddAllContent(){
+	function filterAddAllContent() {
 		list.appendChild(infoContent);
 		list.appendChild(resultsContent);
 		elementDom.appendChild(list);
@@ -459,10 +459,10 @@ function filterAddContent(elementDom, responseData) {
 		if (element != undefined) {
 			// console.dir(element);
 			// console.log(element.length);
-			if(element.length == 0){
+			if (element.length == 0) {
 				filterAddAllContent();
-				filterRemoveContent(responseData);
-			}else{
+				paginationAdd(responseData);
+			} else {
 				filterRemoveContent();
 				paginationRemove();
 				filterAddAllContent();
@@ -473,7 +473,7 @@ function filterAddContent(elementDom, responseData) {
 	}
 
 	let timer = setInterval(function () {
-		if(filterFoundContent()){
+		if (filterFoundContent()) {
 			clearInterval(timer);
 		}
 	}, 100);
