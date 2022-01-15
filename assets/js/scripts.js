@@ -138,6 +138,19 @@ function delay(fn, ms) {
 }
 
 
+/**
+ * @function getCurrentYear
+ * @description Get the current year
+ * @return {Number}
+ * @see Used in: {@link addCurrentYear}
+ */
+function getCurrentYear() {
+	const year = new Date().getFullYear();
+
+	return year;
+}
+
+
 
 
 
@@ -219,6 +232,23 @@ function ajaxHandler(url, action) {
 	}
 }
 
+
+
+
+
+// COPYRIGHT
+//////////////////////////////////
+/**
+ * @function addCurrentYear
+ * @description Add the current year to the copyright
+ * @see Used inside: {@link getCurrentYear}
+ * @see Used in: {@link functionAnonimAutoExecuted}
+ */
+function addCurrentYear() {
+	const copyrightYear = document.querySelector("#currentYear");
+
+	copyrightYear.innerHTML = getCurrentYear();
+}
 
 
 
@@ -1094,6 +1124,7 @@ appButton.addEventListener("click", function () {
 (function () {
 	adblockVerify();
 	svgMe();
+	addCurrentYear();
 
 	let timerFilterItem = setInterval(function () {
 		let filterArray = document.getElementsByClassName("filter__item");
