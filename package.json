@@ -4,6 +4,7 @@
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
+		"preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions",
 		"docs": "jsdoc -c jsdoc.json"
 	},
 	"author": "beatrizsmerino@gmail.com",
@@ -11,5 +12,8 @@
 	"devDependencies": {
 		"jsdoc": "^3.6.7"
 	},
-	"dependencies": {}
+	"resolutions": {
+		"markdown-it": "https://registry.npmjs.org/markdown-it/-/markdown-it-12.3.2.tgz",
+		"marked": "https://registry.npmjs.org/marked/-/marked-4.0.10.tgz"
+	}
 }
