@@ -10,7 +10,7 @@
 	"author": "beatrizsmerino@gmail.com",
 	"license": "ISC",
 	"devDependencies": {
-		"jsdoc": "^3.6.9"
+		"jsdoc": "^3.6.10"
 	},
 	"resolutions": {
 		"markdown-it": "https://registry.npmjs.org/markdown-it/-/markdown-it-12.3.2.tgz",
