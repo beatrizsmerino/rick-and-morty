@@ -10,7 +10,7 @@
 	"author": "beatrizsmerino@gmail.com",
 	"license": "ISC",
 	"devDependencies": {
-		"jsdoc": "^4.0.2"
+		"jsdoc": "^4.0.3"
 	},
 	"resolutions": {}
 }
