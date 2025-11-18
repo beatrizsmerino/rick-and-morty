@@ -1,6 +1,6 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.0.0",
+	"version": "1.1.8",
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
@@ -10,10 +10,11 @@
 	"author": "beatrizsmerino@gmail.com",
 	"license": "ISC",
 	"devDependencies": {
-		"jsdoc": "^3.6.7"
+		"jsdoc": "^4.0.5"
 	},
-	"resolutions": {
-		"markdown-it": "https://registry.npmjs.org/markdown-it/-/markdown-it-12.3.2.tgz",
-		"marked": "https://registry.npmjs.org/marked/-/marked-4.0.10.tgz"
-	}
+	"engines": {
+		"node": ">=22.21.0",
+		"npm": ">=10.9.4"
+	},
+	"resolutions": {}
 }

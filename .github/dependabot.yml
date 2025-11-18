@@ -8,6 +8,11 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+      day: "saturday"
       time: "09:00"
-      timezone: Europe/Madrid
+      timezone: "Europe/Madrid"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    open-pull-requests-limit: 10

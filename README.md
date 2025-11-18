@@ -1,8 +1,9 @@
+![GitHub last commit](https://img.shields.io/github/last-commit/beatrizsmerino/rick-and-morty)
+![GitHub dependabot](https://img.shields.io/badge/dependabot-enabled-025e8c?logo=Dependabot)  
 ![GitHub issues](https://img.shields.io/github/issues/beatrizsmerino/rick-and-morty)
 ![GitHub forks](https://img.shields.io/github/forks/beatrizsmerino/rick-and-morty)
 ![GitHub stars](https://img.shields.io/github/stars/beatrizsmerino/rick-and-morty)
 ![GitHub watchers](https://img.shields.io/github/watchers/beatrizsmerino/rick-and-morty)
-![GitHub last commit](https://img.shields.io/github/last-commit/beatrizsmerino/rick-and-morty)
 
 # Rick and Morty
 
