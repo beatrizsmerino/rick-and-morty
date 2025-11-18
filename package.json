@@ -12,5 +12,9 @@
 	"devDependencies": {
 		"jsdoc": "^4.0.4"
 	},
+	"engines": {
+		"node": ">=22.21.0",
+		"npm": ">=10.9.4"
+	},
 	"resolutions": {}
 }
