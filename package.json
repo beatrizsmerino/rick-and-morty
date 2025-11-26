@@ -9,6 +9,20 @@
 	},
 	"author": "beatrizsmerino@gmail.com",
 	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/beatrizsmerino/rick-and-morty.git"
+	},
+	"homepage": "https://beatrizsmerino.github.io/rick-and-morty",
+	"bugs": {
+		"url": "https://github.com/beatrizsmerino/rick-and-morty/issues"
+	},
+	"keywords": [
+		"javascript",
+		"api",
+		"rick-and-morty",
+		"jsdoc"
+	],
 	"devDependencies": {
 		"jsdoc": "^4.0.5"
 	},
