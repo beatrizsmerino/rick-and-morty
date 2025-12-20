@@ -15,7 +15,7 @@ jobs:
         node-version: [ 20, 22 ]
     steps:
     - name: 🔀 Checkout code from repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v6
     - name: 🛠️ Setup Node version ${{ matrix.node-version }}
       uses: actions/setup-node@v6
       with:
