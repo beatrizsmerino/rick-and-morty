@@ -1,10 +1,12 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.4.0",
+	"version": "1.5.0",
+	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
-		"docs": "jsdoc -c jsdoc.json"
+		"docs": "jsdoc -c jsdoc.json",
+		"prepare": "husky"
 	},
 	"author": "beatrizsmerino@gmail.com",
 	"license": "ISC",
@@ -23,6 +25,9 @@
 		"jsdoc"
 	],
 	"devDependencies": {
+		"@commitlint/cli": "^20.2.0",
+		"@commitlint/config-conventional": "^20.2.0",
+		"husky": "^9.1.7",
 		"jsdoc": "^4.0.5"
 	},
 	"engines": {
