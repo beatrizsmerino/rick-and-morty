@@ -1,6 +1,7 @@
 {
 	"name": "rick-and-morty",
 	"version": "1.4.0",
+	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
