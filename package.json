@@ -5,7 +5,7 @@
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
-		"docs": "jsdoc -c jsdoc.json",
+		"jsdocs": "jsdoc -c jsdoc.json",
 		"prepare": "husky"
 	},
 	"author": "beatrizsmerino@gmail.com",
