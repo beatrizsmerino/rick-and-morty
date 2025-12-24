@@ -1,5 +1,5 @@
+![GitHub dependabot](https://img.shields.io/badge/dependabot-enabled-025e8c?logo=Dependabot)
 ![GitHub last commit](https://img.shields.io/github/last-commit/beatrizsmerino/rick-and-morty)
-![GitHub dependabot](https://img.shields.io/badge/dependabot-enabled-025e8c?logo=Dependabot)  
 ![GitHub issues](https://img.shields.io/github/issues/beatrizsmerino/rick-and-morty)
 ![GitHub forks](https://img.shields.io/github/forks/beatrizsmerino/rick-and-morty)
 ![GitHub stars](https://img.shields.io/github/stars/beatrizsmerino/rick-and-morty)
@@ -7,32 +7,99 @@
 
 # Rick and Morty
 
-- [App - https://beatrizsmerino.github.io/rick-and-morty/](https://beatrizsmerino.github.io/rick-and-morty/)
-- [App documentation - https://beatrizsmerino.github.io/rick-and-morty/docs/](https://beatrizsmerino.github.io/rick-and-morty/docs/index.html)
+[![App Rick and Morty - Image 2](./README/images/Screenshot_2.jpg)](https://beatrizsmerino.github.io/rick-and-morty/)
 
+## 🎯 Description
 
-## Dependencies
+This project fetches data from the [Rick and Morty API](https://rickandmortyapi.com/) and displays it in an interactive interface. It generates a navigation menu filtering through the 3 types of data (characters, locations and episodes). It has pagination in each of them and a search input to filter by name.
 
-- Proyect develop with the API [Rick and Morty](https://rickandmortyapi.com/).
-- If you have installed the [Adblock](https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom) browser extension, you must be select 'pause on this website'.
-- This API has a limit of requests per day, if you need more you can install this browser extension [Touch VPN](https://chrome.google.com/webstore/detail/touch-vpn/bihmplhobchoageeokmgbdihknkjbknd?hl=es).
+> **App**: [beatrizsmerino.github.io/rick-and-morty](https://beatrizsmerino.github.io/rick-and-morty/)
+>
+> **Documentation**: [beatrizsmerino.github.io/rick-and-morty/jsdocs](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html)
 
-> The Rick and Morty API is an open API, no authentication is required for use. Nonetheless, to prevent malicious usage of the API there is a limit on the number of requests a given IP address can make. This limit is 10000 requests per day. If you happen to hit the limit you'll receive a 429 status (Too Many Requests) on all your requests during a period of 12 hours.
-
-[![App Rick and Morty - Image 1](https://beatrizsmerino.github.io/rick-and-morty/README/images/Screenshot_1.jpg "App Rick and Morty")](https://beatrizsmerino.github.io/rick-and-morty/)
-[![App Rick and Morty - Image 2](https://beatrizsmerino.github.io/rick-and-morty/README/images/Screenshot_2.jpg "App Rick and Morty")](https://beatrizsmerino.github.io/rick-and-morty/)
-[![App Rick and Morty - Image 3](https://beatrizsmerino.github.io/rick-and-morty/README/images/Screenshot_3.jpg "App Rick and Morty")](https://beatrizsmerino.github.io/rick-and-morty/)
-[![App Rick and Morty - Image 4](https://beatrizsmerino.github.io/rick-and-morty/README/images/Screenshot_4.jpg "App Rick and Morty")](https://beatrizsmerino.github.io/rick-and-morty/)
-
-## Project setup
+## 📂 Project Structure
 
 ```
+rick-and-morty/
+├── assets/
+│   ├── css/          # Compiled CSS styles
+│   ├── favicon/      # Favicon files
+│   ├── icomoon/      # Icon fonts
+│   ├── images/       # Project images
+│   └── js/           # JavaScript files
+│       └── scripts.js
+├── jsdocs/           # JSDoc generated documentation
+├── README/
+│   └── images/       # README screenshots
+├── .husky/           # Git hooks
+├── jsdoc.json        # JSDoc configuration
+└── package.json
+```
+
+## 🏗️ Developed with
+
+![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-2173F6?style=for-the-badge&logo=css3&logoColor=white)
+[![SASS/SCSS](https://img.shields.io/badge/-SASS/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
+![Javascript](https://img.shields.io/badge/-Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
+[![JSDoc](https://img.shields.io/badge/-JSDoc-006FBB?style=for-the-badge)](https://jsdoc.app/)
+[![Husky](https://img.shields.io/badge/-Husky-10b981?style=for-the-badge)](https://typicode.github.io/husky/)
+[![Commitlint](https://img.shields.io/badge/-Commitlint-F7B93E?style=for-the-badge&logo=commitlint&logoColor=black)](https://commitlint.js.org/)
+[![Conventional Commits](https://img.shields.io/badge/-Conventional%20Commits-FE5196?style=for-the-badge&logo=conventionalcommits&logoColor=FEFEFE)](https://www.conventionalcommits.org)
+
+### API
+
+#### Rate Limit
+
+The Rick and Morty API is an open API, no authentication is required for use. Nonetheless, to prevent malicious usage of the API there is a limit on the number of requests a given IP address can make. This limit is 10000 requests per day. If you happen to hit the limit you'll receive a 429 status (Too Many Requests) on all your requests during a period of 12 hours.
+
+#### Adblock Extension
+
+If you have installed the [Adblock](https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom) browser extension, you must select 'pause on this website' for the app to work correctly.
+
+#### VPN Extension
+
+If you need more API requests, you can use a VPN browser extension to change your IP address.
+
+### JSDoc
+
+This project uses [JSDoc](https://jsdoc.app/) to generate documentation from the JavaScript source code comments.
+
+The documentation is generated from `assets/js/scripts.js` and exported to the `jsdocs` folder. It is published on GitHub Pages and can be accessed at [beatrizsmerino.github.io/rick-and-morty/jsdocs](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html).
+
+[![JSDoc Documentation](./README/images/Screenshot_1.jpg)](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html)
+
+## 🚀 Commands
+
+### Install dependencies
+
+```bash
 npm install
 ```
 
-### Export documentation jsdocs of 'assets/js/scripts.js' file into 'docs' folder
+### Generate JSDoc documentation
+
+```bash
+npm run jsdocs
+```
+
+## 🤝 Contributing
+
+This project uses [Husky](https://typicode.github.io/husky/) for Git hooks and [Commitlint](https://commitlint.js.org/) for commit message validation.
+
+All commits must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
 
 ```
-npm run docs
+type(scope): description
 ```
-- [https://devdocs.io/jsdoc/](https://devdocs.io/jsdoc/)
+
+## 🔗 References
+
+### API
+- [Rick and Morty API](https://rickandmortyapi.com/)
+- [Rick and Morty API Documentation](https://rickandmortyapi.com/documentation)
+
+### Documentation
+- [JSDoc](https://jsdoc.app/)
+- [DevDocs - JSDoc](https://devdocs.io/jsdoc/)
