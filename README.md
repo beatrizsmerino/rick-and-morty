@@ -7,7 +7,7 @@
 
 # Rick and Morty
 
-[![App Rick and Morty - Image 2](./README/images/Screenshot_2.jpg)](https://beatrizsmerino.github.io/rick-and-morty/)
+[![App Rick and Morty](./README/videos/rick-morty.gif)](https://beatrizsmerino.github.io/rick-and-morty/)
 
 ## 🎯 Description
 
