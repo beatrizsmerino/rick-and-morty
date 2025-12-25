@@ -54,6 +54,14 @@ rick-and-morty/
 
 The Rick and Morty API is an open API, no authentication is required for use. Nonetheless, to prevent malicious usage of the API there is a limit on the number of requests a given IP address can make. This limit is 10000 requests per day. If you happen to hit the limit you'll receive a 429 status (Too Many Requests) on all your requests during a period of 12 hours.
 
+```json
+{
+  "characters": "https://rickandmortyapi.com/api/character",
+  "locations": "https://rickandmortyapi.com/api/location",
+  "episodes": "https://rickandmortyapi.com/api/episode"
+}
+```
+
 #### Adblock Extension
 
 If you have installed the [Adblock](https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom) browser extension, you must select 'pause on this website' for the app to work correctly.
