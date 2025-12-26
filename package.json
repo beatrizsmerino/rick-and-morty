@@ -1,11 +1,11 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.5.0",
+	"version": "1.6.0",
 	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
-		"docs": "jsdoc -c jsdoc.json",
+		"jsdocs": "jsdoc -c jsdoc.json",
 		"prepare": "husky"
 	},
 	"author": "beatrizsmerino@gmail.com",
