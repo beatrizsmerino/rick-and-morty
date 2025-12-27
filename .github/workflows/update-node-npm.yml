@@ -9,6 +9,14 @@
 #      → Repository → Settings → Secrets and variables → Actions → New repository secret
 #      → Name: PAT_WORKFLOW, Value: (paste the token)
 
+# Optional configuration file (.noderc.json):
+# {
+#   "maxMajorVersion": 22  // Limits updates to this major version
+# }
+#
+# Use this when the project has dependencies incompatible with newer Node.js versions.
+# Without this file, the workflow will always update to the latest LTS version.
+
 # Files updated by this workflow:
 # - .nvmrc
 # - package.json (engines.node and engines.npm)
@@ -97,6 +105,84 @@ jobs:
           echo "lts_latest=$LTS_LATEST" >> $GITHUB_OUTPUT
           echo "matrix=[ $LTS_OLDEST, $LTS_LATEST ]" >> $GITHUB_OUTPUT
 
+      - name: 📋 Read configuration
+        id: config
+        run: |
+          if [ -f .noderc.json ]; then
+            echo "📄 Configuration file found"
+            MAX_MAJOR=$(jq -r '.maxMajorVersion // empty' .noderc.json)
+            if [ -n "$MAX_MAJOR" ]; then
+              echo "📌 Maximum major version configured: $MAX_MAJOR"
+              echo "has_config=true" >> $GITHUB_OUTPUT
+              echo "max_major=$MAX_MAJOR" >> $GITHUB_OUTPUT
+            else
+              echo "⚠️ No maxMajorVersion specified in .noderc.json"
+              echo "has_config=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "📄 No configuration file found, using latest LTS"
+            echo "has_config=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 🎯 Select target version
+        id: target-version
+        run: |
+          if [ "${{ steps.config.outputs.has_config }}" == "true" ]; then
+            MAX_MAJOR="${{ steps.config.outputs.max_major }}"
+            LTS_LATEST="${{ steps.node-versions.outputs.lts_latest }}"
+            LTS_OLDEST="${{ steps.node-versions.outputs.lts_oldest }}"
+
+            echo "🔍 Checking configured max version ($MAX_MAJOR) against available LTS versions"
+
+            # Fetch all Node.js versions
+            ALL_VERSIONS=$(curl -s https://nodejs.org/dist/index.json)
+
+            # Get the latest version of the configured major
+            TARGET_VERSION=$(echo "$ALL_VERSIONS" | jq -r --argjson major "$MAX_MAJOR" '
+              map(select(.version | startswith("v\($major)."))) |
+              .[0].version |
+              ltrimstr("v")
+            ')
+
+            if [ -z "$TARGET_VERSION" ] || [ "$TARGET_VERSION" == "null" ]; then
+              echo "⚠️ Could not find version for major $MAX_MAJOR, using latest LTS"
+              TARGET_VERSION="${{ steps.node-versions.outputs.latest_version }}"
+              TARGET_NPM="${{ steps.node-versions.outputs.npm_version }}"
+              TARGET_MAJOR="$LTS_LATEST"
+            else
+              echo "✅ Found version $TARGET_VERSION for major $MAX_MAJOR"
+              TARGET_NPM=$(echo "$ALL_VERSIONS" | jq -r --arg ver "v$TARGET_VERSION" '
+                map(select(.version == $ver)) |
+                .[0].npm
+              ')
+              TARGET_MAJOR="$MAX_MAJOR"
+            fi
+
+            # Calculate matrix based on restriction
+            if [ "$MAX_MAJOR" -lt "$LTS_OLDEST" ]; then
+              TARGET_MATRIX="[ $MAX_MAJOR ]"
+            elif [ "$MAX_MAJOR" -lt "$LTS_LATEST" ]; then
+              TARGET_MATRIX="[ $LTS_OLDEST, $MAX_MAJOR ]"
+            else
+              TARGET_MATRIX="${{ steps.node-versions.outputs.matrix }}"
+            fi
+
+            echo "📦 Target version: $TARGET_VERSION"
+            echo "📦 Target npm: $TARGET_NPM"
+            echo "📦 Target matrix: $TARGET_MATRIX"
+
+            echo "version=$TARGET_VERSION" >> $GITHUB_OUTPUT
+            echo "npm=$TARGET_NPM" >> $GITHUB_OUTPUT
+            echo "matrix=$TARGET_MATRIX" >> $GITHUB_OUTPUT
+            echo "major=$TARGET_MAJOR" >> $GITHUB_OUTPUT
+          else
+            echo "📦 Using latest LTS: ${{ steps.node-versions.outputs.latest_version }}"
+            echo "version=${{ steps.node-versions.outputs.latest_version }}" >> $GITHUB_OUTPUT
+            echo "npm=${{ steps.node-versions.outputs.npm_version }}" >> $GITHUB_OUTPUT
+            echo "matrix=${{ steps.node-versions.outputs.matrix }}" >> $GITHUB_OUTPUT
+            echo "major=${{ steps.node-versions.outputs.lts_latest }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: 📖 Get current versions
         id: current-versions
         run: |
@@ -139,7 +225,7 @@ jobs:
       - name: 🔄 Check if update is needed
         id: check-update
         run: |
-          LATEST="${{ steps.node-versions.outputs.latest_version }}"
+          LATEST="${{ steps.target-version.outputs.version }}"
           CURRENT="${{ steps.current-versions.outputs.current_node }}"
 
           # Get current date in DD-MM-YYYY format
@@ -156,14 +242,14 @@ jobs:
       - name: 📝 Update .nvmrc
         if: steps.check-update.outputs.update_needed == 'true' && steps.current-versions.outputs.has_nvmrc == 'true'
         run: |
-          echo "v${{ steps.node-versions.outputs.latest_version }}" > .nvmrc
-          echo "Updated .nvmrc to v${{ steps.node-versions.outputs.latest_version }}"
+          echo "v${{ steps.target-version.outputs.version }}" > .nvmrc
+          echo "Updated .nvmrc to v${{ steps.target-version.outputs.version }}"
 
       - name: 📝 Update package.json engines
         if: steps.check-update.outputs.update_needed == 'true' && steps.current-versions.outputs.has_engines == 'true'
         run: |
           # Update node and npm versions preserving tab indentation
-          jq --tab '.engines.node = "${{ steps.node-versions.outputs.latest_version }}" | .engines.npm = "${{ steps.node-versions.outputs.npm_version }}"' package.json > package.json.tmp
+          jq --tab '.engines.node = "${{ steps.target-version.outputs.version }}" | .engines.npm = "${{ steps.target-version.outputs.npm }}"' package.json > package.json.tmp
           mv package.json.tmp package.json
 
           echo "Updated package.json engines"
@@ -173,7 +259,7 @@ jobs:
         if: steps.check-update.outputs.update_needed == 'true' && steps.current-versions.outputs.has_node_yml == 'true'
         run: |
           # Update the node-version matrix in check-node.yml
-          sed -i "s/node-version: \[.*\]/node-version: ${{ steps.node-versions.outputs.matrix }}/" .github/workflows/check-node.yml
+          sed -i "s/node-version: \[.*\]/node-version: ${{ steps.target-version.outputs.matrix }}/" .github/workflows/check-node.yml
 
           echo "Updated check-node.yml matrix"
           grep "node-version:" .github/workflows/check-node.yml
@@ -188,20 +274,20 @@ jobs:
         with:
           token: ${{ secrets.PAT_WORKFLOW }}
           commit-message: |
-            ci(deps): update `node@${{ steps.node-versions.outputs.latest_version }}` and `npm@${{ steps.node-versions.outputs.npm_version }}` versions
+            ci(deps): update `node@${{ steps.target-version.outputs.version }}` and `npm@${{ steps.target-version.outputs.npm }}` versions
 
             Description:
-            - Update `node` from `${{ steps.current-versions.outputs.current_node }}` to `${{ steps.node-versions.outputs.latest_version }}`
-            - Update `npm` from `${{ steps.current-versions.outputs.current_npm }}` to `${{ steps.node-versions.outputs.npm_version }}`
+            - Update `node` from `${{ steps.current-versions.outputs.current_node }}` to `${{ steps.target-version.outputs.version }}`
+            - Update `npm` from `${{ steps.current-versions.outputs.current_npm }}` to `${{ steps.target-version.outputs.npm }}`
 
             Steps:
-            - Update `.nvmrc` file: v${{ steps.current-versions.outputs.current_node }} → v${{ steps.node-versions.outputs.latest_version }}
-            - Update `package.json` file in `engines.node`: ${{ steps.current-versions.outputs.current_node }} → ${{ steps.node-versions.outputs.latest_version }}
-            - Update `package.json` file in `engines.npm`: ${{ steps.current-versions.outputs.current_npm }} → ${{ steps.node-versions.outputs.npm_version }}
-            - Update `check-node.yml` file in matrix: ${{ steps.current-versions.outputs.current_matrix }} → ${{ steps.node-versions.outputs.matrix }}
-          title: "build(deps): update `node@${{ steps.node-versions.outputs.latest_version }}` and `npm@${{ steps.node-versions.outputs.npm_version }}` versions"
+            - Update `.nvmrc` file: v${{ steps.current-versions.outputs.current_node }} → v${{ steps.target-version.outputs.version }}
+            - Update `package.json` file in `engines.node`: ${{ steps.current-versions.outputs.current_node }} → ${{ steps.target-version.outputs.version }}
+            - Update `package.json` file in `engines.npm`: ${{ steps.current-versions.outputs.current_npm }} → ${{ steps.target-version.outputs.npm }}
+            - Update `check-node.yml` file in matrix: ${{ steps.current-versions.outputs.current_matrix }} → ${{ steps.target-version.outputs.matrix }}
+          title: "build(deps): update `node@${{ steps.target-version.outputs.version }}` and `npm@${{ steps.target-version.outputs.npm }}` versions"
           body: |
-            # build(deps): update `node@${{ steps.node-versions.outputs.latest_version }}` and `npm@${{ steps.node-versions.outputs.npm_version }}` versions
+            # build(deps): update `node@${{ steps.target-version.outputs.version }}` and `npm@${{ steps.target-version.outputs.npm }}` versions
 
             | ⏱️ Time | 📊 Priority | 📏 Size | 📅 Date |
             |---------|-------------|---------|---------|
@@ -218,15 +304,15 @@ jobs:
 
             | Package | Previous | New |
             |---------|----------|-----|
-            | `node` | `${{ steps.current-versions.outputs.current_node }}` | `${{ steps.node-versions.outputs.latest_version }}` |
-            | `npm` | `${{ steps.current-versions.outputs.current_npm }}` | `${{ steps.node-versions.outputs.npm_version }}` |
+            | `node` | `${{ steps.current-versions.outputs.current_node }}` | `${{ steps.target-version.outputs.version }}` |
+            | `npm` | `${{ steps.current-versions.outputs.current_npm }}` | `${{ steps.target-version.outputs.npm }}` |
 
             ## 📋 Steps
 
-            - Update `.nvmrc` file: `v${{ steps.current-versions.outputs.current_node }}` → `v${{ steps.node-versions.outputs.latest_version }}`
-            - Update `package.json` file in `engines.node`: `${{ steps.current-versions.outputs.current_node }}` → `${{ steps.node-versions.outputs.latest_version }}`
-            - Update `package.json` file in `engines.npm`: `${{ steps.current-versions.outputs.current_npm }}` → `${{ steps.node-versions.outputs.npm_version }}`
-            - Update `check-node.yml` file in matrix: `${{ steps.current-versions.outputs.current_matrix }}` → `${{ steps.node-versions.outputs.matrix }}`
+            - Update `.nvmrc` file: `v${{ steps.current-versions.outputs.current_node }}` → `v${{ steps.target-version.outputs.version }}`
+            - Update `package.json` file in `engines.node`: `${{ steps.current-versions.outputs.current_node }}` → `${{ steps.target-version.outputs.version }}`
+            - Update `package.json` file in `engines.npm`: `${{ steps.current-versions.outputs.current_npm }}` → `${{ steps.target-version.outputs.npm }}`
+            - Update `check-node.yml` file in matrix: `${{ steps.current-versions.outputs.current_matrix }}` → `${{ steps.target-version.outputs.matrix }}`
 
             ## 🧪 Tests
 
@@ -238,7 +324,7 @@ jobs:
 
             - [Node.js Release](https://nodejs.org/en/about/releases/)
             - Generated automatically by [update-node-npm.yml](./.github/workflows/update-node-npm.yml) workflow
-          branch: dependabot/npm_and_yarn/node-${{ steps.node-versions.outputs.latest_version }}
+          branch: dependabot/npm_and_yarn/node-${{ steps.target-version.outputs.version }}
           delete-branch: true
           labels: |
             github_actions
@@ -281,11 +367,11 @@ jobs:
 
           ## 🔢 Version Comparison
 
-          | Package | Current | → | Latest LTS |
-          |---------|:-------:|:-:|:----------:|
-          | **Node.js** | \`${{ steps.current-versions.outputs.current_node }}\` | → | \`${{ steps.node-versions.outputs.latest_version }}\` |
-          | **npm** | \`${{ steps.current-versions.outputs.current_npm }}\` | → | \`${{ steps.node-versions.outputs.npm_version }}\` |
-          | **CI Matrix** | \`${{ steps.current-versions.outputs.current_matrix }}\` | → | \`${{ steps.node-versions.outputs.matrix }}\` |
+          | Package | Current | → | Target |
+          |---------|:-------:|:-:|:------:|
+          | **Node.js** | \`${{ steps.current-versions.outputs.current_node }}\` | → | \`${{ steps.target-version.outputs.version }}\` |
+          | **npm** | \`${{ steps.current-versions.outputs.current_npm }}\` | → | \`${{ steps.target-version.outputs.npm }}\` |
+          | **CI Matrix** | \`${{ steps.current-versions.outputs.current_matrix }}\` | → | \`${{ steps.target-version.outputs.matrix }}\` |
 
           ## 📁 Project Files
 
