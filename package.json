@@ -1,6 +1,6 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.6.3",
+	"version": "1.6.4",
 	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
@@ -25,13 +25,13 @@
 		"jsdoc"
 	],
 	"devDependencies": {
-		"@commitlint/cli": "^20.2.0",
-		"@commitlint/config-conventional": "^20.2.0",
+		"@commitlint/cli": "^20.3.1",
+		"@commitlint/config-conventional": "^20.3.1",
 		"husky": "^9.1.7",
 		"jsdoc": "^4.0.5"
 	},
 	"engines": {
-		"node": "24.12.0",
+		"node": "24.13.0",
 		"npm": "11.6.2"
 	}
 }
