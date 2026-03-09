@@ -8,7 +8,11 @@
 		"jsdocs": "jsdoc -c jsdoc.json",
 		"prepare": "husky"
 	},
-	"author": "beatrizsmerino@gmail.com",
+	"author": {
+		"name": "Beatriz Sopeña Merino",
+		"email": "beatrizsmerino@gmail.com",
+		"url": "https://github.com/beatrizsmerino"
+	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
