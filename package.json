@@ -6,6 +6,7 @@
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
+		"install:clean": "rm -rf node_modules package-lock.json",
 		"jsdocs": "jsdoc -c jsdoc.json",
 		"prepare": "husky"
 	},
