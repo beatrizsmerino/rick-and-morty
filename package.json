@@ -31,8 +31,8 @@
 		"jsdoc"
 	],
 	"devDependencies": {
-		"@commitlint/cli": "^20.4.3",
-		"@commitlint/config-conventional": "^20.4.3",
+		"@commitlint/cli": "^20.4.4",
+		"@commitlint/config-conventional": "^20.4.4",
 		"husky": "^9.1.7",
 		"jsdoc": "^4.0.5"
 	},
