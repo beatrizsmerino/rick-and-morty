@@ -1,15 +1,21 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.6.4",
+	"version": "1.8.0",
+	"private": true,
 	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
 	"main": "index.js",
 	"scripts": {
+		"install:clean": "rm -rf node_modules package-lock.json",
 		"jsdocs": "jsdoc -c jsdoc.json",
 		"prepare": "husky"
 	},
-	"author": "beatrizsmerino@gmail.com",
-	"license": "ISC",
+	"author": {
+		"name": "Beatriz Sopeña Merino",
+		"email": "beatrizsmerino@gmail.com",
+		"url": "https://github.com/beatrizsmerino"
+	},
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/beatrizsmerino/rick-and-morty.git"
