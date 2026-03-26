@@ -5,10 +5,6 @@
  * @see {@link https://beatrizsmerino.github.io/rick-and-morty/}
  */
 
-
-
-
-
 /**
  * @const urlAPI
  * @description API route 'Rick and morty'
@@ -16,7 +12,6 @@
  * @see Used in: {@link ajaxHandler}
  */
 const urlAPI = "https://rickandmortyapi.com/api/";
-
 
 /**
  * @var appButton
@@ -26,7 +21,6 @@ const urlAPI = "https://rickandmortyapi.com/api/";
  */
 let appButton = document.getElementById("appButton");
 
-
 /**
  * @var appContent
  * @description App content
@@ -34,10 +28,6 @@ let appButton = document.getElementById("appButton");
  * @see Used in: {@link setAction}, {@link appContentAdd}, {@link filterRemoveContent}, {@link searchCreate}, {@link searchRemove}, {@link paginationCreate}, {@link paginationRemove}, {@link click}
  */
 let appContent = document.getElementById("appContent");
-
-
-
-
 
 // TOOLS
 //////////////////////////////////
@@ -85,17 +75,10 @@ function svgMe() {
 			}
 
 			imgSvg.removeAttribute("xmlns:a");
-			if (
-				!imgSvg.getAttribute("viewBox") &&
-				imgSvg.getAttribute("height") &&
-				imgSvg.getAttribute("width")
-			) {
+			if (!imgSvg.getAttribute("viewBox") && imgSvg.getAttribute("height") && imgSvg.getAttribute("width")) {
 				imgSvg.setAttribute(
 					"viewBox",
-					"0 0 " +
-					imgSvg.getAttribute("height") +
-					" " +
-					imgSvg.getAttribute("width")
+					"0 0 " + imgSvg.getAttribute("height") + " " + imgSvg.getAttribute("width"),
 				);
 			}
 
@@ -106,7 +89,6 @@ function svgMe() {
 		request.send();
 	});
 }
-
 
 /**
  * @function firstUpperCase
@@ -120,7 +102,6 @@ function firstUpperCase(string) {
 	let stringCapitalize = stingLowerCase.charAt(0).toUpperCase() + stingLowerCase.slice(1);
 	return stringCapitalize;
 }
-
 
 /**
  * @function delay
@@ -137,7 +118,6 @@ function delay(fn, ms) {
 	};
 }
 
-
 /**
  * @function getCurrentYear
  * @description Get the current year
@@ -149,10 +129,6 @@ function getCurrentYear() {
 
 	return year;
 }
-
-
-
-
 
 // AJAX HANDLER - FETCH
 //////////////////////////////////
@@ -191,10 +167,10 @@ function ajaxHandler(url, action) {
 		});
 
 	function handleResponse(response) {
-		let contentType = response.headers.get('content-type')
-		if (contentType.includes('application/json')) {
+		let contentType = response.headers.get("content-type");
+		if (contentType.includes("application/json")) {
 			return handleJSONResponse(response);
-		} else if (contentType.includes('text/html')) {
+		} else if (contentType.includes("text/html")) {
 			return handleTextResponse(response);
 		} else {
 			// Other response types as necessary. I haven't found a need for them yet though.
@@ -203,38 +179,34 @@ function ajaxHandler(url, action) {
 	}
 
 	function handleJSONResponse(response) {
-		return response.json()
-			.then(json => {
-				if (response.ok) {
-					return json;
-				} else {
-					return Promise.reject(Object.assign({}, json, {
+		return response.json().then(json => {
+			if (response.ok) {
+				return json;
+			} else {
+				return Promise.reject(
+					Object.assign({}, json, {
 						status: response.status,
-						statusText: response.statusText
-					}));
-				}
-			});
+						statusText: response.statusText,
+					}),
+				);
+			}
+		});
 	}
 
 	function handleTextResponse(response) {
-		return response.text()
-			.then(text => {
-				if (response.ok) {
-					return json;
-				} else {
-					return Promise.reject({
-						status: response.status,
-						statusText: response.statusText,
-						err: text
-					});
-				}
-			});
+		return response.text().then(text => {
+			if (response.ok) {
+				return json;
+			} else {
+				return Promise.reject({
+					status: response.status,
+					statusText: response.statusText,
+					err: text,
+				});
+			}
+		});
 	}
 }
-
-
-
-
 
 // COPYRIGHT
 //////////////////////////////////
@@ -249,9 +221,6 @@ function addCurrentYear() {
 
 	copyrightYear.innerHTML = getCurrentYear();
 }
-
-
-
 
 // LOADER
 //////////////////////////////////
@@ -277,7 +246,6 @@ function loaderCreate() {
 	return loader;
 }
 
-
 /**
  * @function loaderAdd
  * @description Add loading animation
@@ -298,7 +266,6 @@ function loaderAdd() {
 	}
 }
 
-
 /**
  * @function loaderRemove
  * @description Remove loading animation
@@ -312,10 +279,6 @@ function loaderRemove() {
 		document.body.removeChild(loaderDom);
 	}
 }
-
-
-
-
 
 // FILTER
 //////////////////////////////////
@@ -341,7 +304,6 @@ function appContentAdd(url) {
 	}
 }
 
-
 /**
  * @function setAction
  * @description List of functions to choose from
@@ -358,7 +320,6 @@ function setAction(action, elementDom, dataResponse) {
 		filterAddContent(elementDom, dataResponse);
 	}
 }
-
 
 /**
  * @function filterAdd
@@ -392,7 +353,6 @@ function filterAdd(elementDom, responseData) {
 	}
 }
 
-
 /**
  * @function filterActive
  * @description Add class 'is-active' to the item of the navigation clicked.
@@ -411,7 +371,6 @@ function filterActive(item, thisActive) {
 	}
 }
 
-
 /**
  * @function filterAddContentInfo
  * @description Insert information to the content with the number of results of the request
@@ -427,7 +386,6 @@ function filterAddContentInfo(responseData) {
 
 	return listInfo;
 }
-
 
 /**
  * @function filterAddContentResults
@@ -456,7 +414,6 @@ function filterAddContentResults(responseData) {
 	return listCards;
 }
 
-
 /**
  * @function filterAddContent
  * @description Add the filter content application
@@ -474,10 +431,10 @@ function filterAddContent(elementDom, responseData) {
 	const resultsContent = filterAddContentResults(responseData);
 
 	/**
-	* @function filterAddAllContent
-	* @description Insert the content
-	* @see {@link filterFoundContent}
-	*/
+	 * @function filterAddAllContent
+	 * @description Insert the content
+	 * @see {@link filterFoundContent}
+	 */
 	function filterAddAllContent() {
 		list.appendChild(infoContent);
 		list.appendChild(resultsContent);
@@ -514,7 +471,6 @@ function filterAddContent(elementDom, responseData) {
 	}, 100);
 }
 
-
 /**
  * @function filterRemoveContent
  * @description Remove the selected filter content of the application content
@@ -529,10 +485,6 @@ function filterRemoveContent() {
 		}
 	}
 }
-
-
-
-
 
 // MESSAGE
 //////////////////////////////////
@@ -580,8 +532,6 @@ function messageAdd(messageId, messageClass, messageText) {
 	}
 }
 
-
-
 /**
  * @function messageCloseAdd
  * @description Create a button for remove the message
@@ -593,7 +543,6 @@ function messageCloseAdd() {
 
 	return buttonDom;
 }
-
 
 /**
  * @function messageRemove
@@ -609,7 +558,6 @@ function messageRemove(messageId) {
 	}
 }
 
-
 /**
  * @function messageError404Add
  * @description Add message error 404 (search not found)
@@ -623,7 +571,6 @@ function messageError404Add() {
 	let templateMessage = messageAdd("messageError404", "message-error404", "Error 404.</br> Search not found");
 	appContent.appendChild(templateMessage);
 }
-
 
 /**
  * @function messageAlertAdd
@@ -640,10 +587,6 @@ function messageAlertAdd(messageName, messageText) {
 		messageRemove(messageId);
 	});
 }
-
-
-
-
 
 // CARD
 //////////////////////////////////
@@ -680,9 +623,7 @@ function cardCreate(listCardsInner, responseData) {
 			if (titleData !== "image") {
 				let cardParagraphDom = document.createElement("h4");
 				cardParagraphDom.setAttribute("class", "card__subtitle");
-				let cardParagraphTextDom = document.createTextNode(
-					firstUpperCase(titleData) + ": "
-				);
+				let cardParagraphTextDom = document.createTextNode(firstUpperCase(titleData) + ": ");
 				cardParagraphDom.appendChild(cardParagraphTextDom);
 				cardItemDom.appendChild(cardParagraphDom);
 			} else {
@@ -745,7 +686,6 @@ function cardCreate(listCardsInner, responseData) {
 	// console.groupEnd();
 }
 
-
 /**
  * @function cardMoveImage
  * @description Move the card image up.
@@ -769,7 +709,6 @@ function cardMoveImage() {
 	}, 300);
 }
 
-
 /**
  * @function cardToggleView
  * @description See more card info
@@ -787,7 +726,6 @@ function cardToggleView(item, thisView) {
 	thisView.classList.toggle("is-view");
 }
 
-
 /**
  * @function cardWhenClicked
  * @description Event click in the card
@@ -804,11 +742,11 @@ function cardWhenClicked() {
 				const element = cardItem[index];
 
 				/**
-				* @description View more card info when click it.
-				* @event click
-				* @type {object}
-				* @see Used inside: {@link cardToggleView}
-				*/
+				 * @description View more card info when click it.
+				 * @event click
+				 * @type {object}
+				 * @see Used inside: {@link cardToggleView}
+				 */
 				element.addEventListener("click", function (e) {
 					cardToggleView(cardItem, this);
 				});
@@ -816,10 +754,6 @@ function cardWhenClicked() {
 		}
 	});
 }
-
-
-
-
 
 // SEARCH
 //////////////////////////////////
@@ -848,7 +782,6 @@ function searchCreate() {
 	searchDom.appendChild(searchInnerDom);
 	appContent.appendChild(searchDom);
 }
-
 
 /**
  * @function searchGet
@@ -882,7 +815,6 @@ function searchGet(filterActive) {
 	return searchBy;
 }
 
-
 /**
  * @function searchAdd
  * @description Add searcher
@@ -896,25 +828,27 @@ function searchAdd(filterActive) {
 	let searchBy = searchGet(filterActive);
 
 	/**
-	* @description Search by selected filter name when typing in the search engine input.
-	* @event keyup
-	* @type {Object}
-	* @see Used inside: {@link delay}, {@link filterRemoveContent}, {@link paginationRemove}, {@link ajaxHandler}
-	*/
-	document.getElementById("searchInput").addEventListener("keyup", delay(function (e) {
-		let valueInput = this.value;
+	 * @description Search by selected filter name when typing in the search engine input.
+	 * @event keyup
+	 * @type {Object}
+	 * @see Used inside: {@link delay}, {@link filterRemoveContent}, {@link paginationRemove}, {@link ajaxHandler}
+	 */
+	document.getElementById("searchInput").addEventListener(
+		"keyup",
+		delay(function (e) {
+			let valueInput = this.value;
 
-		filterRemoveContent();
-		paginationRemove();
-		ajaxHandler(urlAPI + searchBy + "/?" + "name" + "=" + valueInput, "filterAddContent");
+			filterRemoveContent();
+			paginationRemove();
+			ajaxHandler(urlAPI + searchBy + "/?" + "name" + "=" + valueInput, "filterAddContent");
 
-		// console.log(this);
-		// console.log(this.value);
-		// console.log(urlAPI + searchBy + "/?" + "name" + "=" + valueInput);
-		// console.assert(valueInput, "Input hasn`t value");
-	}, 500));
+			// console.log(this);
+			// console.log(this.value);
+			// console.log(urlAPI + searchBy + "/?" + "name" + "=" + valueInput);
+			// console.assert(valueInput, "Input hasn`t value");
+		}, 500),
+	);
 }
-
 
 /**
  * @function searchRemove
@@ -927,9 +861,6 @@ function searchRemove() {
 		appContent.removeChild(search);
 	}
 }
-
-
-
 
 // PAGINATION
 //////////////////////////////////
@@ -960,7 +891,6 @@ function paginationCreate(responseData) {
 	appContent.appendChild(pagination);
 }
 
-
 /**
  * @function paginationSetCounter
  * @description Create counter pagination
@@ -987,15 +917,11 @@ function paginationSetCounter(responseData) {
 		}
 	}
 
-
 	// console.log(paginationNext);
 	// console.log(paginationNow);
 
-
 	let paginationCounter = document.createElement("div");
-	let paginationCounterText = document.createTextNode(
-		paginationNow.toString() + " - " + paginationTotal.toString()
-	);
+	let paginationCounterText = document.createTextNode(paginationNow.toString() + " - " + paginationTotal.toString());
 
 	paginationCounter.setAttribute("class", "pagination__counter");
 	paginationCounter.appendChild(paginationCounterText);
@@ -1003,7 +929,6 @@ function paginationSetCounter(responseData) {
 
 	buttonPrev.parentNode.insertBefore(paginationCounter, buttonPrev.nextSibling);
 }
-
 
 /**
  * @function paginationAdd
@@ -1021,11 +946,11 @@ function paginationAdd(responseData) {
 		const element = button[index];
 
 		/**
-		* @description Remove/Add content and pagination by selecting the filter from the navigation menu.
-		* @event click
-		* @type {object}
-		* @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link ajaxHandler}
-		*/
+		 * @description Remove/Add content and pagination by selecting the filter from the navigation menu.
+		 * @event click
+		 * @type {object}
+		 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link ajaxHandler}
+		 */
 		element.addEventListener("click", function () {
 			let url = this.getAttribute("data-url");
 
@@ -1038,7 +963,6 @@ function paginationAdd(responseData) {
 	}
 }
 
-
 /**
  * @function paginationRemove
  * @description Remove pagination
@@ -1050,10 +974,6 @@ function paginationRemove() {
 		appContent.removeChild(pagination);
 	}
 }
-
-
-
-
 
 // ADBLOCK
 //////////////////////////////////
@@ -1071,7 +991,6 @@ function adblockDetected() {
 	messageAlertAdd("AdBlock", message);
 }
 
-
 /**
  * @function adblockDisabled
  * @description Callback executed if adblock is disabled
@@ -1081,7 +1000,6 @@ function adblockDisabled() {
 	let message = "AdBlock is not enabled";
 	// console.info(message);
 }
-
 
 /**
  * @function adblockVerify
@@ -1098,10 +1016,6 @@ function adblockVerify() {
 	}
 }
 
-
-
-
-
 /**
  * @description Get API data
  * @event click
@@ -1114,7 +1028,6 @@ appButton.addEventListener("click", function () {
 	appContent.removeChild(document.getElementById("portal"));
 	ajaxHandler(urlAPI, "filterAdd");
 });
-
 
 /**
  * @function functionAnonimAutoExecuted
@@ -1134,11 +1047,11 @@ appButton.addEventListener("click", function () {
 				const filterItem = filterArray[index];
 
 				/**
-				* @description Remove / Add content and pagination when selecting the filter of the navigation menu.
-				* @event click
-				* @type {object}
-				* @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link searchRemove}, {@link filterActive}, {@link searchAdd}, {@link ajaxHandler}
-				*/
+				 * @description Remove / Add content and pagination when selecting the filter of the navigation menu.
+				 * @event click
+				 * @type {object}
+				 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link searchRemove}, {@link filterActive}, {@link searchAdd}, {@link ajaxHandler}
+				 */
 				filterItem.addEventListener("click", function () {
 					filterRemoveContent();
 					paginationRemove();
