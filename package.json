@@ -10,7 +10,7 @@
 		"jsdocs": "jsdoc -c jsdoc.json",
 		"prepare": "husky",
 		"prettier:fix": "prettier --write \"./**/*.{css,scss,sass,json,js,cjs,mjs}\"",
-		"lint": "npm run prettier:fix"
+		"lint": "npm run prettier:fix && true"
 	},
 	"author": {
 		"name": "Beatriz Sopeña Merino",
@@ -37,6 +37,7 @@
 		"@commitlint/config-conventional": "^20.5.0",
 		"husky": "^9.1.7",
 		"jsdoc": "^4.0.5",
+		"lint-staged": "^16.4.0",
 		"prettier": "^3.8.1"
 	},
 	"engines": {
