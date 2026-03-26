@@ -840,11 +840,11 @@ function searchAdd(filterActive) {
 
 			filterRemoveContent();
 			paginationRemove();
-			ajaxHandler(urlAPI + searchBy + "/?" + "name" + "=" + valueInput, "filterAddContent");
+			ajaxHandler(urlAPI + searchBy + "/?name=" + valueInput, "filterAddContent");
 
 			// console.log(this);
 			// console.log(this.value);
-			// console.log(urlAPI + searchBy + "/?" + "name" + "=" + valueInput);
+			// console.log(urlAPI + searchBy + "/?name=" + valueInput);
 			// console.assert(valueInput, "Input hasn`t value");
 		}, 500),
 	);
