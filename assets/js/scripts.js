@@ -185,9 +185,9 @@ function ajaxHandler(url, action) {
 				return json;
 			} else {
 				return Promise.reject(
-					Object.assign({}, json, {
+					Object.assign(new Error(response.statusText), {
+						...json,
 						status: response.status,
-						statusText: response.statusText,
 					}),
 				);
 			}
@@ -199,11 +199,12 @@ function ajaxHandler(url, action) {
 			if (response.ok) {
 				return json;
 			} else {
-				return Promise.reject({
-					status: response.status,
-					statusText: response.statusText,
-					err: text,
-				});
+				return Promise.reject(
+					Object.assign(new Error(response.statusText), {
+						status: response.status,
+						err: text,
+					}),
+				);
 			}
 		});
 	}
