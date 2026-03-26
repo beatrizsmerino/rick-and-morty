@@ -197,7 +197,7 @@ function ajaxHandler(url, action) {
 	function handleTextResponse(response) {
 		return response.text().then(text => {
 			if (response.ok) {
-				return json;
+				return text;
 			} else {
 				return Promise.reject(
 					Object.assign(new Error(response.statusText), {
