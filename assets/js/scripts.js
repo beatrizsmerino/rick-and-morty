@@ -337,16 +337,18 @@ function filterAdd(elementDom, responseData) {
 		list.setAttribute("class", "filter");
 
 		for (const key in responseData) {
-			const element = responseData[key];
-			let item = document.createElement("li");
-			let itemText = document.createTextNode(key);
+			if (Object.hasOwn(responseData, key)) {
+				const element = responseData[key];
+				let item = document.createElement("li");
+				let itemText = document.createTextNode(key);
 
-			item.setAttribute("data-filter", key);
-			item.setAttribute("data-url", element + "?page=1");
-			item.setAttribute("class", "filter__item");
+				item.setAttribute("data-filter", key);
+				item.setAttribute("data-url", element + "?page=1");
+				item.setAttribute("class", "filter__item");
 
-			item.appendChild(itemText);
-			list.appendChild(item);
+				item.appendChild(itemText);
+				list.appendChild(item);
+			}
 		}
 
 		elementDom.appendChild(list);
@@ -603,86 +605,92 @@ function messageAlertAdd(messageName, messageText) {
 function cardCreate(listCardsInner, responseData) {
 	// console.group("Results");
 	for (const key in responseData.results) {
-		const element = responseData.results[key];
-		let card = document.createElement("article");
+		if (Object.hasOwn(responseData.results, key)) {
+			const element = responseData.results[key];
+			let card = document.createElement("article");
 
-		card.setAttribute("class", "card");
-		card.setAttribute("data-index", key);
+			card.setAttribute("class", "card");
+			card.setAttribute("data-index", key);
 
-		let cardButton = document.createElement("span");
-		cardButton.setAttribute("class", "card__button icon-eye");
+			let cardButton = document.createElement("span");
+			cardButton.setAttribute("class", "card__button icon-eye");
 
-		// console.group("Result " + key);
-		for (const titleData in element) {
-			const cardItemData = element[titleData];
-			// console.info(firstUpperCase(titleData) + ": " + cardItemData);
+			// console.group("Result " + key);
+			for (const titleData in element) {
+				if (Object.hasOwn(element, titleData)) {
+					const cardItemData = element[titleData];
+					// console.info(firstUpperCase(titleData) + ": " + cardItemData);
 
-			let cardItemDom = document.createElement("div");
-			cardItemDom.setAttribute("class", "card__data");
-			cardItemDom.setAttribute("data-type", titleData);
+					let cardItemDom = document.createElement("div");
+					cardItemDom.setAttribute("class", "card__data");
+					cardItemDom.setAttribute("data-type", titleData);
 
-			if (titleData !== "image") {
-				let cardParagraphDom = document.createElement("h4");
-				cardParagraphDom.setAttribute("class", "card__subtitle");
-				let cardParagraphTextDom = document.createTextNode(firstUpperCase(titleData) + ": ");
-				cardParagraphDom.appendChild(cardParagraphTextDom);
-				cardItemDom.appendChild(cardParagraphDom);
-			} else {
-				let cardImageDom = document.createElement("img");
-				cardImageDom.setAttribute("src", cardItemData);
-				cardItemDom.appendChild(cardImageDom);
-			}
-
-			// console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
-
-			if (typeof cardItemData === "object") {
-				if (Array.isArray(cardItemData)) {
-					let cardUlDom = document.createElement("ul");
-					cardUlDom.setAttribute("class", "card__list");
-
-					for (let index = 0; index < cardItemData.length; index++) {
-						const cardUlData = cardItemData[index];
-
-						let cardLiDom = document.createElement("li");
-						let cardLiTextDom = document.createTextNode(cardUlData);
-
-						cardLiDom.appendChild(cardLiTextDom);
-						cardUlDom.appendChild(cardLiDom);
+					if (titleData !== "image") {
+						let cardParagraphDom = document.createElement("h4");
+						cardParagraphDom.setAttribute("class", "card__subtitle");
+						let cardParagraphTextDom = document.createTextNode(firstUpperCase(titleData) + ": ");
+						cardParagraphDom.appendChild(cardParagraphTextDom);
+						cardItemDom.appendChild(cardParagraphDom);
+					} else {
+						let cardImageDom = document.createElement("img");
+						cardImageDom.setAttribute("src", cardItemData);
+						cardItemDom.appendChild(cardImageDom);
 					}
 
-					cardItemDom.appendChild(cardUlDom);
-				} else {
-					let cardUlDom = document.createElement("ul");
-					cardUlDom.setAttribute("class", "card__list");
+					// console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
 
-					for (const subKey in cardItemData) {
-						const cardUlData = cardItemData[subKey];
+					if (typeof cardItemData === "object") {
+						if (Array.isArray(cardItemData)) {
+							let cardUlDom = document.createElement("ul");
+							cardUlDom.setAttribute("class", "card__list");
 
-						let cardLiDom = document.createElement("li");
-						let cardLiTextDom = document.createTextNode(cardUlData);
+							for (let index = 0; index < cardItemData.length; index++) {
+								const cardUlData = cardItemData[index];
 
-						cardLiDom.appendChild(cardLiTextDom);
-						cardUlDom.appendChild(cardLiDom);
+								let cardLiDom = document.createElement("li");
+								let cardLiTextDom = document.createTextNode(cardUlData);
+
+								cardLiDom.appendChild(cardLiTextDom);
+								cardUlDom.appendChild(cardLiDom);
+							}
+
+							cardItemDom.appendChild(cardUlDom);
+						} else {
+							let cardUlDom = document.createElement("ul");
+							cardUlDom.setAttribute("class", "card__list");
+
+							for (const subKey in cardItemData) {
+								if (Object.hasOwn(cardItemData, subKey)) {
+									const cardUlData = cardItemData[subKey];
+
+									let cardLiDom = document.createElement("li");
+									let cardLiTextDom = document.createTextNode(cardUlData);
+
+									cardLiDom.appendChild(cardLiTextDom);
+									cardUlDom.appendChild(cardLiDom);
+								}
+							}
+
+							cardItemDom.appendChild(cardUlDom);
+						}
+					} else {
+						if (titleData !== "image") {
+							let cardParagraphDom = document.createElement("p");
+							let cardParagraphTextDom = document.createTextNode(cardItemData);
+
+							cardParagraphDom.appendChild(cardParagraphTextDom);
+							cardItemDom.appendChild(cardParagraphDom);
+						}
 					}
 
-					cardItemDom.appendChild(cardUlDom);
-				}
-			} else {
-				if (titleData !== "image") {
-					let cardParagraphDom = document.createElement("p");
-					let cardParagraphTextDom = document.createTextNode(cardItemData);
-
-					cardParagraphDom.appendChild(cardParagraphTextDom);
-					cardItemDom.appendChild(cardParagraphDom);
+					card.appendChild(cardButton);
+					card.appendChild(cardItemDom);
 				}
 			}
+			// console.groupEnd();
 
-			card.appendChild(cardButton);
-			card.appendChild(cardItemDom);
+			listCardsInner.appendChild(card);
 		}
-		// console.groupEnd();
-
-		listCardsInner.appendChild(card);
 	}
 	// console.groupEnd();
 }
