@@ -4,11 +4,7 @@ module.exports = {
 		"browser": true,
 		"node": true,
 	},
-	"extends": [
-		"prettier",
-		"eslint:recommended",
-		"plugin:json/recommended",
-	],
+	"extends": ["prettier", "eslint:recommended", "plugin:json/recommended"],
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true,
@@ -16,10 +12,7 @@ module.exports = {
 		"ecmaVersion": "latest",
 		"sourceType": "module",
 	},
-	"plugins": [
-		"prettier",
-		"json",
-	],
+	"plugins": ["prettier", "json"],
 	"root": true,
 	"rules": {
 		"accessor-pairs": 2,
@@ -30,10 +23,7 @@ module.exports = {
 				"multiline": true,
 			},
 		],
-		"array-bracket-spacing": [
-			2,
-			"always",
-		],
+		"array-bracket-spacing": [2, "always"],
 		"array-callback-return": 1,
 		"array-element-newline": [
 			2,
@@ -42,10 +32,7 @@ module.exports = {
 				"multiline": true,
 			},
 		],
-		"arrow-body-style": [
-			1,
-			"as-needed",
-		],
+		"arrow-body-style": [1, "as-needed"],
 		"arrow-parens": 0,
 		"arrow-spacing": 2,
 		"block-scoped-var": 2,
@@ -62,10 +49,7 @@ module.exports = {
 		],
 		"capitalized-comments": 0,
 		"class-methods-use-this": 2,
-		"comma-dangle": [
-			2,
-			"always-multiline",
-		],
+		"comma-dangle": [2, "always-multiline"],
 		"comma-spacing": 2,
 		"comma-style": 2,
 		"complexity": [
@@ -88,10 +72,7 @@ module.exports = {
 		"func-name-matching": 2,
 		"func-names": 0,
 		"func-style": 0,
-		"function-call-argument-newline": [
-			2,
-			"consistent",
-		],
+		"function-call-argument-newline": [2, "consistent"],
 		"function-paren-newline": 2,
 		"generator-star-spacing": 0,
 		"global-require": 0,
@@ -107,15 +88,9 @@ module.exports = {
 		],
 		"id-match": 2,
 		"implicit-arrow-linebreak": 2,
-		"indent": [
-			2,
-			"tab",
-		],
+		"indent": [2, "tab"],
 		"init-declarations": 2,
-		"jsx-quotes": [
-			2,
-			"prefer-double",
-		],
+		"jsx-quotes": [2, "prefer-double"],
 		"key-spacing": 2,
 		"keyword-spacing": 2,
 		"line-comment-position": 2,
@@ -161,10 +136,7 @@ module.exports = {
 				"max": 1,
 			},
 		],
-		"multiline-comment-style": [
-			2,
-			"separate-lines",
-		],
+		"multiline-comment-style": [2, "separate-lines"],
 		"multiline-ternary": 0,
 		"new-cap": [
 			2,
@@ -258,9 +230,7 @@ module.exports = {
 		"no-shadow": [
 			2,
 			{
-				"allow": [
-					"state",
-				],
+				"allow": ["state"],
 			},
 		],
 		"no-spaced-func": 2,
@@ -309,10 +279,7 @@ module.exports = {
 				"multiline": false,
 			},
 		],
-		"object-curly-spacing": [
-			2,
-			"always",
-		],
+		"object-curly-spacing": [2, "always"],
 		"object-property-newline": [
 			2,
 			{
@@ -324,10 +291,7 @@ module.exports = {
 		"one-var-declaration-per-line": 0,
 		"operator-assignment": 2,
 		"operator-linebreak": 2,
-		"padded-blocks": [
-			1,
-			"never",
-		],
+		"padded-blocks": [1, "never"],
 		"padding-line-between-statements": 2,
 		"prefer-arrow-callback": [
 			0,
@@ -348,10 +312,7 @@ module.exports = {
 		"prefer-rest-params": 2,
 		"prefer-spread": 2,
 		"prefer-template": 2,
-		"quote-props": [
-			2,
-			"always",
-		],
+		"quote-props": [2, "always"],
 		"quotes": [
 			2,
 			"double",
@@ -360,18 +321,12 @@ module.exports = {
 				"avoidEscape": true,
 			},
 		],
-		"radix": [
-			2,
-			"as-needed",
-		],
+		"radix": [2, "as-needed"],
 		"require-atomic-updates": 2,
 		"require-await": 2,
 		"require-unicode-regexp": 2,
 		"rest-spread-spacing": 2,
-		"semi": [
-			2,
-			"always",
-		],
+		"semi": [2, "always"],
 		"semi-spacing": 2,
 		"semi-style": 2,
 		"sort-imports": 0,
@@ -395,10 +350,7 @@ module.exports = {
 		"symbol-description": 2,
 		"template-curly-spacing": 2,
 		"template-tag-spacing": 2,
-		"unicode-bom": [
-			2,
-			"never",
-		],
+		"unicode-bom": [2, "never"],
 		"vars-on-top": 2,
 		"wrap-iife": 2,
 		"wrap-regex": 2,
