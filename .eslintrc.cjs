@@ -6,6 +6,9 @@ module.exports = {
 		"node": true,
 	},
 	"extends": ["prettier", "eslint:recommended", "plugin:json/recommended"],
+	"globals": {
+		"blockAdBlock": "readonly",
+	},
 	"parserOptions": {
 		"ecmaFeatures": {
 			"jsx": true,
