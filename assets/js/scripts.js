@@ -747,7 +747,7 @@ function cardWhenClicked() {
 				 * @type {object}
 				 * @see Used inside: {@link cardToggleView}
 				 */
-				element.addEventListener("click", function (e) {
+				element.addEventListener("click", function () {
 					cardToggleView(cardItem, this);
 				});
 			}
@@ -835,7 +835,7 @@ function searchAdd(filterActive) {
 	 */
 	document.getElementById("searchInput").addEventListener(
 		"keyup",
-		delay(function (e) {
+		delay(function () {
 			let valueInput = this.value;
 
 			filterRemoveContent();
@@ -997,7 +997,7 @@ function adblockDetected() {
  * @see Used in: {@link checkAdblock}
  **/
 function adblockDisabled() {
-	let message = "AdBlock is not enabled";
+	// let message = "AdBlock is not enabled";
 	// console.info(message);
 }
 
