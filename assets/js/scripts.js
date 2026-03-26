@@ -456,6 +456,7 @@ function filterAddContent(elementDom, responseData) {
 			if (element.length == 0) {
 				filterAddAllContent();
 				paginationAdd(responseData);
+				return false;
 			} else {
 				filterRemoveContent();
 				paginationRemove();
@@ -464,6 +465,7 @@ function filterAddContent(elementDom, responseData) {
 				return true;
 			}
 		}
+		return false;
 	}
 
 	let timer = setInterval(function () {
@@ -533,6 +535,7 @@ function messageAdd(messageId, messageClass, messageText) {
 		messageElem.innerHTML = templateMessage;
 		return messageElem;
 	}
+	return null;
 }
 
 /**
