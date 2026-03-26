@@ -5,6 +5,9 @@
 # FOLDERS
 .git
 dist
+jsdocs
+assets/icomoon
+assets/js/vendor
 
 # FILES
 .gitignore
