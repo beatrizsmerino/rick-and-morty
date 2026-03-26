@@ -655,8 +655,8 @@ function cardCreate(listCardsInner, responseData) {
 					let cardUlDom = document.createElement("ul");
 					cardUlDom.setAttribute("class", "card__list");
 
-					for (const key in cardItemData) {
-						const cardUlData = cardItemData[key];
+					for (const subKey in cardItemData) {
+						const cardUlData = cardItemData[subKey];
 
 						let cardLiDom = document.createElement("li");
 						let cardLiTextDom = document.createTextNode(cardUlData);
@@ -787,12 +787,12 @@ function searchCreate() {
 /**
  * @function searchGet
  * @description Get the active filter to find it.
- * @param {Element} filterActive - filter selected
+ * @param {Element} filterSelected - filter selected
  * @see Used in: {@link searchAdd}
  */
-function searchGet(filterActive) {
+function searchGet(filterSelected) {
 	let searchInput = document.getElementById("searchInput");
-	let filterActiveText = filterActive.getAttribute("data-filter");
+	let filterActiveText = filterSelected.getAttribute("data-filter");
 	searchInput.setAttribute("placeholder", "Search by name of " + filterActiveText);
 
 	let searchBy = "";
@@ -819,14 +819,14 @@ function searchGet(filterActive) {
 /**
  * @function searchAdd
  * @description Add searcher
- * @param {Element} filterActive - filter selected
+ * @param {Element} filterSelected - filter selected
  * @see Used inside: {@link searchCreate}, {@link searchGet}...
  * @see Used in: {@link functionAnonimAutoExecuted}
  */
-function searchAdd(filterActive) {
+function searchAdd(filterSelected) {
 	searchCreate();
 
-	let searchBy = searchGet(filterActive);
+	let searchBy = searchGet(filterSelected);
 
 	/**
 	 * @description Search by selected filter name when typing in the search engine input.
