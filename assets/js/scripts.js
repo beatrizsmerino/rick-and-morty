@@ -448,7 +448,7 @@ function filterAddContent(elementDom, responseData) {
 	 */
 	function filterFoundContent() {
 		let element = document.querySelectorAll(".list");
-		if (element != undefined) {
+		if (typeof element !== "undefined") {
 			// console.dir(element);
 			// console.log(element.length);
 			if (element.length == 0) {
