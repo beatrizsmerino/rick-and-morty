@@ -500,7 +500,7 @@ function filterRemoveContent() {
 function messageAdd(messageId, messageClass, messageText) {
 	let messageDom = document.getElementById(messageId);
 
-	let messageButton;
+	let messageButton = "";
 	switch (messageClass) {
 		case "message-alert":
 			messageButton = messageCloseAdd();
@@ -795,7 +795,7 @@ function searchGet(filterActive) {
 	let filterActiveText = filterActive.getAttribute("data-filter");
 	searchInput.setAttribute("placeholder", "Search by name of " + filterActiveText);
 
-	let searchBy;
+	let searchBy = "";
 	switch (filterActiveText) {
 		case "characters":
 			searchBy = "character";
@@ -903,7 +903,7 @@ function paginationSetCounter(responseData) {
 
 	let paginationTotal = responseData.info.pages;
 	let paginationNext = responseData.info.next;
-	let paginationNow;
+	let paginationNow = 0;
 
 	// console.log(paginationNext);
 	if (paginationNext == "") {
