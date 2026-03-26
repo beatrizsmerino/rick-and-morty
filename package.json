@@ -10,7 +10,7 @@
 		"jsdocs": "jsdoc -c jsdoc.json",
 		"prepare": "husky",
 		"prettier:fix": "prettier --write \"./**/*.{css,scss,sass,json,js,cjs,mjs}\"",
-		"lint": "npm run prettier:fix"
+		"lint": "npm run prettier:fix && true"
 	},
 	"author": {
 		"name": "Beatriz Sopeña Merino",
