@@ -508,6 +508,7 @@ function messageAdd(messageId, messageClass, messageText) {
 			break;
 		case "message-error404":
 			messageButton = "";
+			break;
 		default:
 			break;
 	}
