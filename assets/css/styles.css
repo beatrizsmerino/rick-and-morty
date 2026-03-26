@@ -351,8 +351,7 @@ hr {
 .card:hover .card__button {
 	background-color: var(--color-brand-4);
 }
-.card:not(.is-view)
-	.card__data:not([data-type="name"]):not([data-type="image"]) {
+.card:not(.is-view) .card__data:not([data-type="name"]):not([data-type="image"]) {
 	display: none;
 }
 .card.is-view .card__data:not(:last-of-type):not([data-type="image"]) {

@@ -8,7 +8,9 @@
 	"scripts": {
 		"install:clean": "rm -rf node_modules package-lock.json",
 		"jsdocs": "jsdoc -c jsdoc.json",
-		"prepare": "husky"
+		"prepare": "husky",
+		"prettier:fix": "prettier --write \"./**/*.{css,scss,sass,json,js,cjs,mjs}\"",
+		"lint": "npm run prettier:fix"
 	},
 	"author": {
 		"name": "Beatriz Sopeña Merino",
@@ -34,7 +36,8 @@
 		"@commitlint/cli": "^20.5.0",
 		"@commitlint/config-conventional": "^20.5.0",
 		"husky": "^9.1.7",
-		"jsdoc": "^4.0.5"
+		"jsdoc": "^4.0.5",
+		"prettier": "^3.8.1"
 	},
 	"engines": {
 		"node": "24.14.1",
