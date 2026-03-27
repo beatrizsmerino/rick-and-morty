@@ -74,9 +74,9 @@ function messageCloseAdd() {
  * @see Used in: {@link apiAjaxHandler}
  */
 export function messageRemove(messageId) {
-	const messsage = document.getElementById(messageId);
-	if (messsage) {
-		messsage.parentElement.removeChild(messsage);
+	const message = document.getElementById(messageId);
+	if (message) {
+		message.parentElement.removeChild(message);
 
 		// console.log("Message removed");
 	}

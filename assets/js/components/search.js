@@ -50,7 +50,7 @@ function searchGet(filterSelected) {
 	case "characters":
 		searchBy = "character";
 		break;
-	case "episodies":
+	case "episodes":
 		searchBy = "episode";
 		break;
 	case "locations":
