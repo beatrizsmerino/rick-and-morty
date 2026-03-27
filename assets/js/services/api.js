@@ -59,6 +59,12 @@ export function apiAjaxHandler(url, action) {
 			}
 		});
 
+	/**
+	 * @function handleResponse
+	 * @description Route the response to the correct handler based on content type
+	 * @param {Response} response - fetch response object
+	 * @return {Promise} returns the parsed response
+	 */
 	function handleResponse(response) {
 		const contentType = response.headers.get("content-type");
 		if (contentType.includes("application/json")) {
@@ -71,6 +77,12 @@ export function apiAjaxHandler(url, action) {
 		throw new Error(`Sorry, content-type ${contentType} not supported`);
 	}
 
+	/**
+	 * @function handleJSONResponse
+	 * @description Parse a JSON response and reject if not ok
+	 * @param {Response} response - fetch response object
+	 * @return {Promise} returns the parsed JSON or a rejected promise
+	 */
 	function handleJSONResponse(response) {
 		return response.json().then(json => {
 			if (response.ok) {
@@ -84,6 +96,12 @@ export function apiAjaxHandler(url, action) {
 		});
 	}
 
+	/**
+	 * @function handleTextResponse
+	 * @description Parse a text response and reject if not ok
+	 * @param {Response} response - fetch response object
+	 * @return {Promise} returns the parsed text or a rejected promise
+	 */
 	function handleTextResponse(response) {
 		return response.text().then(text => {
 			if (response.ok) {
