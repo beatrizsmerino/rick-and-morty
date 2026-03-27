@@ -3,8 +3,8 @@ import { messageAlertAdd } from "./message.js";
 /**
  * @function adblockDetected
  * @description Callback executed if adblock is installed
- * @see Used inside {@link messageAlert}
- * @see Used in: {@link checkAdblock}
+ * @see Used inside {@link messageAlertAdd}
+ * @see Used in: {@link adblockVerify}
  */
 function adblockDetected() {
 	const message = "<i class='message-alert__icon icon-warning'></i> AdBlock is enabled";
@@ -17,7 +17,7 @@ function adblockDetected() {
 /**
  * @function adblockDisabled
  * @description Callback executed if adblock is disabled
- * @see Used in: {@link checkAdblock}
+ * @see Used in: {@link adblockVerify}
  */
 function adblockDisabled() {
 	// let message = "AdBlock is not enabled";
