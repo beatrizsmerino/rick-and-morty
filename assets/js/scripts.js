@@ -5,8 +5,8 @@
  * @see {@link https://beatrizsmerino.github.io/rick-and-morty/}
  */
 
-import { delay } from "./utils/delay.js";
-import { svgMe } from "./utils/svg-me.js";
+import { delay } from "./utils/timer.js";
+import { svgMe } from "./utils/svg.js";
 import { addCurrentYear } from "./components/copyright.js";
 import { loaderAdd, loaderRemove } from "./components/loader.js";
 import { cardCreate, cardMoveImage, cardWhenClicked } from "./components/card.js";

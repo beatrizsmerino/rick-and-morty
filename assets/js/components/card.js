@@ -1,4 +1,4 @@
-import { firstUpperCase } from "../utils/first-upper-case.js";
+import { firstUpperCase } from "../utils/string.js";
 
 /**
  * @function cardCreateList

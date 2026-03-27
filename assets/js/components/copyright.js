@@ -1,4 +1,4 @@
-import { getCurrentYear } from "../utils/get-current-year.js";
+import { getCurrentYear } from "../utils/date.js";
 
 /**
  * @function addCurrentYear
