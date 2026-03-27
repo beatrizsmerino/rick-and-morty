@@ -135,9 +135,16 @@ module.exports = {
 		"lines-around-directive": 2,
 		"lines-between-class-members": 2,
 		"max-classes-per-file": 1,
-		"max-depth": 0,
+		"max-depth": 1,
 		"max-len": 0,
-		"max-lines": 0,
+		"max-lines": [
+			1,
+			{
+				"max": 500,
+				"skipBlankLines": true,
+				"skipComments": true,
+			},
+		],
 		"max-lines-per-function": [
 			1,
 			{
@@ -146,7 +153,12 @@ module.exports = {
 		],
 		"max-nested-callbacks": 2,
 		"max-params": 2,
-		"max-statements": 0,
+		"max-statements": [
+			1,
+			{
+				"max": 20,
+			},
+		],
 		"max-statements-per-line": [
 			2,
 			{
