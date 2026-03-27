@@ -104,7 +104,7 @@ export function paginationAdd(responseData) {
 /**
  * @function paginationRemove
  * @description Remove pagination
- * @see Used in: {@link functionAnonimAutoExecuted}, {@link filterAddContent}, {@link searchAdd}, {@link paginationAdd}
+ * @see Used in: {@link scripts.js}, {@link filterAddContent}, {@link searchAdd}, {@link paginationAdd}
  */
 export function paginationRemove() {
 	const pagination = document.getElementById("pagination");

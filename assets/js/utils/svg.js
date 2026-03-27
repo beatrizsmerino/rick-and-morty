@@ -2,7 +2,7 @@
  * @function svgMe
  * @description Converts an `<img>` tag, with a `.svg` extention and a class `svgMe`, into a `<svg>` tag.
  * @return {Object} Return the file svg
- * @see Used in: {@link functionAnonimAutoExecuted}
+ * @see Used in: {@link scripts.js}
  */
 export function svgMe() {
 	const images = document.querySelectorAll("img.svgMe");

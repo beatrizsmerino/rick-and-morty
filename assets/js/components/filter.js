@@ -58,7 +58,7 @@ function filterAdd(elementDom, responseData) {
  * @description Add class 'is-active' to the item of the navigation clicked.
  * @param {HTMLCollectionOf} item - filter list
  * @param {Element} thisActive - filter selected
- * @see Used in: {@link functionAnonimAutoExecuted}
+ * @see Used in: {@link scripts.js}
  */
 export function filterActive(item, thisActive) {
 	for (let index = 0; index < item.length; index++) {
@@ -178,7 +178,7 @@ function filterAddContent(elementDom, responseData) {
 /**
  * @function filterRemoveContent
  * @description Remove the selected filter content of the application content
- * @see Used in: {@link searchAdd}, {@link filterAddContent}, {@link paginationAdd}, {@link functionAnonimAutoExecuted}
+ * @see Used in: {@link searchAdd}, {@link filterAddContent}, {@link paginationAdd}, {@link scripts.js}
  */
 export function filterRemoveContent() {
 	const list = document.querySelectorAll(".list");

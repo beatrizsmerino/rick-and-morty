@@ -28,7 +28,7 @@ function adblockDisabled() {
  * @function adblockVerify
  * @description Verify if the user has installed the Adblock browser extension
  * @see Used inside: {@link adblockDetected} {@link adblockDisabled}
- * @see Used in: {@link functionAnonimAutoExecuted}
+ * @see Used in: {@link scripts.js}
  */
 export function adblockVerify() {
 	if (typeof blockAdBlock === "undefined") {

@@ -67,7 +67,7 @@ function searchGet(filterSelected) {
  * @description Add searcher
  * @param {Element} filterSelected - filter selected
  * @see Used inside: {@link searchCreate}, {@link searchGet}...
- * @see Used in: {@link functionAnonimAutoExecuted}
+ * @see Used in: {@link scripts.js}
  */
 export function searchAdd(filterSelected) {
 	searchCreate();
@@ -100,7 +100,7 @@ export function searchAdd(filterSelected) {
 /**
  * @function searchRemove
  * @description Remove searcher
- * @see Used in: {@link functionAnonimAutoExecuted}
+ * @see Used in: {@link scripts.js}
  */
 export function searchRemove() {
 	const search = document.getElementById("search");
