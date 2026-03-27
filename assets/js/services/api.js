@@ -1,3 +1,6 @@
+/**
+ * @module services/api
+ */
 import { appContent } from "../constants/dom.js";
 import { filterSetAction } from "../components/filter.js";
 import { loaderAdd, loaderRemove } from "../components/loader.js";

@@ -1,3 +1,6 @@
+/**
+ * @module components/search
+ */
 import { urlAPI } from "../constants/api.js";
 import { appContent } from "../constants/dom.js";
 import { delay } from "../utils/timer.js";

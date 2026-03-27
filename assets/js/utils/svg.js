@@ -1,4 +1,8 @@
 /**
+ * @module utils/svg
+ */
+
+/**
  * @function svgMe
  * @description Converts an `<img>` tag, with a `.svg` extention and a class `svgMe`, into a `<svg>` tag.
  * @return {Object} Return the file svg

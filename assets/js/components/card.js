@@ -1,3 +1,6 @@
+/**
+ * @module components/card
+ */
 import { firstUpperCase } from "../utils/string.js";
 
 /**

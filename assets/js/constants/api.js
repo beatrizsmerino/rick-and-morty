@@ -1,4 +1,8 @@
 /**
+ * @module constants/api
+ */
+
+/**
  * @const urlAPI
  * @description API route 'Rick and morty'
  * @type {String}

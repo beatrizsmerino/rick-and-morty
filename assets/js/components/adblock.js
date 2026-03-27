@@ -1,3 +1,6 @@
+/**
+ * @module components/adblock
+ */
 import { messageAlertAdd } from "./message.js";
 
 /**

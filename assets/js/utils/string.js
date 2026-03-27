@@ -1,4 +1,8 @@
 /**
+ * @module utils/string
+ */
+
+/**
  * @function firstUpperCase
  * @description Converts the first letter of a string to uppercase
  * @param {String} string - string with the this letter in lowercase

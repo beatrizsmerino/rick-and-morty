@@ -1,3 +1,6 @@
+/**
+ * @module components/pagination
+ */
 import { appContent } from "../constants/dom.js";
 import { apiAjaxHandler } from "../services/api.js";
 import { filterRemoveContent } from "./filter.js";

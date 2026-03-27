@@ -1,4 +1,8 @@
 /**
+ * @module utils/date
+ */
+
+/**
  * @function getCurrentYear
  * @description Get the current year
  * @return {Number}

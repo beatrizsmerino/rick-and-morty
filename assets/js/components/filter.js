@@ -1,3 +1,6 @@
+/**
+ * @module components/filter
+ */
 import { appContent } from "../constants/dom.js";
 import { cardCreate, cardMoveImage, cardWhenClicked } from "./card.js";
 import { paginationAdd, paginationRemove } from "./pagination.js";

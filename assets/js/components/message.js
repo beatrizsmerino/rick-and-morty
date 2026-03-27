@@ -1,3 +1,6 @@
+/**
+ * @module components/message
+ */
 import { appContent } from "../constants/dom.js";
 import { filterRemoveContent } from "./filter.js";
 import { paginationRemove } from "./pagination.js";

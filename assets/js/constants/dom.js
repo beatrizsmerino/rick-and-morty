@@ -1,4 +1,8 @@
 /**
+ * @module constants/dom
+ */
+
+/**
  * @var appButton
  * @description App button
  * @type {HTMLElement}

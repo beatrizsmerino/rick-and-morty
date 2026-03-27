@@ -1,3 +1,6 @@
+/**
+ * @module components/copyright
+ */
 import { getCurrentYear } from "../utils/date.js";
 
 /**

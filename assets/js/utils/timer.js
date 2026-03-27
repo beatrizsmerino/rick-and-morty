@@ -1,4 +1,8 @@
 /**
+ * @module utils/timer
+ */
+
+/**
  * @function delay
  * @description Executes a function after a given time
  * @param {Function} fn - function to execute

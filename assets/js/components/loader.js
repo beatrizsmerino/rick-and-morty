@@ -1,4 +1,8 @@
 /**
+ * @module components/loader
+ */
+
+/**
  * @function loaderCreate
  * @description Creation of a loading animation
  * @return {HTMLElement}
