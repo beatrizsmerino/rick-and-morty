@@ -602,11 +602,85 @@ function messageAlertAdd(messageName, messageText) {
 // ////////////////////////////////
 
 /**
+ * @function cardCreateList
+ * @description Create a list of items from an array or object
+ * @param {Array|Object} data - data to create list items from
+ * @return {HTMLElement} returns the ul element with li children
+ */
+function cardCreateList(data) {
+	const cardUlDom = document.createElement("ul");
+	cardUlDom.setAttribute("class", "card__list");
+
+	if (Array.isArray(data)) {
+		for (let index = 0; index < data.length; index++) {
+			const cardUlData = data[index];
+
+			const cardLiDom = document.createElement("li");
+			const cardLiTextDom = document.createTextNode(cardUlData);
+
+			cardLiDom.appendChild(cardLiTextDom);
+			cardUlDom.appendChild(cardLiDom);
+		}
+	} else {
+		for (const subKey in data) {
+			if (Object.hasOwn(data, subKey)) {
+				const cardUlData = data[subKey];
+
+				const cardLiDom = document.createElement("li");
+				const cardLiTextDom = document.createTextNode(cardUlData);
+
+				cardLiDom.appendChild(cardLiTextDom);
+				cardUlDom.appendChild(cardLiDom);
+			}
+		}
+	}
+
+	return cardUlDom;
+}
+
+/**
+ * @function cardCreateItem
+ * @description Create the content for a card data field
+ * @param {String} titleData - property name
+ * @param {String|Number|Array|Object} cardItemData - property value
+ * @return {HTMLElement} returns the card data div element
+ */
+function cardCreateItem(titleData, cardItemData) {
+	const cardItemDom = document.createElement("div");
+	cardItemDom.setAttribute("class", "card__data");
+	cardItemDom.setAttribute("data-type", titleData);
+
+	if (titleData !== "image") {
+		const cardParagraphDom = document.createElement("h4");
+		cardParagraphDom.setAttribute("class", "card__subtitle");
+		const cardParagraphTextDom = document.createTextNode(`${firstUpperCase(titleData)}: `);
+		cardParagraphDom.appendChild(cardParagraphTextDom);
+		cardItemDom.appendChild(cardParagraphDom);
+	} else {
+		const cardImageDom = document.createElement("img");
+		cardImageDom.setAttribute("src", cardItemData);
+		cardItemDom.appendChild(cardImageDom);
+	}
+
+	if (typeof cardItemData === "object") {
+		cardItemDom.appendChild(cardCreateList(cardItemData));
+	} else if (titleData !== "image") {
+		const cardParagraphDom = document.createElement("p");
+		const cardParagraphTextDom = document.createTextNode(cardItemData);
+
+		cardParagraphDom.appendChild(cardParagraphTextDom);
+		cardItemDom.appendChild(cardParagraphDom);
+	}
+
+	return cardItemDom;
+}
+
+/**
  * @function cardCreate
  * @description Create card with the data response
  * @param {Element} listCardsInner - DOM element that wraps up the card list
  * @param {object} responseData - response data of the ajax handler (json)
- * @see Used inside: {@link firstUpperCase}
+ * @see Used inside: {@link cardCreateItem}, {@link cardCreateList}, {@link firstUpperCase}
  * @see Used in: {@link filterAddContentResults}
  */
 function cardCreate(listCardsInner, responseData) {
@@ -629,68 +703,8 @@ function cardCreate(listCardsInner, responseData) {
 
 					// console.info(firstUpperCase(titleData) + ": " + cardItemData);
 
-					const cardItemDom = document.createElement("div");
-					cardItemDom.setAttribute("class", "card__data");
-					cardItemDom.setAttribute("data-type", titleData);
-
-					if (titleData !== "image") {
-						const cardParagraphDom = document.createElement("h4");
-						cardParagraphDom.setAttribute("class", "card__subtitle");
-						const cardParagraphTextDom = document.createTextNode(`${firstUpperCase(titleData)}: `);
-						cardParagraphDom.appendChild(cardParagraphTextDom);
-						cardItemDom.appendChild(cardParagraphDom);
-					} else {
-						const cardImageDom = document.createElement("img");
-						cardImageDom.setAttribute("src", cardItemData);
-						cardItemDom.appendChild(cardImageDom);
-					}
-
-					// console.assert(typeof cardItemData === "string" || typeof cardItemData === "number", cardItemData + " es un " + typeof cardItemData);
-
-					if (typeof cardItemData === "object") {
-						if (Array.isArray(cardItemData)) {
-							const cardUlDom = document.createElement("ul");
-							cardUlDom.setAttribute("class", "card__list");
-
-							for (let index = 0; index < cardItemData.length; index++) {
-								const cardUlData = cardItemData[index];
-
-								const cardLiDom = document.createElement("li");
-								const cardLiTextDom = document.createTextNode(cardUlData);
-
-								cardLiDom.appendChild(cardLiTextDom);
-								cardUlDom.appendChild(cardLiDom);
-							}
-
-							cardItemDom.appendChild(cardUlDom);
-						} else {
-							const cardUlDom = document.createElement("ul");
-							cardUlDom.setAttribute("class", "card__list");
-
-							for (const subKey in cardItemData) {
-								if (Object.hasOwn(cardItemData, subKey)) {
-									const cardUlData = cardItemData[subKey];
-
-									const cardLiDom = document.createElement("li");
-									const cardLiTextDom = document.createTextNode(cardUlData);
-
-									cardLiDom.appendChild(cardLiTextDom);
-									cardUlDom.appendChild(cardLiDom);
-								}
-							}
-
-							cardItemDom.appendChild(cardUlDom);
-						}
-					} else if (titleData !== "image") {
-						const cardParagraphDom = document.createElement("p");
-						const cardParagraphTextDom = document.createTextNode(cardItemData);
-
-						cardParagraphDom.appendChild(cardParagraphTextDom);
-						cardItemDom.appendChild(cardParagraphDom);
-					}
-
 					card.appendChild(cardButton);
-					card.appendChild(cardItemDom);
+					card.appendChild(cardCreateItem(titleData, cardItemData));
 				}
 			}
 
