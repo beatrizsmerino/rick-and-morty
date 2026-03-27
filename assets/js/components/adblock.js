@@ -3,7 +3,7 @@ import { messageAlertAdd } from "./message.js";
 /**
  * @function adblockDetected
  * @description Callback executed if adblock is installed
- * @see Used inside {@link messageAlertAdd}
+ * @see Used inside: {@link messageAlertAdd}
  * @see Used in: {@link adblockVerify}
  */
 function adblockDetected() {
@@ -27,7 +27,7 @@ function adblockDisabled() {
 /**
  * @function adblockVerify
  * @description Verify if the user has installed the Adblock browser extension
- * @see Used inside: {@link adblockDetected} {@link adblockDisabled}
+ * @see Used inside: {@link adblockDetected}, {@link adblockDisabled}
  * @see Used in: {@link scripts.js}
  */
 export function adblockVerify() {
