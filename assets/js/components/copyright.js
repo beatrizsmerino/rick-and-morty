@@ -11,6 +11,7 @@ import { getCurrentYear } from "../utils/date.js";
  */
 export function addCurrentYear() {
 	const copyrightYear = document.querySelector("#currentYear");
-
-	copyrightYear.innerHTML = getCurrentYear();
+	if (copyrightYear) {
+		copyrightYear.innerHTML = getCurrentYear();
+	}
 }
