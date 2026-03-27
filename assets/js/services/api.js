@@ -10,7 +10,7 @@ import { messageRemove, messageError404Add } from "../components/message.js";
  * @function apiAddLink
  * @description Add link of the API to the app content
  * @param {String} url - root of the API
- * @see Used in: {@link click}
+ * @see Used in: {@link scripts.js}
  */
 export function apiAddLink(url) {
 	const linkId = document.getElementById("linkApi");
@@ -33,7 +33,7 @@ export function apiAddLink(url) {
  * @param {String} url - root of the API
  * @param {String} action - name of the action to excute
  * @see Used inside: {@link loaderAdd}, {@link loaderRemove}, {@link filterSetAction}
- * @see Used in: {@link searchAdd}, {@link paginationAdd}, {@link click}
+ * @see Used in: {@link searchAdd}, {@link paginationAdd}, {@link scripts.js}
  */
 export function apiAjaxHandler(url, action) {
 	loaderAdd();

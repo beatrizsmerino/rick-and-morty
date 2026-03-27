@@ -136,7 +136,7 @@ function filterAddContent(elementDom, responseData) {
 	/**
 	 * @function filterAddAllContent
 	 * @description Insert the content
-	 * @see {@link filterFoundContent}
+	 * @see Used in: {@link filterFoundContent}
 	 */
 	function filterAddAllContent() {
 		list.appendChild(infoContent);

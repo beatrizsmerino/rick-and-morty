@@ -8,6 +8,7 @@ import { firstUpperCase } from "../utils/string.js";
  * @description Create a list of items from an array or object
  * @param {Array|Object} data - data to create list items from
  * @return {HTMLElement} returns the ul element with li children
+ * @see Used in: {@link cardCreateItem}
  */
 function cardCreateList(data) {
 	const cardUlDom = document.createElement("ul");
@@ -46,6 +47,8 @@ function cardCreateList(data) {
  * @param {String} titleData - property name
  * @param {String|Number|Array|Object} cardItemData - property value
  * @return {HTMLElement} returns the card data div element
+ * @see Used inside: {@link cardCreateList}
+ * @see Used in: {@link cardCreate}
  */
 function cardCreateItem(titleData, cardItemData) {
 	const cardItemDom = document.createElement("div");
@@ -163,7 +166,7 @@ function cardToggleView(item, thisView) {
  * @function cardWhenClicked
  * @description Event click in the card
  * @see Used inside: {@link cardToggleView}
- * @see Used in: {@link click}
+ * @see Used in: {@link scripts.js}
  */
 export function cardWhenClicked() {
 	const timerCard = setInterval(function() {
