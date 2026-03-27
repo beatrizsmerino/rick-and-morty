@@ -39,8 +39,29 @@ const appContent = document.getElementById("appContent");
 
 
 
-// AJAX HANDLER - FETCH
+// API
 // ////////////////////////////////
+
+/**
+ * @function apiAddLink
+ * @description Add link of the API to the app content
+ * @param {String} url - root of the API
+ * @see Used in: {@link click}
+ */
+function apiAddLink(url) {
+	const linkId = document.getElementById("linkApi");
+
+	if (!linkId) {
+		const link = document.createElement("a");
+		const linkText = document.createTextNode(url);
+
+		link.setAttribute("id", "linkApi");
+		link.setAttribute("href", url);
+		link.setAttribute("target", "_blank");
+		link.appendChild(linkText);
+		appContent.appendChild(link);
+	}
+}
 
 /**
  * @function apiAjaxHandler
@@ -118,27 +139,6 @@ function apiAjaxHandler(url, action) {
 
 // FILTER
 // ////////////////////////////////
-
-/**
- * @function apiAddLink
- * @description Add link of the API to the app content
- * @param {String} url - root of the API
- * @see Used in: {@link click}
- */
-function apiAddLink(url) {
-	const linkId = document.getElementById("linkApi");
-
-	if (!linkId) {
-		const link = document.createElement("a");
-		const linkText = document.createTextNode(url);
-
-		link.setAttribute("id", "linkApi");
-		link.setAttribute("href", url);
-		link.setAttribute("target", "_blank");
-		link.appendChild(linkText);
-		appContent.appendChild(link);
-	}
-}
 
 /**
  * @function filterSetAction
