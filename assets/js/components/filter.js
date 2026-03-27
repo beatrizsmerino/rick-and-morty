@@ -173,7 +173,12 @@ function filterAddContent(elementDom, responseData) {
 	}
 
 	const timer = setInterval(function() {
-		if (filterFoundContent()) {
+		try {
+			if (filterFoundContent()) {
+				clearInterval(timer);
+			}
+		} catch (error) {
+			console.error(error);
 			clearInterval(timer);
 		}
 	}, 100);
