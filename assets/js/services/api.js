@@ -67,9 +67,9 @@ export function apiAjaxHandler(url, action) {
 	 */
 	function handleResponse(response) {
 		const contentType = response.headers.get("content-type");
-		if (contentType.includes("application/json")) {
+		if (contentType && contentType.includes("application/json")) {
 			return handleJSONResponse(response);
-		} else if (contentType.includes("text/html")) {
+		} else if (contentType && contentType.includes("text/html")) {
 			return handleTextResponse(response);
 		}
 
