@@ -39,6 +39,9 @@ function paginationCreate(responseData) {
  */
 function paginationSetCounter(responseData) {
 	const buttonPrev = document.getElementById("buttonPrev");
+	if (!buttonPrev) {
+		return;
+	}
 
 	const paginationTotal = responseData.info.pages;
 	const paginationNext = responseData.info.next;
