@@ -31,7 +31,7 @@ const appButton = document.getElementById("appButton");
  * @var appContent
  * @description App content
  * @type {HTMLElement}
- * @see Used in: {@link filterSetAction}, {@link appContentAdd}, {@link filterRemoveContent}, {@link searchCreate}, {@link searchRemove}, {@link paginationCreate}, {@link paginationRemove}, {@link click}
+ * @see Used in: {@link filterSetAction}, {@link apiAddLink}, {@link filterRemoveContent}, {@link searchCreate}, {@link searchRemove}, {@link paginationCreate}, {@link paginationRemove}, {@link click}
  */
 const appContent = document.getElementById("appContent");
 
@@ -120,12 +120,12 @@ function ajaxHandler(url, action) {
 // ////////////////////////////////
 
 /**
- * @function appContentAdd
+ * @function apiAddLink
  * @description Add link of the API to the app content
  * @param {String} url - root of the API
  * @see Used in: {@link click}
  */
-function appContentAdd(url) {
+function apiAddLink(url) {
 	const linkId = document.getElementById("linkApi");
 
 	if (!linkId) {
@@ -703,11 +703,11 @@ function adblockVerify() {
  * @description Get API data
  * @event click
  * @type {Object}
- * @see Used inside: {@link appContentAdd}, {@link ajaxHandler}
+ * @see Used inside: {@link apiAddLink}, {@link ajaxHandler}
  */
 appButton.addEventListener("click", function() {
 	// alert("Get API data");
-	appContentAdd(urlAPI);
+	apiAddLink(urlAPI);
 	appContent.removeChild(document.getElementById("portal"));
 	ajaxHandler(urlAPI, "filterAdd");
 });
