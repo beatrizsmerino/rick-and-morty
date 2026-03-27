@@ -32,7 +32,6 @@ export function apiAddLink(url) {
  * @description API request
  * @param {String} url - root of the API
  * @param {String} action - name of the action to excute
- * @return {object}
  * @see Used inside: {@link loaderAdd}, {@link loaderRemove}, {@link filterSetAction}
  * @see Used in: {@link searchAdd}, {@link paginationAdd}, {@link click}
  */

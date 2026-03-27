@@ -147,6 +147,7 @@ function filterAddContent(elementDom, responseData) {
 	/**
 	 * @function filterFoundContent
 	 * @description Check if the contents of one filter are shown and before loading another one, delete it
+	 * @return {boolean} returns true if content was replaced, false otherwise
 	 * @see Used inside: {@link filterAddAllContent}, {@link filterRemoveContent}, {@link paginationRemove}, {@link paginationAdd}
 	 */
 	function filterFoundContent() {
