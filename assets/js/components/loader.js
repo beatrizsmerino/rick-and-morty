@@ -3,6 +3,13 @@
  */
 
 /**
+ * @var loaderTimer
+ * @description Timer ID for the loader interval, used to cancel it when `loaderRemove()` is called
+ * @type {number|null}
+ */
+let loaderTimer = null;
+
+/**
  * @function loaderCreate
  * @description Creation of a loading animation
  * @return {HTMLElement}
@@ -32,10 +39,11 @@ function loaderCreate() {
 export function loaderAdd() {
 	const loader = loaderCreate();
 	if (loader) {
-		const timer = setInterval(function() {
+		loaderTimer = setInterval(function() {
 			const loaderDom = document.getElementById("loader");
 			if (!loaderDom) {
-				clearInterval(timer);
+				clearInterval(loaderTimer);
+				loaderTimer = null;
 
 				// document.querySelectorAll(".page__item").style.filter = "blur(1rem)";
 				document.body.classList.add("is-searching");
@@ -51,6 +59,10 @@ export function loaderAdd() {
  * @see Used in: {@link apiAjaxHandler}
  */
 export function loaderRemove() {
+	if (loaderTimer) {
+		clearInterval(loaderTimer);
+		loaderTimer = null;
+	}
 	const loaderDom = document.getElementById("loader");
 	if (loaderDom) {
 		// document.querySelectorAll(".page__item").style.filter = "none";
