@@ -31,7 +31,7 @@ const appButton = document.getElementById("appButton");
  * @var appContent
  * @description App content
  * @type {HTMLElement}
- * @see Used in: {@link setAction}, {@link appContentAdd}, {@link filterRemoveContent}, {@link searchCreate}, {@link searchRemove}, {@link paginationCreate}, {@link paginationRemove}, {@link click}
+ * @see Used in: {@link filterSetAction}, {@link appContentAdd}, {@link filterRemoveContent}, {@link searchCreate}, {@link searchRemove}, {@link paginationCreate}, {@link paginationRemove}, {@link click}
  */
 const appContent = document.getElementById("appContent");
 
@@ -48,7 +48,7 @@ const appContent = document.getElementById("appContent");
  * @param {String} url - root of the API
  * @param {String} action - name of the action to excute
  * @return {object}
- * @see Used inside: {@link loaderAdd}, {@link loaderRemove}, {@link setAction}
+ * @see Used inside: {@link loaderAdd}, {@link loaderRemove}, {@link filterSetAction}
  * @see Used in: {@link searchAdd}, {@link paginationAdd}, {@link click}
  */
 function ajaxHandler(url, action) {
@@ -64,7 +64,7 @@ function ajaxHandler(url, action) {
 				clearInterval(timer);
 				loaderRemove();
 				messageRemove("messageError404");
-				setAction(action, appContent, data);
+				filterSetAction(action, appContent, data);
 			}, 3000);
 		}).
 		catch(function(error) {
@@ -141,7 +141,7 @@ function appContentAdd(url) {
 }
 
 /**
- * @function setAction
+ * @function filterSetAction
  * @description List of functions to choose from
  * @param {String} action - name of the action to excute
  * @param {HTMLElement} elementDom - DOM element where the response data is inserted
@@ -149,7 +149,7 @@ function appContentAdd(url) {
  * @see Used inside: {@link filterAdd}, {@link filterAddContent}
  * @see Used in: {@link ajaxHandler}
  */
-function setAction(action, elementDom, dataResponse) {
+function filterSetAction(action, elementDom, dataResponse) {
 	if (action === "filterAdd") {
 		filterAdd(elementDom, dataResponse);
 	} else if (action === "filterAddContent") {
@@ -162,7 +162,7 @@ function setAction(action, elementDom, dataResponse) {
  * @description Add navigation menu filtering through the 3 types of data (characters, locations and episodes) to the app content.
  * @param {HTMLElement} elementDom - DOM element where the filter is inserted
  * @param {Object} responseData - response data of the ajax handler (json)
- * @see Used in: {@link setAction}
+ * @see Used in: {@link filterSetAction}
  */
 function filterAdd(elementDom, responseData) {
 	const navId = document.getElementById("filter");
@@ -258,7 +258,7 @@ function filterAddContentResults(responseData) {
  * @param {HTMLElement} elementDom - DOM element where the filter content is inserted
  * @param {Object} responseData - response data of the ajax handler (json)
  * @see Used inside: {@link filterAddContentInfo}, {@link filterAddContentResults}...
- * @see Used in: {@link setAction}
+ * @see Used in: {@link filterSetAction}
  */
 function filterAddContent(elementDom, responseData) {
 	const list = document.createElement("section");
