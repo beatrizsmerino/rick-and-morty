@@ -5,6 +5,8 @@
  * @see {@link https://beatrizsmerino.github.io/rick-and-morty/}
  */
 
+import { delay } from "./utils/delay.js";
+
 /**
  * @const urlAPI
  * @description API route 'Rick and morty'
@@ -103,21 +105,6 @@ function firstUpperCase(string) {
 	return stringCapitalize;
 }
 
-/**
- * @function delay
- * @description Executes a function after a given time
- * @param {Function} fn - function to execute
- * @param {Number} ms - delay time in miliseconds
- * @see Used in: {@link searchAdd}
- */
-function delay(fn, ms) {
-	let timer = 0;
-
-	return function(...args) {
-		clearTimeout(timer);
-		timer = setTimeout(fn.bind(this, ...args), ms || 0);
-	};
-}
 
 /**
  * @function getCurrentYear
