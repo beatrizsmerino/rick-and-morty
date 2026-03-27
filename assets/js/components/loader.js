@@ -23,7 +23,7 @@ function loaderCreate() {
 /**
  * @function loaderAdd
  * @description Add loading animation
- * @see Used in: {@link ajaxHandler}
+ * @see Used in: {@link apiAjaxHandler}
  */
 export function loaderAdd() {
 	const loader = loaderCreate();
@@ -44,7 +44,7 @@ export function loaderAdd() {
 /**
  * @function loaderRemove
  * @description Remove loading animation
- * @see Used in: {@link ajaxHandler}
+ * @see Used in: {@link apiAjaxHandler}
  */
 export function loaderRemove() {
 	const loaderDom = document.getElementById("loader");

@@ -15,7 +15,7 @@ import { cardCreate, cardMoveImage, cardWhenClicked } from "./components/card.js
  * @const urlAPI
  * @description API route 'Rick and morty'
  * @type {String}
- * @see Used in: {@link ajaxHandler}
+ * @see Used in: {@link apiAjaxHandler}
  */
 const urlAPI = "https://rickandmortyapi.com/api/";
 
@@ -43,7 +43,7 @@ const appContent = document.getElementById("appContent");
 // ////////////////////////////////
 
 /**
- * @function ajaxHandler
+ * @function apiAjaxHandler
  * @description API request
  * @param {String} url - root of the API
  * @param {String} action - name of the action to excute
@@ -51,7 +51,7 @@ const appContent = document.getElementById("appContent");
  * @see Used inside: {@link loaderAdd}, {@link loaderRemove}, {@link filterSetAction}
  * @see Used in: {@link searchAdd}, {@link paginationAdd}, {@link click}
  */
-function ajaxHandler(url, action) {
+function apiAjaxHandler(url, action) {
 	loaderAdd();
 
 	fetch(url).
@@ -147,7 +147,7 @@ function apiAddLink(url) {
  * @param {HTMLElement} elementDom - DOM element where the response data is inserted
  * @param {Object} dataResponse - response data of the ajax handler (json)
  * @see Used inside: {@link filterAdd}, {@link filterAddContent}
- * @see Used in: {@link ajaxHandler}
+ * @see Used in: {@link apiAjaxHandler}
  */
 function filterSetAction(action, elementDom, dataResponse) {
 	if (action === "filterAdd") {
@@ -394,7 +394,7 @@ function messageCloseAdd() {
  * @function messageRemove
  * @description Remove the message component
  * @param {String} messageId - id of the message to remove
- * @see Used in: {@link ajaxHandler}
+ * @see Used in: {@link apiAjaxHandler}
  */
 function messageRemove(messageId) {
 	const messsage = document.getElementById(messageId);
@@ -409,7 +409,7 @@ function messageRemove(messageId) {
  * @function messageError404Add
  * @description Add message error 404 (search not found)
  * @see Used inside: {@link messageAdd}
- * @see Used in: {@link ajaxHandler}
+ * @see Used in: {@link apiAjaxHandler}
  */
 function messageError404Add() {
 	filterRemoveContent();
@@ -512,7 +512,7 @@ function searchAdd(filterSelected) {
 	 * @description Search by selected filter name when typing in the search engine input.
 	 * @event keyup
 	 * @type {Object}
-	 * @see Used inside: {@link delay}, {@link filterRemoveContent}, {@link paginationRemove}, {@link ajaxHandler}
+	 * @see Used inside: {@link delay}, {@link filterRemoveContent}, {@link paginationRemove}, {@link apiAjaxHandler}
 	 */
 	document.getElementById("searchInput").addEventListener(
 		"keyup",
@@ -521,7 +521,7 @@ function searchAdd(filterSelected) {
 
 			filterRemoveContent();
 			paginationRemove();
-			ajaxHandler(`${urlAPI + searchBy}/?name=${valueInput}`, "filterAddContent");
+			apiAjaxHandler(`${urlAPI + searchBy}/?name=${valueInput}`, "filterAddContent");
 
 			// console.log(this);
 			// console.log(this.value);
@@ -631,7 +631,7 @@ function paginationAdd(responseData) {
 		 * @description Remove/Add content and pagination by selecting the filter from the navigation menu.
 		 * @event click
 		 * @type {object}
-		 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link ajaxHandler}
+		 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link apiAjaxHandler}
 		 */
 		element.addEventListener("click", function() {
 			const url = this.getAttribute("data-url");
@@ -639,7 +639,7 @@ function paginationAdd(responseData) {
 			if (url !== "") {
 				filterRemoveContent();
 				paginationRemove();
-				ajaxHandler(url, "filterAddContent");
+				apiAjaxHandler(url, "filterAddContent");
 			}
 		});
 	}
@@ -703,13 +703,13 @@ function adblockVerify() {
  * @description Get API data
  * @event click
  * @type {Object}
- * @see Used inside: {@link apiAddLink}, {@link ajaxHandler}
+ * @see Used inside: {@link apiAddLink}, {@link apiAjaxHandler}
  */
 appButton.addEventListener("click", function() {
 	// alert("Get API data");
 	apiAddLink(urlAPI);
 	appContent.removeChild(document.getElementById("portal"));
-	ajaxHandler(urlAPI, "filterAdd");
+	apiAjaxHandler(urlAPI, "filterAdd");
 });
 
 /**
@@ -733,7 +733,7 @@ appButton.addEventListener("click", function() {
 				 * @description Remove / Add content and pagination when selecting the filter of the navigation menu.
 				 * @event click
 				 * @type {object}
-				 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link searchRemove}, {@link filterActive}, {@link searchAdd}, {@link ajaxHandler}
+				 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link searchRemove}, {@link filterActive}, {@link searchAdd}, {@link apiAjaxHandler}
 				 */
 				filterItem.addEventListener("click", function() {
 					filterRemoveContent();
@@ -742,7 +742,7 @@ appButton.addEventListener("click", function() {
 
 					filterActive(filterArray, this);
 					searchAdd(this);
-					ajaxHandler(this.getAttribute("data-url"), "filterAddContent");
+					apiAjaxHandler(this.getAttribute("data-url"), "filterAddContent");
 				});
 			}
 		}
