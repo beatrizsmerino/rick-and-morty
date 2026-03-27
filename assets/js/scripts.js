@@ -7,8 +7,8 @@
 
 import { delay } from "./utils/delay.js";
 import { firstUpperCase } from "./utils/first-upper-case.js";
-import { getCurrentYear } from "./utils/get-current-year.js";
 import { svgMe } from "./utils/svg-me.js";
+import { addCurrentYear } from "./components/copyright.js";
 
 /**
  * @const urlAPI
@@ -113,19 +113,6 @@ function ajaxHandler(url, action) {
 	}
 }
 
-// COPYRIGHT
-// ////////////////////////////////
-/**
- * @function addCurrentYear
- * @description Add the current year to the copyright
- * @see Used inside: {@link getCurrentYear}
- * @see Used in: {@link functionAnonimAutoExecuted}
- */
-function addCurrentYear() {
-	const copyrightYear = document.querySelector("#currentYear");
-
-	copyrightYear.innerHTML = getCurrentYear();
-}
 
 // LOADER
 // ////////////////////////////////
