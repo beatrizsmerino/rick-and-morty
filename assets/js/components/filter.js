@@ -155,7 +155,7 @@ function filterAddContent(elementDom, responseData) {
 		if (typeof element !== "undefined") {
 			// console.dir(element);
 			// console.log(element.length);
-			if (element.length == 0) {
+			if (element.length === 0) {
 				filterAddAllContent();
 				paginationAdd(responseData);
 

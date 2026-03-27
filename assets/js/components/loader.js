@@ -53,7 +53,7 @@ export function loaderAdd() {
 export function loaderRemove() {
 	const loaderDom = document.getElementById("loader");
 	if (loaderDom) {
-		// scripts.jsdocument.querySelectorAll(".page__item").style.filter = "none";
+		// document.querySelectorAll(".page__item").style.filter = "none";
 		document.body.classList.remove("is-searching");
 		document.body.removeChild(loaderDom);
 	}

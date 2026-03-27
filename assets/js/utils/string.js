@@ -10,8 +10,8 @@
  * @see Used in: {@link cardCreate}
  */
 export function firstUpperCase(string) {
-	const stingLowerCase = string.toLowerCase();
-	const stringCapitalize = stingLowerCase.charAt(0).toUpperCase() + stingLowerCase.slice(1);
+	const stringLowerCase = string.toLowerCase();
+	const stringCapitalize = stringLowerCase.charAt(0).toUpperCase() + stringLowerCase.slice(1);
 
 	return stringCapitalize;
 }

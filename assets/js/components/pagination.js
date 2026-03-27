@@ -45,7 +45,7 @@ function paginationSetCounter(responseData) {
 	let paginationNow = 0;
 
 	// console.log(paginationNext);
-	if (paginationNext == "") {
+	if (paginationNext === "") {
 		paginationNow = paginationTotal;
 	} else {
 		const paginationNextUrl = new URL(paginationNext);
