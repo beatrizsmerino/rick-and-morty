@@ -7,6 +7,7 @@
 
 import { delay } from "./utils/delay.js";
 import { firstUpperCase } from "./utils/first-upper-case.js";
+import { getCurrentYear } from "./utils/get-current-year.js";
 
 /**
  * @const urlAPI
@@ -94,17 +95,6 @@ function svgMe() {
 
 
 
-/**
- * @function getCurrentYear
- * @description Get the current year
- * @return {Number}
- * @see Used in: {@link addCurrentYear}
- */
-function getCurrentYear() {
-	const year = new Date().getFullYear();
-
-	return year;
-}
 
 // AJAX HANDLER - FETCH
 // ////////////////////////////////
