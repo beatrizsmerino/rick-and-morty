@@ -48,7 +48,7 @@ appButton.addEventListener("click", function() {
 				/**
 				 * @description Remove / Add content and pagination when selecting the filter of the navigation menu.
 				 * @event click
-				 * @type {object}
+				 * @type {Object}
 				 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link searchRemove}, {@link filterActive}, {@link searchAdd}, {@link apiAjaxHandler}
 				 */
 				filterItem.addEventListener("click", function() {

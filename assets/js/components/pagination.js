@@ -89,7 +89,7 @@ export function paginationAdd(responseData) {
 		/**
 		 * @description Remove/Add content and pagination by selecting the filter from the navigation menu.
 		 * @event click
-		 * @type {object}
+		 * @type {Object}
 		 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link apiAjaxHandler}
 		 */
 		element.addEventListener("click", function() {

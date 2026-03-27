@@ -148,7 +148,7 @@ export function cardMoveImage() {
 /**
  * @function cardToggleView
  * @description See more card info
- * @param {HTMLCollectionOf} item - list of cards
+ * @param {HTMLCollection} item - list of cards
  * @param {Element} thisView - card selected
  * @see Used in: {@link cardWhenClicked}
  */
@@ -180,7 +180,7 @@ export function cardWhenClicked() {
 				/**
 				 * @description View more card info when click it.
 				 * @event click
-				 * @type {object}
+				 * @type {Object}
 				 * @see Used inside: {@link cardToggleView}
 				 */
 				element.addEventListener("click", function() {

@@ -5,7 +5,7 @@
 /**
  * @function firstUpperCase
  * @description Converts the first letter of a string to uppercase
- * @param {String} string - string with the this letter in lowercase
+ * @param {String} string - string with the first letter in lowercase
  * @return {String} returns the same modified string
  * @see Used in: {@link cardCreate}
  */

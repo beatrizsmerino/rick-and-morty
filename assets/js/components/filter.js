@@ -8,7 +8,7 @@ import { paginationAdd, paginationRemove } from "./pagination.js";
 /**
  * @function filterSetAction
  * @description List of functions to choose from
- * @param {String} action - name of the action to excute
+ * @param {String} action - name of the action to execute
  * @param {HTMLElement} elementDom - DOM element where the response data is inserted
  * @param {Object} dataResponse - response data of the ajax handler (json)
  * @see Used inside: {@link filterAdd}, {@link filterAddContent}
@@ -59,7 +59,7 @@ function filterAdd(elementDom, responseData) {
 /**
  * @function filterActive
  * @description Add class 'is-active' to the item of the navigation clicked.
- * @param {HTMLCollectionOf} item - filter list
+ * @param {HTMLCollection} item - filter list
  * @param {Element} thisActive - filter selected
  * @see Used in: {@link scripts.js}
  */

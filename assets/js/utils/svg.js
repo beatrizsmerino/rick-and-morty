@@ -4,7 +4,7 @@
 
 /**
  * @function svgMe
- * @description Converts an `<img>` tag, with a `.svg` extention and a class `svgMe`, into a `<svg>` tag.
+ * @description Converts an `<img>` tag, with a `.svg` extension and a class `svgMe`, into a `<svg>` tag.
  * @see Used in: {@link scripts.js}
  */
 export function svgMe() {
