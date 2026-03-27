@@ -19,12 +19,12 @@ function paginationCreate(responseData) {
 	const buttonNext = document.createElement("div");
 	buttonNext.setAttribute("class", "pagination__button icon-chevron-right");
 	buttonNext.setAttribute("id", "buttonNext");
-	buttonNext.setAttribute("data-url", responseData.info.next);
+	buttonNext.setAttribute("data-url", responseData.info.next || "");
 
 	const buttonPrev = document.createElement("div");
 	buttonPrev.setAttribute("class", "pagination__button icon-chevron-left");
 	buttonPrev.setAttribute("id", "buttonPrev");
-	buttonPrev.setAttribute("data-url", responseData.info.prev);
+	buttonPrev.setAttribute("data-url", responseData.info.prev || "");
 
 	pagination.appendChild(buttonPrev);
 	pagination.appendChild(buttonNext);
