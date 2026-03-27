@@ -24,7 +24,10 @@ import { searchAdd, searchRemove } from "./components/search.js";
 appButton.addEventListener("click", function() {
 	// alert("Get API data");
 	apiAddLink(urlAPI);
-	appContent.removeChild(document.getElementById("portal"));
+	const portal = document.getElementById("portal");
+	if (portal) {
+		appContent.removeChild(portal);
+	}
 	apiAjaxHandler(urlAPI, "filterAdd");
 });
 
