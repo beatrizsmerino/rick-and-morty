@@ -28,6 +28,7 @@ module.exports = {
 	],
 	"root": true,
 	"rules": {
+		"jsdoc/reject-function-type": 0,
 		"accessor-pairs": 2,
 		"array-bracket-newline": [
 			2,

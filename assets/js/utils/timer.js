@@ -5,9 +5,9 @@
 /**
  * @function delay
  * @description Executes a function after a given time
- * @param {function} fn - function to execute
+ * @param {Function} fn - function to execute
  * @param {number} ms - delay time in milliseconds
- * @returns {function} returns the throttled wrapper function
+ * @returns {Function} returns the throttled wrapper function
  * @see Used in: {@link searchAdd}
  */
 export function delay(fn, ms) {
