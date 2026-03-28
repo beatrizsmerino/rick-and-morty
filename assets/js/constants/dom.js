@@ -3,7 +3,7 @@
  */
 
 /**
- * @const appButton
+ * @constant appButton
  * @description App button
  * @type {HTMLElement}
  * @see {@link module:scripts|scripts.js}
@@ -11,7 +11,7 @@
 export const appButton = document.getElementById("appButton");
 
 /**
- * @const appContent
+ * @constant appContent
  * @description App content
  * @type {HTMLElement}
  * @see {@link module:components/filter~filterSetAction|filterSetAction}
