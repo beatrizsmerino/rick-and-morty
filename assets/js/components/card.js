@@ -130,7 +130,7 @@ export function cardCreate(listCardsInner, responseData) {
 export function cardMoveImage() {
 	const timer = setInterval(function() {
 		const cardData = document.querySelectorAll(".card__data");
-		if (cardData) {
+		if (cardData.length > 0) {
 			clearInterval(timer);
 			const card = document.querySelectorAll(".card");
 			for (let index = 0; index < card.length; index++) {

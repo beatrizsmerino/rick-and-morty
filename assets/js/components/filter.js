@@ -152,24 +152,21 @@ function filterAddContent(elementDom, responseData) {
 	 */
 	function filterFoundContent() {
 		const element = document.querySelectorAll(".list");
-		if (typeof element !== "undefined") {
-			// console.dir(element);
-			// console.log(element.length);
-			if (element.length === 0) {
-				filterAddAllContent();
-				paginationAdd(responseData);
 
-				return false;
-			}
-			filterRemoveContent();
-			paginationRemove();
+		// console.dir(element);
+		// console.log(element.length);
+		if (element.length === 0) {
 			filterAddAllContent();
 			paginationAdd(responseData);
 
-			return true;
+			return false;
 		}
+		filterRemoveContent();
+		paginationRemove();
+		filterAddAllContent();
+		paginationAdd(responseData);
 
-		return false;
+		return true;
 	}
 
 	const timer = setInterval(function() {

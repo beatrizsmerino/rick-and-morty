@@ -16,6 +16,9 @@ export function svgMe() {
 		const imgId = image.getAttribute("id");
 		const imgClass = image.getAttribute("class");
 		const imgUrl = image.getAttribute("src");
+		if (!imgUrl) {
+			return;
+		}
 
 		const request = new XMLHttpRequest();
 		request.onreadystatechange = function() {
@@ -29,17 +32,20 @@ export function svgMe() {
 
 		function callback(requestXML) {
 			const imgSvg = requestXML.querySelector("svg");
+			if (!imgSvg) {
+				return;
+			}
 
 			// console.info("data type of 'data' -> ", typeof requestXML);
 			// console.info("'data' -> ", requestXML);
 			// console.info("images with svgMe -> ", imgSvg);
 
-			if (typeof imgId !== "undefined") {
+			if (imgId) {
 				// console.info(imgId);
 				imgSvg.setAttribute("id", imgId);
 			}
 
-			if (typeof imgClass !== "undefined") {
+			if (imgClass) {
 				// console.info(imgClass);
 				imgSvg.setAttribute("class", imgClass);
 				imgSvg.classList.add("svgMe--replaced");

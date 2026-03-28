@@ -93,7 +93,9 @@ export function messageError404Add() {
 	paginationRemove();
 
 	const templateMessage = messageAdd("messageError404", "message-error404", "Error 404.</br> Search not found");
-	appContent.appendChild(templateMessage);
+	if (templateMessage) {
+		appContent.appendChild(templateMessage);
+	}
 }
 
 /**
@@ -106,8 +108,10 @@ export function messageError404Add() {
 export function messageAlertAdd(messageName, messageText) {
 	const messageId = `messageAlert${messageName}`;
 	const templateMessage = messageAdd(messageId, "message-alert", messageText);
-	document.body.appendChild(templateMessage);
-	document.querySelector(`#${messageId} .message__button-close`).addEventListener("click", function() {
-		messageRemove(messageId);
-	});
+	if (templateMessage) {
+		document.body.appendChild(templateMessage);
+		document.querySelector(`#${messageId} .message__button-close`).addEventListener("click", function() {
+			messageRemove(messageId);
+		});
+	}
 }
