@@ -8,7 +8,7 @@ import { filterRemoveContent } from "./filter.js";
 /**
  * @function paginationCreate
  * @description Create pagination
- * @param {Object} responseData - response data of the ajax handler (json)
+ * @param {object} responseData - response data of the ajax handler (json)
  * @see {@link module:components/pagination~paginationAdd|paginationAdd}
  */
 function paginationCreate(responseData) {
@@ -34,7 +34,7 @@ function paginationCreate(responseData) {
 /**
  * @function paginationSetCounter
  * @description Create counter pagination
- * @param {Object} responseData - response data of the ajax handler (json)
+ * @param {object} responseData - response data of the ajax handler (json)
  * @see {@link module:components/pagination~paginationAdd|paginationAdd}
  */
 function paginationSetCounter(responseData) {
@@ -77,7 +77,7 @@ function paginationSetCounter(responseData) {
 /**
  * @function paginationAdd
  * @description Add pagination
- * @param {Object} responseData - response data of the ajax handler (json)
+ * @param {object} responseData - response data of the ajax handler (json)
  * @see {@link module:components/pagination~paginationCreate|paginationCreate}
  * @see {@link module:components/pagination~paginationSetCounter|paginationSetCounter}
  * @see {@link module:components/filter~filterFoundContent|filterFoundContent}
@@ -93,7 +93,7 @@ export function paginationAdd(responseData) {
 		/**
 		 * @description Remove/Add content and pagination by selecting the filter from the navigation menu.
 		 * @event click
-		 * @type {Object}
+		 * @type {object}
 		 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
 		 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
 		 * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}

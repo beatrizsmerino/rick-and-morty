@@ -37,7 +37,7 @@ function searchCreate() {
  * @function searchGet
  * @description Get the active filter to find it.
  * @param {Element} filterSelected - filter selected
- * @return {String} returns the search category name
+ * @return {string} returns the search category name
  * @see {@link module:components/search~searchAdd|searchAdd}
  */
 function searchGet(filterSelected) {
@@ -82,7 +82,7 @@ export function searchAdd(filterSelected) {
 	/**
 	 * @description Search by selected filter name when typing in the search engine input.
 	 * @event keyup
-	 * @type {Object}
+	 * @type {object}
 	 * @see {@link module:utils/timer~delay|delay}
 	 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
 	 * @see {@link module:components/pagination~paginationRemove|paginationRemove}

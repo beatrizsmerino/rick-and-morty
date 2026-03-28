@@ -8,9 +8,9 @@ import { paginationRemove } from "./pagination.js";
 /**
  * @function messageAdd
  * @description Create the message component
- * @param {String} messageId - Id for events js
- * @param {String} messageClass - Class css with modifier BEM of the message
- * @param {String} messageText - Text of the message
+ * @param {string} messageId - Id for events js
+ * @param {string} messageClass - Class css with modifier BEM of the message
+ * @param {string} messageText - Text of the message
  * @return {HTMLElement|null} returns the message element or null if already exists
  * @see {@link module:components/message~messageCloseAdd|messageCloseAdd}
  * @see {@link module:components/message~messageError404Add|messageError404Add}
@@ -71,7 +71,7 @@ function messageCloseAdd() {
 /**
  * @function messageRemove
  * @description Remove the message component
- * @param {String} messageId - id of the message to remove
+ * @param {string} messageId - id of the message to remove
  * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
 export function messageRemove(messageId) {
@@ -102,8 +102,8 @@ export function messageError404Add() {
 /**
  * @function messageAlertAdd
  * @description Create a alert personalized
- * @param {String} messageName - Name of message in camellCase
- * @param {String} messageText - Text of message
+ * @param {string} messageName - Name of message in camellCase
+ * @param {string} messageText - Text of message
  * @see {@link module:components/message~messageAdd|messageAdd}
  * @see {@link module:components/message~messageRemove|messageRemove}
  */

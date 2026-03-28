@@ -8,9 +8,9 @@ import { paginationAdd, paginationRemove } from "./pagination.js";
 /**
  * @function filterSetAction
  * @description List of functions to choose from
- * @param {String} action - name of the action to execute
+ * @param {string} action - name of the action to execute
  * @param {HTMLElement} elementDom - DOM element where the response data is inserted
- * @param {Object} dataResponse - response data of the ajax handler (json)
+ * @param {object} dataResponse - response data of the ajax handler (json)
  * @see {@link module:components/filter~filterAdd|filterAdd}
  * @see {@link module:components/filter~filterAddContent|filterAddContent}
  * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
@@ -27,7 +27,7 @@ export function filterSetAction(action, elementDom, dataResponse) {
  * @function filterAdd
  * @description Add navigation menu filtering through the 3 types of data (characters, locations and episodes) to the app content.
  * @param {HTMLElement} elementDom - DOM element where the filter is inserted
- * @param {Object} responseData - response data of the ajax handler (json)
+ * @param {object} responseData - response data of the ajax handler (json)
  * @see {@link module:components/filter~filterSetAction|filterSetAction}
  */
 function filterAdd(elementDom, responseData) {
@@ -78,7 +78,7 @@ export function filterActive(item, thisActive) {
 /**
  * @function filterAddContentInfo
  * @description Insert information to the content with the number of results of the request
- * @param {Object} responseData - response data of the ajax handler (json)
+ * @param {object} responseData - response data of the ajax handler (json)
  * @return {Element} returns the info content element
  * @see {@link module:components/filter~filterAddContent|filterAddContent}
  */
@@ -94,7 +94,7 @@ function filterAddContentInfo(responseData) {
 /**
  * @function filterAddContentResults
  * @description Insert results to the content of the request
- * @param {Object} responseData - response data of the ajax handler (json)
+ * @param {object} responseData - response data of the ajax handler (json)
  * @return {Element} returns the results content element
  * @see {@link module:components/card~cardCreate|cardCreate}
  * @see {@link module:components/card~cardMoveImage|cardMoveImage}
@@ -124,7 +124,7 @@ function filterAddContentResults(responseData) {
  * @function filterAddContent
  * @description Add the filter content application
  * @param {HTMLElement} elementDom - DOM element where the filter content is inserted
- * @param {Object} responseData - response data of the ajax handler (json)
+ * @param {object} responseData - response data of the ajax handler (json)
  * @see {@link module:components/filter~filterAddContentInfo|filterAddContentInfo}
  * @see {@link module:components/filter~filterAddContentResults|filterAddContentResults}
  * @see {@link module:components/filter~filterSetAction|filterSetAction}

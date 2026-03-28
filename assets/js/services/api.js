@@ -9,7 +9,7 @@ import { messageRemove, messageError404Add } from "../components/message.js";
 /**
  * @function apiAddLink
  * @description Add link of the API to the app content
- * @param {String} url - root of the API
+ * @param {string} url - root of the API
  * @see {@link module:scripts|scripts.js}
  */
 export function apiAddLink(url) {
@@ -30,8 +30,8 @@ export function apiAddLink(url) {
 /**
  * @function apiAjaxHandler
  * @description API request
- * @param {String} url - root of the API
- * @param {String} action - name of the action to execute
+ * @param {string} url - root of the API
+ * @param {string} action - name of the action to execute
  * @see {@link module:components/loader~loaderAdd|loaderAdd}
  * @see {@link module:components/loader~loaderRemove|loaderRemove}
  * @see {@link module:components/filter~filterSetAction|filterSetAction}

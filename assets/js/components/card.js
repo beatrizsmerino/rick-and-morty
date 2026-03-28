@@ -6,7 +6,7 @@ import { firstUpperCase } from "../utils/string.js";
 /**
  * @function cardCreateList
  * @description Create a list of items from an array or object
- * @param {Array|Object} data - data to create list items from
+ * @param {Array|object} data - data to create list items from
  * @return {HTMLElement} returns the ul element with li children
  * @see {@link module:components/card~cardCreateItem|cardCreateItem}
  */
@@ -44,8 +44,8 @@ function cardCreateList(data) {
 /**
  * @function cardCreateItem
  * @description Create the content for a card data field
- * @param {String} titleData - property name
- * @param {String|Number|Array|Object} cardItemData - property value
+ * @param {string} titleData - property name
+ * @param {string|number|Array|object} cardItemData - property value
  * @return {HTMLElement} returns the card data div element
  * @see {@link module:components/card~cardCreateList|cardCreateList}
  * @see {@link module:components/card~cardCreate|cardCreate}
@@ -182,7 +182,7 @@ export function cardWhenClicked() {
 				/**
 				 * @description View more card info when click it.
 				 * @event click
-				 * @type {Object}
+				 * @type {object}
 				 * @see {@link module:components/card~cardToggleView|cardToggleView}
 				 */
 				element.addEventListener("click", function() {

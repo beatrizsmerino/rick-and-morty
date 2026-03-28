@@ -5,8 +5,8 @@
 /**
  * @function firstUpperCase
  * @description Converts the first letter of a string to uppercase
- * @param {String} string - string with the first letter in lowercase
- * @return {String} returns the same modified string
+ * @param {string} string - string with the first letter in lowercase
+ * @return {string} returns the same modified string
  * @see {@link module:components/card~cardCreate|cardCreate}
  */
 export function firstUpperCase(string) {

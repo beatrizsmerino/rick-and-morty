@@ -19,7 +19,7 @@ import { searchAdd, searchRemove } from "./components/search.js";
 /**
  * @description Get API data
  * @event click
- * @type {Object}
+ * @type {object}
  * @see {@link module:services/api~apiAddLink|apiAddLink}
  * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
@@ -53,7 +53,7 @@ appButton.addEventListener("click", function() {
 				/**
 				 * @description Remove / Add content and pagination when selecting the filter of the navigation menu.
 				 * @event click
-				 * @type {Object}
+				 * @type {object}
 				 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
 				 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
 				 * @see {@link module:components/search~searchRemove|searchRemove}
