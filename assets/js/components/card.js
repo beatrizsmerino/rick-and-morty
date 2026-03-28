@@ -7,7 +7,7 @@ import { firstUpperCase } from "../utils/string.js";
  * @function cardCreateList
  * @description Create a list of items from an array or object
  * @param {Array|object} data - data to create list items from
- * @return {HTMLElement} returns the ul element with li children
+ * @returns {HTMLElement} returns the ul element with li children
  * @see {@link module:components/card~cardCreateItem|cardCreateItem}
  */
 function cardCreateList(data) {
@@ -46,7 +46,7 @@ function cardCreateList(data) {
  * @description Create the content for a card data field
  * @param {string} titleData - property name
  * @param {string|number|Array|object} cardItemData - property value
- * @return {HTMLElement} returns the card data div element
+ * @returns {HTMLElement} returns the card data div element
  * @see {@link module:components/card~cardCreateList|cardCreateList}
  * @see {@link module:components/card~cardCreate|cardCreate}
  */

@@ -11,7 +11,7 @@ import { paginationRemove } from "./pagination.js";
  * @param {string} messageId - Id for events js
  * @param {string} messageClass - Class css with modifier BEM of the message
  * @param {string} messageText - Text of the message
- * @return {HTMLElement|null} returns the message element or null if already exists
+ * @returns {HTMLElement|null} returns the message element or null if already exists
  * @see {@link module:components/message~messageCloseAdd|messageCloseAdd}
  * @see {@link module:components/message~messageError404Add|messageError404Add}
  * @see {@link module:components/message~messageAlertAdd|messageAlertAdd}
@@ -58,7 +58,7 @@ export function messageAdd(messageId, messageClass, messageText) {
 /**
  * @function messageCloseAdd
  * @description Create a button for remove the message
- * @return {HTMLElement} returns the close button element
+ * @returns {HTMLElement} returns the close button element
  * @see {@link module:components/message~messageAlertAdd|messageAlertAdd}
  */
 function messageCloseAdd() {

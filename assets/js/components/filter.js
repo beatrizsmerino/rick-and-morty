@@ -79,7 +79,7 @@ export function filterActive(item, thisActive) {
  * @function filterAddContentInfo
  * @description Insert information to the content with the number of results of the request
  * @param {object} responseData - response data of the ajax handler (json)
- * @return {Element} returns the info content element
+ * @returns {Element} returns the info content element
  * @see {@link module:components/filter~filterAddContent|filterAddContent}
  */
 function filterAddContentInfo(responseData) {
@@ -95,7 +95,7 @@ function filterAddContentInfo(responseData) {
  * @function filterAddContentResults
  * @description Insert results to the content of the request
  * @param {object} responseData - response data of the ajax handler (json)
- * @return {Element} returns the results content element
+ * @returns {Element} returns the results content element
  * @see {@link module:components/card~cardCreate|cardCreate}
  * @see {@link module:components/card~cardMoveImage|cardMoveImage}
  * @see {@link module:components/card~cardWhenClicked|cardWhenClicked}
@@ -151,7 +151,7 @@ function filterAddContent(elementDom, responseData) {
 	/**
 	 * @function filterFoundContent
 	 * @description Check if the contents of one filter are shown and before loading another one, delete it
-	 * @return {boolean} returns true if content was replaced, false otherwise
+	 * @returns {boolean} returns true if content was replaced, false otherwise
 	 * @see {@link module:components/filter~filterAddAllContent|filterAddAllContent}
 	 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
 	 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
