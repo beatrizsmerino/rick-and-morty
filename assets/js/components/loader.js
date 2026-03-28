@@ -3,7 +3,7 @@
  */
 
 /**
- * @var loaderTimer
+ * @member loaderTimer
  * @description Timer ID for the loader interval, used to cancel it when `loaderRemove()` is called
  * @type {number|null}
  */
