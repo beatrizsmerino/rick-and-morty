@@ -1,11 +1,7 @@
 module.exports = {
 	"extends": [
 		"stylelint-config-standard",
-		"stylelint-config-sass-guidelines",
 		"stylelint-config-property-sort-order-smacss",
-	],
-	"plugins": [
-		"stylelint-scss",
 	],
 	"rules": {
 		"annotation-no-unknown": [
@@ -126,10 +122,6 @@ module.exports = {
 				],
 			},
 		],
-		"scss/at-rule-no-unknown": true,
-		"scss/declaration-property-value-no-unknown": true,
-		"scss/function-no-unknown": true,
-		"scss/no-global-function-names": null,
 		"selector-class-pattern": [
 			"^([a-z]+[a-z0-9]*)(-[a-z0-9]+)*(__[a-z]+[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z]+[a-z0-9]+(-[a-z0-9]+)*)?$",
 			{
@@ -175,14 +167,4 @@ module.exports = {
 		"@stylistic/indentation": "tab",
 		"@stylistic/string-quotes": "double",
 	},
-	"overrides": [
-		{
-			"files": [
-				"src/assets/scss/abstracts/mixins/_abstracts-mixins-media.scss",
-			],
-			"rules": {
-				"media-query-no-invalid": null,
-			},
-		},
-	],
 };
