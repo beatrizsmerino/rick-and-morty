@@ -5,7 +5,7 @@
 /**
  * @function getCurrentYear
  * @description Get the current year
- * @return {Number}
+ * @return {Number} returns the current year
  * @see Used in: {@link addCurrentYear}
  */
 export function getCurrentYear() {

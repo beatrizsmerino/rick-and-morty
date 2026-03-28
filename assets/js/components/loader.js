@@ -12,7 +12,7 @@ let loaderTimer = null;
 /**
  * @function loaderCreate
  * @description Creation of a loading animation
- * @return {HTMLElement}
+ * @return {HTMLElement} returns the loader element
  * @see Used in: {@link loaderAdd}
  */
 function loaderCreate() {

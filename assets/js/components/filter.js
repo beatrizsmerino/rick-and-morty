@@ -78,7 +78,7 @@ export function filterActive(item, thisActive) {
  * @function filterAddContentInfo
  * @description Insert information to the content with the number of results of the request
  * @param {Object} responseData - response data of the ajax handler (json)
- * @return {Element}
+ * @return {Element} returns the info content element
  * @see Used in: {@link filterAddContent}
  */
 function filterAddContentInfo(responseData) {
@@ -94,7 +94,7 @@ function filterAddContentInfo(responseData) {
  * @function filterAddContentResults
  * @description Insert results to the content of the request
  * @param {Object} responseData - response data of the ajax handler (json)
- * @return {Element}
+ * @return {Element} returns the results content element
  * @see Used inside: {@link cardCreate}, {@link cardMoveImage}, {@link cardWhenClicked}
  * @see Used in: {@link filterAddContent}
  */
