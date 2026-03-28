@@ -12,8 +12,9 @@ import { paginationRemove } from "./pagination.js";
  * @param {String} messageClass - Class css with modifier BEM of the message
  * @param {String} messageText - Text of the message
  * @return {HTMLElement|null} returns the message element or null if already exists
- * @see Used inside: {@link messageCloseAdd}
- * @see Used in: {@link messageError404Add}, {@link messageAlertAdd}
+ * @see {@link module:components/message~messageCloseAdd|messageCloseAdd}
+ * @see {@link module:components/message~messageError404Add|messageError404Add}
+ * @see {@link module:components/message~messageAlertAdd|messageAlertAdd}
  */
 export function messageAdd(messageId, messageClass, messageText) {
 	const messageDom = document.getElementById(messageId);
@@ -58,7 +59,7 @@ export function messageAdd(messageId, messageClass, messageText) {
  * @function messageCloseAdd
  * @description Create a button for remove the message
  * @return {HTMLElement} returns the close button element
- * @see Used in: {@link messageAlertAdd}
+ * @see {@link module:components/message~messageAlertAdd|messageAlertAdd}
  */
 function messageCloseAdd() {
 	const buttonDom = document.createElement("button");
@@ -71,7 +72,7 @@ function messageCloseAdd() {
  * @function messageRemove
  * @description Remove the message component
  * @param {String} messageId - id of the message to remove
- * @see Used in: {@link apiAjaxHandler}
+ * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
 export function messageRemove(messageId) {
 	const message = document.getElementById(messageId);
@@ -85,8 +86,8 @@ export function messageRemove(messageId) {
 /**
  * @function messageError404Add
  * @description Add message error 404 (search not found)
- * @see Used inside: {@link messageAdd}
- * @see Used in: {@link apiAjaxHandler}
+ * @see {@link module:components/message~messageAdd|messageAdd}
+ * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
 export function messageError404Add() {
 	filterRemoveContent();
@@ -103,7 +104,8 @@ export function messageError404Add() {
  * @description Create a alert personalized
  * @param {String} messageName - Name of message in camellCase
  * @param {String} messageText - Text of message
- * @see Used inside: {@link messageAdd}, {@link messageRemove}
+ * @see {@link module:components/message~messageAdd|messageAdd}
+ * @see {@link module:components/message~messageRemove|messageRemove}
  */
 export function messageAlertAdd(messageName, messageText) {
 	const messageId = `messageAlert${messageName}`;

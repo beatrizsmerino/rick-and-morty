@@ -1,5 +1,6 @@
 /**
- * @file Get the data from the API 'Rick and Morty' and display it. It generates a navigation menu filtering through the 3 types of data (characters, locations and episodes). It has a pagination in each of them. It has a searcher input to filter by name.
+ * @module scripts
+ * @description Get the data from the API 'Rick and Morty' and display it. It generates a navigation menu filtering through the 3 types of data (characters, locations and episodes). It has a pagination in each of them. It has a searcher input to filter by name.
  * @author Beatriz Sopeña Merino <beatrizsmerino@gmail.com>
  * @copyright Beatriz Sopeña Merino 2019. It is free software and you can find the source code on Github.
  * @see {@link https://beatrizsmerino.github.io/rick-and-morty/}
@@ -19,7 +20,8 @@ import { searchAdd, searchRemove } from "./components/search.js";
  * @description Get API data
  * @event click
  * @type {Object}
- * @see Used inside: {@link apiAddLink}, {@link apiAjaxHandler}
+ * @see {@link module:services/api~apiAddLink|apiAddLink}
+ * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
 appButton.addEventListener("click", function() {
 	// alert("Get API data");
@@ -34,7 +36,7 @@ appButton.addEventListener("click", function() {
 /**
  * @function functionAnonimAutoExecuted
  * @description Anonymous auto executed function
- * @see Used inside: {@link svgMe}...
+ * @see {@link module:utils/svg~svgMe|svgMe}
  */
 (function() {
 	adblockVerify();
@@ -52,7 +54,12 @@ appButton.addEventListener("click", function() {
 				 * @description Remove / Add content and pagination when selecting the filter of the navigation menu.
 				 * @event click
 				 * @type {Object}
-				 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link searchRemove}, {@link filterActive}, {@link searchAdd}, {@link apiAjaxHandler}
+				 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
+				 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
+				 * @see {@link module:components/search~searchRemove|searchRemove}
+				 * @see {@link module:components/filter~filterActive|filterActive}
+				 * @see {@link module:components/search~searchAdd|searchAdd}
+				 * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
 				 */
 				filterItem.addEventListener("click", function() {
 					filterRemoveContent();

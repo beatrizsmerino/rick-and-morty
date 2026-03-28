@@ -9,7 +9,7 @@ import { filterRemoveContent } from "./filter.js";
  * @function paginationCreate
  * @description Create pagination
  * @param {Object} responseData - response data of the ajax handler (json)
- * @see Used in: {@link paginationAdd}
+ * @see {@link module:components/pagination~paginationAdd|paginationAdd}
  */
 function paginationCreate(responseData) {
 	const pagination = document.createElement("div");
@@ -35,7 +35,7 @@ function paginationCreate(responseData) {
  * @function paginationSetCounter
  * @description Create counter pagination
  * @param {Object} responseData - response data of the ajax handler (json)
- * @see Used in: {@link paginationAdd}
+ * @see {@link module:components/pagination~paginationAdd|paginationAdd}
  */
 function paginationSetCounter(responseData) {
 	const buttonPrev = document.getElementById("buttonPrev");
@@ -78,8 +78,9 @@ function paginationSetCounter(responseData) {
  * @function paginationAdd
  * @description Add pagination
  * @param {Object} responseData - response data of the ajax handler (json)
- * @see Used inside: {@link paginationCreate}, {@link paginationSetCounter}...
- * @see Used in: {@link filterFoundContent}
+ * @see {@link module:components/pagination~paginationCreate|paginationCreate}
+ * @see {@link module:components/pagination~paginationSetCounter|paginationSetCounter}
+ * @see {@link module:components/filter~filterFoundContent|filterFoundContent}
  */
 export function paginationAdd(responseData) {
 	paginationCreate(responseData);
@@ -93,7 +94,9 @@ export function paginationAdd(responseData) {
 		 * @description Remove/Add content and pagination by selecting the filter from the navigation menu.
 		 * @event click
 		 * @type {Object}
-		 * @see Used inside: {@link filterRemoveContent}, {@link paginationRemove}, {@link apiAjaxHandler}
+		 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
+		 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
+		 * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
 		 */
 		element.addEventListener("click", function() {
 			const url = this.getAttribute("data-url");
@@ -110,7 +113,10 @@ export function paginationAdd(responseData) {
 /**
  * @function paginationRemove
  * @description Remove pagination
- * @see Used in: {@link scripts.js}, {@link filterAddContent}, {@link searchAdd}, {@link paginationAdd}
+ * @see {@link module:scripts|scripts.js}
+ * @see {@link module:components/filter~filterAddContent|filterAddContent}
+ * @see {@link module:components/search~searchAdd|searchAdd}
+ * @see {@link module:components/pagination~paginationAdd|paginationAdd}
  */
 export function paginationRemove() {
 	const pagination = document.getElementById("pagination");

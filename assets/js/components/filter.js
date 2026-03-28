@@ -11,8 +11,9 @@ import { paginationAdd, paginationRemove } from "./pagination.js";
  * @param {String} action - name of the action to execute
  * @param {HTMLElement} elementDom - DOM element where the response data is inserted
  * @param {Object} dataResponse - response data of the ajax handler (json)
- * @see Used inside: {@link filterAdd}, {@link filterAddContent}
- * @see Used in: {@link apiAjaxHandler}
+ * @see {@link module:components/filter~filterAdd|filterAdd}
+ * @see {@link module:components/filter~filterAddContent|filterAddContent}
+ * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
 export function filterSetAction(action, elementDom, dataResponse) {
 	if (action === "filterAdd") {
@@ -27,7 +28,7 @@ export function filterSetAction(action, elementDom, dataResponse) {
  * @description Add navigation menu filtering through the 3 types of data (characters, locations and episodes) to the app content.
  * @param {HTMLElement} elementDom - DOM element where the filter is inserted
  * @param {Object} responseData - response data of the ajax handler (json)
- * @see Used in: {@link filterSetAction}
+ * @see {@link module:components/filter~filterSetAction|filterSetAction}
  */
 function filterAdd(elementDom, responseData) {
 	const navId = document.getElementById("filter");
@@ -61,7 +62,7 @@ function filterAdd(elementDom, responseData) {
  * @description Add class 'is-active' to the item of the navigation clicked.
  * @param {HTMLCollection} item - filter list
  * @param {Element} thisActive - filter selected
- * @see Used in: {@link scripts.js}
+ * @see {@link module:scripts|scripts.js}
  */
 export function filterActive(item, thisActive) {
 	for (let index = 0; index < item.length; index++) {
@@ -79,7 +80,7 @@ export function filterActive(item, thisActive) {
  * @description Insert information to the content with the number of results of the request
  * @param {Object} responseData - response data of the ajax handler (json)
  * @return {Element} returns the info content element
- * @see Used in: {@link filterAddContent}
+ * @see {@link module:components/filter~filterAddContent|filterAddContent}
  */
 function filterAddContentInfo(responseData) {
 	// console.table(responseData.info);
@@ -95,8 +96,10 @@ function filterAddContentInfo(responseData) {
  * @description Insert results to the content of the request
  * @param {Object} responseData - response data of the ajax handler (json)
  * @return {Element} returns the results content element
- * @see Used inside: {@link cardCreate}, {@link cardMoveImage}, {@link cardWhenClicked}
- * @see Used in: {@link filterAddContent}
+ * @see {@link module:components/card~cardCreate|cardCreate}
+ * @see {@link module:components/card~cardMoveImage|cardMoveImage}
+ * @see {@link module:components/card~cardWhenClicked|cardWhenClicked}
+ * @see {@link module:components/filter~filterAddContent|filterAddContent}
  */
 function filterAddContentResults(responseData) {
 	// console.table(responseData.results);
@@ -122,8 +125,9 @@ function filterAddContentResults(responseData) {
  * @description Add the filter content application
  * @param {HTMLElement} elementDom - DOM element where the filter content is inserted
  * @param {Object} responseData - response data of the ajax handler (json)
- * @see Used inside: {@link filterAddContentInfo}, {@link filterAddContentResults}...
- * @see Used in: {@link filterSetAction}
+ * @see {@link module:components/filter~filterAddContentInfo|filterAddContentInfo}
+ * @see {@link module:components/filter~filterAddContentResults|filterAddContentResults}
+ * @see {@link module:components/filter~filterSetAction|filterSetAction}
  */
 function filterAddContent(elementDom, responseData) {
 	const list = document.createElement("section");
@@ -136,7 +140,7 @@ function filterAddContent(elementDom, responseData) {
 	/**
 	 * @function filterAddAllContent
 	 * @description Insert the content
-	 * @see Used in: {@link filterFoundContent}
+	 * @see {@link module:components/filter~filterFoundContent|filterFoundContent}
 	 */
 	function filterAddAllContent() {
 		list.appendChild(infoContent);
@@ -148,7 +152,10 @@ function filterAddContent(elementDom, responseData) {
 	 * @function filterFoundContent
 	 * @description Check if the contents of one filter are shown and before loading another one, delete it
 	 * @return {boolean} returns true if content was replaced, false otherwise
-	 * @see Used inside: {@link filterAddAllContent}, {@link filterRemoveContent}, {@link paginationRemove}, {@link paginationAdd}
+	 * @see {@link module:components/filter~filterAddAllContent|filterAddAllContent}
+	 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
+	 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
+	 * @see {@link module:components/pagination~paginationAdd|paginationAdd}
 	 */
 	function filterFoundContent() {
 		const element = document.querySelectorAll(".list");
@@ -184,7 +191,10 @@ function filterAddContent(elementDom, responseData) {
 /**
  * @function filterRemoveContent
  * @description Remove the selected filter content of the application content
- * @see Used in: {@link searchAdd}, {@link filterAddContent}, {@link paginationAdd}, {@link scripts.js}
+ * @see {@link module:components/search~searchAdd|searchAdd}
+ * @see {@link module:components/filter~filterAddContent|filterAddContent}
+ * @see {@link module:components/pagination~paginationAdd|paginationAdd}
+ * @see {@link module:scripts|scripts.js}
  */
 export function filterRemoveContent() {
 	const list = document.querySelectorAll(".list");
