@@ -30,6 +30,9 @@ export function svgMe() {
 			return null;
 		};
 
+		/**
+		 * @param {Document} requestXML - XML document containing the SVG element
+		 */
 		function callback(requestXML) {
 			const imgSvg = requestXML.querySelector("svg");
 			if (!imgSvg) {
