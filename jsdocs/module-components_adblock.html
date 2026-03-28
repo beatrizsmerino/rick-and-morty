@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <title>JSDoc: Module: components/adblock</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Module: components/adblock</h1>
 
     
 
@@ -28,7 +28,6 @@
 
 <header>
     
-        <h2></h2>
         
     
 </header>
@@ -37,45 +36,6 @@
     <div class="container-overview">
     
         
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
 
         
     
@@ -104,7 +64,7 @@
     
 
     
-    <h4 class="name" id="functionAnonimAutoExecuted"><span class="type-signature"></span>functionAnonimAutoExecuted<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~adblockDetected"><span class="type-signature">(inner) </span>adblockDetected<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -112,7 +72,7 @@
 
 
 <div class="description">
-    <p>Anonymous auto executed function</p>
+    <p>Callback executed if adblock is installed</p>
 </div>
 
 
@@ -156,7 +116,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts.js.html">scripts.js</a>, <a href="scripts.js.html#line34">line 34</a>
+        <a href="components_adblock.js.html">components/adblock.js</a>, <a href="components_adblock.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -166,7 +126,9 @@
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li>Used inside: svgMe...</li>
+            <li>Used inside: messageAlertAdd</li>
+        
+            <li>Used in: adblockVerify</li>
         </ul>
     </dd>
     
@@ -194,20 +156,12 @@
 
 
         
-    
-
-    
-
-    
-        <h3 class="subsection-title">Events</h3>
-
-        
             
 
     
 
     
-    <h4 class="name" id="~event:click">click</h4>
+    <h4 class="name" id="~adblockDisabled"><span class="type-signature">(inner) </span>adblockDisabled<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -215,22 +169,12 @@
 
 
 <div class="description">
-    <p>Get API data</p>
+    <p>Callback executed if adblock is disabled</p>
 </div>
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -269,7 +213,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts.js.html">scripts.js</a>, <a href="scripts.js.html#line18">line 18</a>
+        <a href="components_adblock.js.html">components/adblock.js</a>, <a href="components_adblock.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -279,7 +223,7 @@
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li>Used inside: apiAddLink, apiAjaxHandler</li>
+            <li>Used in: adblockVerify</li>
         </ul>
     </dd>
     
@@ -312,7 +256,7 @@
     
 
     
-    <h4 class="name" id="~event:click">click</h4>
+    <h4 class="name" id="~adblockVerify"><span class="type-signature">(inner) </span>adblockVerify<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -320,22 +264,12 @@
 
 
 <div class="description">
-    <p>Remove / Add content and pagination when selecting the filter of the navigation menu.</p>
+    <p>Verify if the user has installed the Adblock browser extension</p>
 </div>
 
 
 
 
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
 
 
 
@@ -374,7 +308,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts.js.html">scripts.js</a>, <a href="scripts.js.html#line51">line 51</a>
+        <a href="components_adblock.js.html">components/adblock.js</a>, <a href="components_adblock.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -384,7 +318,9 @@
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li>Used inside: filterRemoveContent, paginationRemove, searchRemove, filterActive, searchAdd, apiAjaxHandler</li>
+            <li>Used inside: adblockDetected, adblockDisabled</li>
+        
+            <li>Used in: <a href="scripts.js.html">scripts.js</a></li>
         </ul>
     </dd>
     
@@ -412,6 +348,10 @@
 
 
         
+    
+
+    
+
     
 </article>
 
