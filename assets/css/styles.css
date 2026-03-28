@@ -86,16 +86,23 @@ hr {
 }
 
 .page__footer {
+	display: flex;
 	position: fixed;
 	bottom: 0;
 	left: 0;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
 	padding: 3rem 2rem;
 	background-color: white;
 	color: var(--color-brand-4);
 	font-size: 2rem;
 	font-weight: 100;
-	text-align: center;
+	gap: 0;
+}
+
+.page__footer .copyright__year-start:after {
+	content: "-";
 }
 
 /****** BUTTON ******/
