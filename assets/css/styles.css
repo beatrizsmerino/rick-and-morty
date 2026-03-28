@@ -181,26 +181,7 @@ hr {
 .search__input:focus {
 	background-color: var(--color-brand-5);
 }
-.search__input::-webkit-input-placeholder {
-	/* Chrome/Opera/Safari */
-	font-weight: 500;
-	font-style: italic;
-	color: var(--color-brand-2);
-}
-.search__input::-moz-placeholder {
-	/* Firefox 19+ */
-	font-weight: 500;
-	font-style: italic;
-	color: var(--color-brand-2);
-}
-.search__input:-ms-input-placeholder {
-	/* IE 10+ */
-	font-weight: 500;
-	font-style: italic;
-	color: var(--color-brand-2);
-}
-.search__input:-moz-placeholder {
-	/* Firefox 18- */
+.search__input::placeholder {
 	font-weight: 500;
 	font-style: italic;
 	color: var(--color-brand-2);
