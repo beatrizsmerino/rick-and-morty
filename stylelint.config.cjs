@@ -164,7 +164,5 @@ module.exports = {
 		"string-no-newline": true,
 		"unit-no-unknown": true,
 		"value-keyword-case": "lower",
-		"@stylistic/indentation": "tab",
-		"@stylistic/string-quotes": "double",
 	},
 };
