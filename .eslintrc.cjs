@@ -9,6 +9,7 @@ module.exports = {
 		"prettier",
 		"eslint:recommended",
 		"plugin:json/recommended",
+		"plugin:jsdoc/recommended",
 	],
 	"globals": {
 		"blockAdBlock": "readonly",
@@ -23,9 +24,11 @@ module.exports = {
 	"plugins": [
 		"prettier",
 		"json",
+		"jsdoc",
 	],
 	"root": true,
 	"rules": {
+		"jsdoc/reject-function-type": 0,
 		"accessor-pairs": 2,
 		"array-bracket-newline": [
 			2,

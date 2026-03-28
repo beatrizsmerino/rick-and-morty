@@ -5,8 +5,8 @@
 /**
  * @function getCurrentYear
  * @description Get the current year
- * @return {Number}
- * @see Used in: {@link addCurrentYear}
+ * @returns {number} returns the current year
+ * @see {@link module:components/copyright~addCurrentYear|addCurrentYear}
  */
 export function getCurrentYear() {
 	const year = new Date().getFullYear();

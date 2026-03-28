@@ -3,17 +3,24 @@
  */
 
 /**
- * @const appButton
+ * @constant appButton
  * @description App button
  * @type {HTMLElement}
- * @see Used in: {@link scripts.js}
+ * @see {@link module:scripts|scripts.js}
  */
 export const appButton = document.getElementById("appButton");
 
 /**
- * @const appContent
+ * @constant appContent
  * @description App content
  * @type {HTMLElement}
- * @see Used in: {@link filterSetAction}, {@link apiAddLink}, {@link filterRemoveContent}, {@link searchCreate}, {@link searchRemove}, {@link paginationCreate}, {@link paginationRemove}, {@link scripts.js}
+ * @see {@link module:components/filter~filterSetAction|filterSetAction}
+ * @see {@link module:services/api~apiAddLink|apiAddLink}
+ * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
+ * @see {@link module:components/search~searchCreate|searchCreate}
+ * @see {@link module:components/search~searchRemove|searchRemove}
+ * @see {@link module:components/pagination~paginationCreate|paginationCreate}
+ * @see {@link module:components/pagination~paginationRemove|paginationRemove}
+ * @see {@link module:scripts|scripts.js}
  */
 export const appContent = document.getElementById("appContent");

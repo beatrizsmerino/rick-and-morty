@@ -9,8 +9,8 @@ import { messageRemove, messageError404Add } from "../components/message.js";
 /**
  * @function apiAddLink
  * @description Add link of the API to the app content
- * @param {String} url - root of the API
- * @see Used in: {@link scripts.js}
+ * @param {string} url - root of the API
+ * @see {@link module:scripts|scripts.js}
  */
 export function apiAddLink(url) {
 	const linkId = document.getElementById("linkApi");
@@ -30,10 +30,14 @@ export function apiAddLink(url) {
 /**
  * @function apiAjaxHandler
  * @description API request
- * @param {String} url - root of the API
- * @param {String} action - name of the action to execute
- * @see Used inside: {@link loaderAdd}, {@link loaderRemove}, {@link filterSetAction}
- * @see Used in: {@link searchAdd}, {@link paginationAdd}, {@link scripts.js}
+ * @param {string} url - root of the API
+ * @param {string} action - name of the action to execute
+ * @see {@link module:components/loader~loaderAdd|loaderAdd}
+ * @see {@link module:components/loader~loaderRemove|loaderRemove}
+ * @see {@link module:components/filter~filterSetAction|filterSetAction}
+ * @see {@link module:components/search~searchAdd|searchAdd}
+ * @see {@link module:components/pagination~paginationAdd|paginationAdd}
+ * @see {@link module:scripts|scripts.js}
  */
 export function apiAjaxHandler(url, action) {
 	loaderAdd();
@@ -63,7 +67,7 @@ export function apiAjaxHandler(url, action) {
 	 * @function handleResponse
 	 * @description Route the response to the correct handler based on content type
 	 * @param {Response} response - fetch response object
-	 * @return {Promise} returns the parsed response
+	 * @returns {Promise} returns the parsed response
 	 */
 	function handleResponse(response) {
 		const contentType = response.headers.get("content-type");
@@ -81,7 +85,7 @@ export function apiAjaxHandler(url, action) {
 	 * @function handleJSONResponse
 	 * @description Parse a JSON response and reject if not ok
 	 * @param {Response} response - fetch response object
-	 * @return {Promise} returns the parsed JSON or a rejected promise
+	 * @returns {Promise} returns the parsed JSON or a rejected promise
 	 */
 	function handleJSONResponse(response) {
 		return response.json().then(json => {
@@ -100,7 +104,7 @@ export function apiAjaxHandler(url, action) {
 	 * @function handleTextResponse
 	 * @description Parse a text response and reject if not ok
 	 * @param {Response} response - fetch response object
-	 * @return {Promise} returns the parsed text or a rejected promise
+	 * @returns {Promise} returns the parsed text or a rejected promise
 	 */
 	function handleTextResponse(response) {
 		return response.text().then(text => {

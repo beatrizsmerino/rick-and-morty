@@ -3,7 +3,7 @@
  */
 
 /**
- * @var loaderTimer
+ * @member loaderTimer
  * @description Timer ID for the loader interval, used to cancel it when `loaderRemove()` is called
  * @type {number|null}
  */
@@ -12,8 +12,8 @@ let loaderTimer = null;
 /**
  * @function loaderCreate
  * @description Creation of a loading animation
- * @return {HTMLElement}
- * @see Used in: {@link loaderAdd}
+ * @returns {HTMLElement} returns the loader element
+ * @see {@link module:components/loader~loaderAdd|loaderAdd}
  */
 function loaderCreate() {
 	const template = `
@@ -34,7 +34,7 @@ function loaderCreate() {
 /**
  * @function loaderAdd
  * @description Add loading animation
- * @see Used in: {@link apiAjaxHandler}
+ * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
 export function loaderAdd() {
 	const loader = loaderCreate();
@@ -56,7 +56,7 @@ export function loaderAdd() {
 /**
  * @function loaderRemove
  * @description Remove loading animation
- * @see Used in: {@link apiAjaxHandler}
+ * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
  */
 export function loaderRemove() {
 	if (loaderTimer) {

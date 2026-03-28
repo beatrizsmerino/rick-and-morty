@@ -5,7 +5,7 @@
 /**
  * @function svgMe
  * @description Converts an `<img>` tag, with a `.svg` extension and a class `svgMe`, into a `<svg>` tag.
- * @see Used in: {@link scripts.js}
+ * @see {@link module:scripts|scripts.js}
  */
 export function svgMe() {
 	const images = document.querySelectorAll("img.svgMe");
@@ -30,6 +30,9 @@ export function svgMe() {
 			return null;
 		};
 
+		/**
+		 * @param {Document} requestXML - XML document containing the SVG element
+		 */
 		function callback(requestXML) {
 			const imgSvg = requestXML.querySelector("svg");
 			if (!imgSvg) {

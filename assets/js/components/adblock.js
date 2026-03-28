@@ -6,8 +6,8 @@ import { messageAlertAdd } from "./message.js";
 /**
  * @function adblockDetected
  * @description Callback executed if adblock is installed
- * @see Used inside: {@link messageAlertAdd}
- * @see Used in: {@link adblockVerify}
+ * @see {@link module:components/message~messageAlertAdd|messageAlertAdd}
+ * @see {@link module:components/adblock~adblockVerify|adblockVerify}
  */
 function adblockDetected() {
 	const message = "<i class='message-alert__icon icon-warning'></i> AdBlock is enabled";
@@ -20,7 +20,7 @@ function adblockDetected() {
 /**
  * @function adblockDisabled
  * @description Callback executed if adblock is disabled
- * @see Used in: {@link adblockVerify}
+ * @see {@link module:components/adblock~adblockVerify|adblockVerify}
  */
 function adblockDisabled() {
 	// let message = "AdBlock is not enabled";
@@ -30,8 +30,9 @@ function adblockDisabled() {
 /**
  * @function adblockVerify
  * @description Verify if the user has installed the Adblock browser extension
- * @see Used inside: {@link adblockDetected}, {@link adblockDisabled}
- * @see Used in: {@link scripts.js}
+ * @see {@link module:components/adblock~adblockDetected|adblockDetected}
+ * @see {@link module:components/adblock~adblockDisabled|adblockDisabled}
+ * @see {@link module:scripts|scripts.js}
  */
 export function adblockVerify() {
 	if (typeof blockAdBlock === "undefined") {

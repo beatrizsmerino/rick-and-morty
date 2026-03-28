@@ -11,7 +11,7 @@ import { paginationRemove } from "./pagination.js";
 /**
  * @function searchCreate
  * @description Create searcher
- * @see Used in: {@link searchAdd}
+ * @see {@link module:components/search~searchAdd|searchAdd}
  */
 function searchCreate() {
 	const searchDom = document.createElement("div");
@@ -37,8 +37,8 @@ function searchCreate() {
  * @function searchGet
  * @description Get the active filter to find it.
  * @param {Element} filterSelected - filter selected
- * @return {String} returns the search category name
- * @see Used in: {@link searchAdd}
+ * @returns {string} returns the search category name
+ * @see {@link module:components/search~searchAdd|searchAdd}
  */
 function searchGet(filterSelected) {
 	const searchInput = document.getElementById("searchInput");
@@ -70,8 +70,9 @@ function searchGet(filterSelected) {
  * @function searchAdd
  * @description Add searcher
  * @param {Element} filterSelected - filter selected
- * @see Used inside: {@link searchCreate}, {@link searchGet}...
- * @see Used in: {@link scripts.js}
+ * @see {@link module:components/search~searchCreate|searchCreate}
+ * @see {@link module:components/search~searchGet|searchGet}
+ * @see {@link module:scripts|scripts.js}
  */
 export function searchAdd(filterSelected) {
 	searchCreate();
@@ -81,8 +82,11 @@ export function searchAdd(filterSelected) {
 	/**
 	 * @description Search by selected filter name when typing in the search engine input.
 	 * @event keyup
-	 * @type {Object}
-	 * @see Used inside: {@link delay}, {@link filterRemoveContent}, {@link paginationRemove}, {@link apiAjaxHandler}
+	 * @type {object}
+	 * @see {@link module:utils/timer~delay|delay}
+	 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
+	 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
+	 * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
 	 */
 	document.getElementById("searchInput").addEventListener(
 		"keyup",
@@ -104,7 +108,7 @@ export function searchAdd(filterSelected) {
 /**
  * @function searchRemove
  * @description Remove searcher
- * @see Used in: {@link scripts.js}
+ * @see {@link module:scripts|scripts.js}
  */
 export function searchRemove() {
 	const search = document.getElementById("search");

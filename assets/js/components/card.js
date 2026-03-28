@@ -6,9 +6,9 @@ import { firstUpperCase } from "../utils/string.js";
 /**
  * @function cardCreateList
  * @description Create a list of items from an array or object
- * @param {Array|Object} data - data to create list items from
- * @return {HTMLElement} returns the ul element with li children
- * @see Used in: {@link cardCreateItem}
+ * @param {Array|object} data - data to create list items from
+ * @returns {HTMLElement} returns the ul element with li children
+ * @see {@link module:components/card~cardCreateItem|cardCreateItem}
  */
 function cardCreateList(data) {
 	const cardUlDom = document.createElement("ul");
@@ -44,11 +44,11 @@ function cardCreateList(data) {
 /**
  * @function cardCreateItem
  * @description Create the content for a card data field
- * @param {String} titleData - property name
- * @param {String|Number|Array|Object} cardItemData - property value
- * @return {HTMLElement} returns the card data div element
- * @see Used inside: {@link cardCreateList}
- * @see Used in: {@link cardCreate}
+ * @param {string} titleData - property name
+ * @param {string|number|Array|object} cardItemData - property value
+ * @returns {HTMLElement} returns the card data div element
+ * @see {@link module:components/card~cardCreateList|cardCreateList}
+ * @see {@link module:components/card~cardCreate|cardCreate}
  */
 function cardCreateItem(titleData, cardItemData) {
 	const cardItemDom = document.createElement("div");
@@ -85,8 +85,10 @@ function cardCreateItem(titleData, cardItemData) {
  * @description Create card with the data response
  * @param {Element} listCardsInner - DOM element that wraps up the card list
  * @param {object} responseData - response data of the ajax handler (json)
- * @see Used inside: {@link cardCreateItem}, {@link cardCreateList}, {@link firstUpperCase}
- * @see Used in: {@link filterAddContentResults}
+ * @see {@link module:components/card~cardCreateItem|cardCreateItem}
+ * @see {@link module:components/card~cardCreateList|cardCreateList}
+ * @see {@link module:utils/string~firstUpperCase|firstUpperCase}
+ * @see {@link module:components/filter~filterAddContentResults|filterAddContentResults}
  */
 export function cardCreate(listCardsInner, responseData) {
 	// console.group("Results");
@@ -125,7 +127,7 @@ export function cardCreate(listCardsInner, responseData) {
 /**
  * @function cardMoveImage
  * @description Move the card image up.
- * @see Used in: {@link filterAddContentResults}
+ * @see {@link module:components/filter~filterAddContentResults|filterAddContentResults}
  */
 export function cardMoveImage() {
 	const timer = setInterval(function() {
@@ -150,7 +152,7 @@ export function cardMoveImage() {
  * @description See more card info
  * @param {HTMLCollection} item - list of cards
  * @param {Element} thisView - card selected
- * @see Used in: {@link cardWhenClicked}
+ * @see {@link module:components/card~cardWhenClicked|cardWhenClicked}
  */
 function cardToggleView(item, thisView) {
 	for (let index = 0; index < item.length; index++) {
@@ -165,8 +167,8 @@ function cardToggleView(item, thisView) {
 /**
  * @function cardWhenClicked
  * @description Event click in the card
- * @see Used inside: {@link cardToggleView}
- * @see Used in: {@link scripts.js}
+ * @see {@link module:components/card~cardToggleView|cardToggleView}
+ * @see {@link module:scripts|scripts.js}
  */
 export function cardWhenClicked() {
 	const timerCard = setInterval(function() {
@@ -180,8 +182,8 @@ export function cardWhenClicked() {
 				/**
 				 * @description View more card info when click it.
 				 * @event click
-				 * @type {Object}
-				 * @see Used inside: {@link cardToggleView}
+				 * @type {object}
+				 * @see {@link module:components/card~cardToggleView|cardToggleView}
 				 */
 				element.addEventListener("click", function() {
 					cardToggleView(cardItem, this);
