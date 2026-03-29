@@ -120,6 +120,14 @@ Run [Prettier](https://prettier.io/) (`prettier:fix`), [ESLint](https://eslint.o
 npm run lint
 ```
 
+### Format files with Prettier
+
+Format CSS, JSON, YAML, JS and HTML files with [Prettier](https://prettier.io/).
+
+```bash
+npm run prettier:fix
+```
+
 ### Generate JSDoc documentation
 
 ```bash
