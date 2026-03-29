@@ -88,6 +88,14 @@ The documentation is generated from `assets/js/scripts.js` and exported to the `
 npm install
 ```
 
+### Clean install dependencies
+
+Remove `node_modules` and `package-lock.json` to reinstall from scratch.
+
+```bash
+npm run install:clean
+```
+
 ### Generate JSDoc documentation
 
 ```bash
