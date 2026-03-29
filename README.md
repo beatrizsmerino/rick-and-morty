@@ -84,6 +84,8 @@ The documentation is generated from `assets/js/scripts.js` and exported to the `
 
 ### Install dependencies
 
+Install all dependencies listed in `package.json`.
+
 ```bash
 npm install
 ```
