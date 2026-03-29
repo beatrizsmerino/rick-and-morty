@@ -146,6 +146,8 @@ npm run stylelint:fix
 
 ### Generate JSDoc documentation
 
+Generate documentation from JS source code comments with [JSDoc](https://jsdoc.app/).
+
 ```bash
 npm run jsdocs
 ```
