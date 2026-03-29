@@ -136,6 +136,14 @@ Lint and fix JSON and JS files with [ESLint](https://eslint.org/).
 npm run eslint:fix
 ```
 
+### Lint and fix styles with Stylelint
+
+Lint and fix CSS files with [Stylelint](https://stylelint.io/).
+
+```bash
+npm run stylelint:fix
+```
+
 ### Generate JSDoc documentation
 
 ```bash
