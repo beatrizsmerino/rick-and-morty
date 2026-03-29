@@ -128,6 +128,14 @@ Format CSS, JSON, YAML, JS and HTML files with [Prettier](https://prettier.io/).
 npm run prettier:fix
 ```
 
+### Lint and fix files with ESLint
+
+Lint and fix JSON and JS files with [ESLint](https://eslint.org/).
+
+```bash
+npm run eslint:fix
+```
+
 ### Generate JSDoc documentation
 
 ```bash
