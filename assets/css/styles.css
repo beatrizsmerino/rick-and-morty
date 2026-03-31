@@ -6,6 +6,7 @@
 	--color-brand-4: #11b0c8;
 	--color-brand-5: #6dcad6;
 	--color-error: tomato;
+	--footer-height: 8rem;
 }
 
 /****** RESET ******/
@@ -94,7 +95,8 @@ hr {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	padding: 3rem 2rem;
+	height: var(--footer-height);
+	padding: 0 2rem;
 	background-color: white;
 	color: var(--color-brand-4);
 	font-size: 2rem;
@@ -419,7 +421,7 @@ hr {
 .pagination {
 	display: flex;
 	position: fixed;
-	bottom: 8.3rem;
+	bottom: var(--footer-height, 8.3rem);
 	left: 0;
 	align-items: center;
 	justify-content: center;
