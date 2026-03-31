@@ -9,7 +9,7 @@
 
 # Rick and Morty
 
-[![App Rick and Morty](./README/videos/rick-morty.gif)](https://beatrizsmerino.github.io/rick-and-morty/)
+[![App Rick and Morty](https://beatrizsmerino.github.io/rick-and-morty/README/videos/rick-morty.gif)](https://beatrizsmerino.github.io/rick-and-morty/)
 
 ## 🎯 Description
 
@@ -78,17 +78,77 @@ This project uses [JSDoc](https://jsdoc.app/) to generate documentation from the
 
 The documentation is generated from `assets/js/scripts.js` and exported to the `jsdocs` folder. It is published on GitHub Pages and can be accessed at [beatrizsmerino.github.io/rick-and-morty/jsdocs](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html).
 
-[![JSDoc Documentation](./README/images/Screenshot_1.jpg)](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html)
+[![JSDoc Documentation](https://beatrizsmerino.github.io/rick-and-morty/README/images/Screenshot_1.jpg)](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html)
 
 ## 🚀 Commands
 
 ### Install dependencies
 
+Install all dependencies listed in `package.json`.
+
 ```bash
 npm install
 ```
 
+### Clean install dependencies
+
+Remove `node_modules` and `package-lock.json` to reinstall from scratch.
+
+```bash
+npm run install:clean
+```
+
+### Lint after install
+
+Runs automatically after `npm install` to run `npm run lint` on all project files.
+
+```bash
+npm run postinstall
+```
+
+### Set up Husky git hooks
+
+Runs automatically after `postinstall` to enable `pre-commit` and `commit-msg` hooks of [Husky](https://typicode.github.io/husky/).
+
+```bash
+npm run prepare
+```
+
+### Lints and fixes files
+
+Run [Prettier](https://prettier.io/) (`prettier:fix`), [ESLint](https://eslint.org/) (`eslint:fix`) and [Stylelint](https://stylelint.io/) (`stylelint:fix`) to format and lint all project files.
+
+```bash
+npm run lint
+```
+
+### Format files with Prettier
+
+Format CSS, JSON, YAML, JS and HTML files with [Prettier](https://prettier.io/).
+
+```bash
+npm run prettier:fix
+```
+
+### Lint and fix files with ESLint
+
+Lint and fix JSON and JS files with [ESLint](https://eslint.org/).
+
+```bash
+npm run eslint:fix
+```
+
+### Lint and fix styles with Stylelint
+
+Lint and fix CSS files with [Stylelint](https://stylelint.io/).
+
+```bash
+npm run stylelint:fix
+```
+
 ### Generate JSDoc documentation
+
+Generate documentation from JS source code comments with [JSDoc](https://jsdoc.app/).
 
 ```bash
 npm run jsdocs
@@ -113,3 +173,7 @@ type(scope): description
 ### Documentation
 - [JSDoc](https://jsdoc.app/)
 - [DevDocs - JSDoc](https://devdocs.io/jsdoc/)
+
+## 📄 License
+
+This project is licensed under the `MIT` License, which allows free use, modification and distribution. See [LICENSE](LICENSE) for details.
