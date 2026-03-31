@@ -8,7 +8,7 @@
 	"scripts": {
 		"install:clean": "rm -rf node_modules package-lock.json",
 		"postinstall": "npm run lint",
-		"jsdocs": "jsdoc -c jsdoc.json",
+		"jsdocs": "jsdoc -c jsdoc.json && cp -r README/ jsdocs/README/",
 		"prepare": "husky",
 		"prettier:fix": "prettier --write './**/*.{css,json,yml,yaml,js,cjs,mjs,html}'",
 		"eslint:fix": "eslint '**/*.{json,js,cjs,mjs}' --fix --ignore-path .eslintignore",
