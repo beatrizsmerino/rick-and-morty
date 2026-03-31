@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: scripts.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: scripts.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module scripts
+ * @description Get the data from the API 'Rick and Morty' and display it. It generates a navigation menu filtering through the 3 types of data (characters, locations and episodes). It has a pagination in each of them. It has a searcher input to filter by name.
+ * @author Beatriz Sopeña Merino &lt;beatrizsmerino@gmail.com>
+ * @copyright Beatriz Sopeña Merino 2019. It is free software and you can find the source code on Github.
+ * @see {@link https://beatrizsmerino.github.io/rick-and-morty/}
+ */
+
+import { urlAPI } from "./constants/api.js";
+import { appButton, appContent } from "./constants/dom.js";
+import { svgMe } from "./utils/svg.js";
+import { apiAddLink, apiAjaxHandler } from "./services/api.js";
+import { adblockVerify } from "./components/adblock.js";
+import { addCurrentYear } from "./components/copyright.js";
+import { filterActive, filterRemoveContent } from "./components/filter.js";
+import { paginationRemove } from "./components/pagination.js";
+import { searchAdd, searchRemove } from "./components/search.js";
+
+/**
+ * @description Get API data
+ * @event click
+ * @type {object}
+ * @see {@link module:services/api~apiAddLink|apiAddLink}
+ * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
+ */
+appButton.addEventListener("click", function() {
+	// alert("Get API data");
+	apiAddLink(urlAPI);
+	const portal = document.getElementById("portal");
+	if (portal) {
+		appContent.removeChild(portal);
+	}
+	apiAjaxHandler(urlAPI, "filterAdd");
+});
+
+/**
+ * @function functionAnonimAutoExecuted
+ * @description Anonymous auto executed function
+ * @see {@link module:utils/svg~svgMe|svgMe}
+ */
+(function() {
+	adblockVerify();
+	svgMe();
+	addCurrentYear();
+
+	const timerFilterItem = setInterval(function() {
+		const filterArray = document.getElementsByClassName("filter__item");
+		if (filterArray.length > 0) {
+			clearInterval(timerFilterItem);
+			for (let index = 0; index &lt; filterArray.length; index++) {
+				const filterItem = filterArray[index];
+
+				/**
+				 * @description Remove / Add content and pagination when selecting the filter of the navigation menu.
+				 * @event click
+				 * @type {object}
+				 * @see {@link module:components/filter~filterRemoveContent|filterRemoveContent}
+				 * @see {@link module:components/pagination~paginationRemove|paginationRemove}
+				 * @see {@link module:components/search~searchRemove|searchRemove}
+				 * @see {@link module:components/filter~filterActive|filterActive}
+				 * @see {@link module:components/search~searchAdd|searchAdd}
+				 * @see {@link module:services/api~apiAjaxHandler|apiAjaxHandler}
+				 */
+				filterItem.addEventListener("click", function() {
+					filterRemoveContent();
+					paginationRemove();
+					searchRemove();
+
+					filterActive(filterArray, this);
+					searchAdd(this);
+					apiAjaxHandler(this.getAttribute("data-url"), "filterAddContent");
+				});
+			}
+		}
+	});
+}());
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-components_adblock.html">components/adblock</a></li><li><a href="module-components_card.html">components/card</a></li><li><a href="module-components_copyright.html">components/copyright</a></li><li><a href="module-components_filter.html">components/filter</a></li><li><a href="module-components_loader.html">components/loader</a></li><li><a href="module-components_message.html">components/message</a></li><li><a href="module-components_pagination.html">components/pagination</a></li><li><a href="module-components_search.html">components/search</a></li><li><a href="module-constants_api.html">constants/api</a></li><li><a href="module-constants_dom.html">constants/dom</a></li><li><a href="module-scripts.html">scripts</a></li><li><a href="module-services_api.html">services/api</a></li><li><a href="module-utils_date.html">utils/date</a></li><li><a href="module-utils_string.html">utils/string</a></li><li><a href="module-utils_svg.html">utils/svg</a></li><li><a href="module-utils_timer.html">utils/timer</a></li></ul><h3>Events</h3><ul><li><a href="module-scripts.html#~event:click">click</a></li><li><a href="module-components_search.html#~event:keyup">keyup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Tue Mar 31 2026 05:29:06 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
