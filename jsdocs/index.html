@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><p><img src="https://img.shields.io/badge/dependabot-enabled-025e8c?logo=Dependabot" alt="GitHub dependabot">
+<img src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/beatrizsmerino/rick-and-morty/master/package.json&amp;query=$.engines.node&amp;label=node&amp;logo=node.js&amp;color=339933" alt="node">
+<img src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/beatrizsmerino/rick-and-morty/master/package.json&amp;query=$.engines.npm&amp;label=npm&amp;logo=npm&amp;color=CB3837" alt="npm"><br>
+<img src="https://img.shields.io/github/last-commit/beatrizsmerino/rick-and-morty" alt="GitHub last commit">
+<img src="https://img.shields.io/github/issues/beatrizsmerino/rick-and-morty" alt="GitHub issues">
+<img src="https://img.shields.io/github/forks/beatrizsmerino/rick-and-morty" alt="GitHub forks">
+<img src="https://img.shields.io/github/stars/beatrizsmerino/rick-and-morty" alt="GitHub stars">
+<img src="https://img.shields.io/github/watchers/beatrizsmerino/rick-and-morty" alt="GitHub watchers"></p>
+<h1>Rick and Morty</h1>
+<p><a href="https://beatrizsmerino.github.io/rick-and-morty/"><img src="./README/videos/rick-morty.gif" alt="App Rick and Morty"></a></p>
+<h2>🎯 Description</h2>
+<p>This project fetches data from the <a href="https://rickandmortyapi.com/">Rick and Morty API</a> and displays it in an interactive interface. It generates a navigation menu filtering through the 3 types of data (characters, locations and episodes). It has pagination in each of them and a search input to filter by name.</p>
+<blockquote>
+<p><strong>App</strong>: <a href="https://beatrizsmerino.github.io/rick-and-morty/">beatrizsmerino.github.io/rick-and-morty</a></p>
+<p><strong>Documentation</strong>: <a href="https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html">beatrizsmerino.github.io/rick-and-morty/jsdocs</a></p>
+</blockquote>
+<h2>📂 Project Structure</h2>
+<pre class="prettyprint source"><code>rick-and-morty/
+├── assets/
+│   ├── css/          # Compiled CSS styles
+│   ├── favicon/      # Favicon files
+│   ├── icomoon/      # Icon fonts
+│   ├── images/       # Project images
+│   └── js/           # JavaScript files
+│       └── scripts.js
+├── jsdocs/           # JSDoc generated documentation
+├── README/
+│   └── images/       # README screenshots
+├── .husky/           # Git hooks
+├── jsdoc.json        # JSDoc configuration
+└── package.json
+</code></pre>
+<h2>🏗️ Developed with</h2>
+<p><img src="https://img.shields.io/badge/-HTML5-E34F26?style=for-the-badge&amp;logo=html5&amp;logoColor=white" alt="HTML5">
+<img src="https://img.shields.io/badge/-CSS3-2173F6?style=for-the-badge&amp;logo=css3&amp;logoColor=white" alt="CSS3">
+<a href="https://sass-lang.com/"><img src="https://img.shields.io/badge/-SASS/SCSS-CC6699?style=for-the-badge&amp;logo=sass&amp;logoColor=white" alt="SASS/SCSS"></a>
+<img src="https://img.shields.io/badge/-Javascript-F7DF1E?style=for-the-badge&amp;logo=javascript&amp;logoColor=black" alt="Javascript"></p>
+<p><a href="https://jsdoc.app/"><img src="https://img.shields.io/badge/-JSDoc-006FBB?style=for-the-badge" alt="JSDoc"></a>
+<a href="https://typicode.github.io/husky/"><img src="https://img.shields.io/badge/-Husky-10b981?style=for-the-badge" alt="Husky"></a>
+<a href="https://commitlint.js.org/"><img src="https://img.shields.io/badge/-Commitlint-F7B93E?style=for-the-badge&amp;logo=commitlint&amp;logoColor=black" alt="Commitlint"></a>
+<a href="https://www.conventionalcommits.org"><img src="https://img.shields.io/badge/-Conventional%20Commits-FE5196?style=for-the-badge&amp;logo=conventionalcommits&amp;logoColor=FEFEFE" alt="Conventional Commits"></a></p>
+<h3>API</h3>
+<h4>Rate Limit</h4>
+<p>The Rick and Morty API is an open API, no authentication is required for use. Nonetheless, to prevent malicious usage of the API there is a limit on the number of requests a given IP address can make. This limit is 10000 requests per day. If you happen to hit the limit you'll receive a 429 status (Too Many Requests) on all your requests during a period of 12 hours.</p>
+<pre class="prettyprint source lang-json"><code>{
+  &quot;characters&quot;: &quot;https://rickandmortyapi.com/api/character&quot;,
+  &quot;locations&quot;: &quot;https://rickandmortyapi.com/api/location&quot;,
+  &quot;episodes&quot;: &quot;https://rickandmortyapi.com/api/episode&quot;
+}
+</code></pre>
+<h4>Adblock Extension</h4>
+<p>If you have installed the <a href="https://chrome.google.com/webstore/detail/adblock-%E2%80%94-best-ad-blocker/gighmmpiobklfepjocnamgkkbiglidom">Adblock</a> browser extension, you must select 'pause on this website' for the app to work correctly.</p>
+<h4>VPN Extension</h4>
+<p>If you need more API requests, you can use a VPN browser extension to change your IP address.</p>
+<h3>JSDoc</h3>
+<p>This project uses <a href="https://jsdoc.app/">JSDoc</a> to generate documentation from the JavaScript source code comments.</p>
+<p>The documentation is generated from <code>assets/js/scripts.js</code> and exported to the <code>jsdocs</code> folder. It is published on GitHub Pages and can be accessed at <a href="https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html">beatrizsmerino.github.io/rick-and-morty/jsdocs</a>.</p>
+<p><a href="https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html"><img src="./README/images/Screenshot_1.jpg" alt="JSDoc Documentation"></a></p>
+<h2>🚀 Commands</h2>
+<h3>Install dependencies</h3>
+<p>Install all dependencies listed in <code>package.json</code>.</p>
+<pre class="prettyprint source lang-bash"><code>npm install
+</code></pre>
+<h3>Clean install dependencies</h3>
+<p>Remove <code>node_modules</code> and <code>package-lock.json</code> to reinstall from scratch.</p>
+<pre class="prettyprint source lang-bash"><code>npm run install:clean
+</code></pre>
+<h3>Lint after install</h3>
+<p>Runs automatically after <code>npm install</code> to run <code>npm run lint</code> on all project files.</p>
+<pre class="prettyprint source lang-bash"><code>npm run postinstall
+</code></pre>
+<h3>Set up Husky git hooks</h3>
+<p>Runs automatically after <code>postinstall</code> to enable <code>pre-commit</code> and <code>commit-msg</code> hooks of <a href="https://typicode.github.io/husky/">Husky</a>.</p>
+<pre class="prettyprint source lang-bash"><code>npm run prepare
+</code></pre>
+<h3>Lints and fixes files</h3>
+<p>Run <a href="https://prettier.io/">Prettier</a> (<code>prettier:fix</code>), <a href="https://eslint.org/">ESLint</a> (<code>eslint:fix</code>) and <a href="https://stylelint.io/">Stylelint</a> (<code>stylelint:fix</code>) to format and lint all project files.</p>
+<pre class="prettyprint source lang-bash"><code>npm run lint
+</code></pre>
+<h3>Format files with Prettier</h3>
+<p>Format CSS, JSON, YAML, JS and HTML files with <a href="https://prettier.io/">Prettier</a>.</p>
+<pre class="prettyprint source lang-bash"><code>npm run prettier:fix
+</code></pre>
+<h3>Lint and fix files with ESLint</h3>
+<p>Lint and fix JSON and JS files with <a href="https://eslint.org/">ESLint</a>.</p>
+<pre class="prettyprint source lang-bash"><code>npm run eslint:fix
+</code></pre>
+<h3>Lint and fix styles with Stylelint</h3>
+<p>Lint and fix CSS files with <a href="https://stylelint.io/">Stylelint</a>.</p>
+<pre class="prettyprint source lang-bash"><code>npm run stylelint:fix
+</code></pre>
+<h3>Generate JSDoc documentation</h3>
+<p>Generate documentation from JS source code comments with <a href="https://jsdoc.app/">JSDoc</a>.</p>
+<pre class="prettyprint source lang-bash"><code>npm run jsdocs
+</code></pre>
+<h2>🤝 Contributing</h2>
+<p>This project uses <a href="https://typicode.github.io/husky/">Husky</a> for Git hooks and <a href="https://commitlint.js.org/">Commitlint</a> for commit message validation.</p>
+<p>All commits must follow the <a href="https://www.conventionalcommits.org/">Conventional Commits</a> specification:</p>
+<pre class="prettyprint source"><code>type(scope): description
+</code></pre>
+<h2>🔗 References</h2>
+<h3>API</h3>
+<ul>
+<li><a href="https://rickandmortyapi.com/">Rick and Morty API</a></li>
+<li><a href="https://rickandmortyapi.com/documentation">Rick and Morty API Documentation</a></li>
+</ul>
+<h3>Documentation</h3>
+<ul>
+<li><a href="https://jsdoc.app/">JSDoc</a></li>
+<li><a href="https://devdocs.io/jsdoc/">DevDocs - JSDoc</a></li>
+</ul>
+<h2>📄 License</h2>
+<p>This project is licensed under the <code>MIT</code> License, which allows free use, modification and distribution. See <a href="LICENSE">LICENSE</a> for details.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-components_adblock.html">components/adblock</a></li><li><a href="module-components_card.html">components/card</a></li><li><a href="module-components_copyright.html">components/copyright</a></li><li><a href="module-components_filter.html">components/filter</a></li><li><a href="module-components_loader.html">components/loader</a></li><li><a href="module-components_message.html">components/message</a></li><li><a href="module-components_pagination.html">components/pagination</a></li><li><a href="module-components_search.html">components/search</a></li><li><a href="module-constants_api.html">constants/api</a></li><li><a href="module-constants_dom.html">constants/dom</a></li><li><a href="module-scripts.html">scripts</a></li><li><a href="module-services_api.html">services/api</a></li><li><a href="module-utils_date.html">utils/date</a></li><li><a href="module-utils_string.html">utils/string</a></li><li><a href="module-utils_svg.html">utils/svg</a></li><li><a href="module-utils_timer.html">utils/timer</a></li></ul><h3>Events</h3><ul><li><a href="module-scripts.html#~event:click">click</a></li><li><a href="module-components_search.html#~event:keyup">keyup</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Tue Mar 31 2026 05:29:06 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
