@@ -107,6 +107,16 @@ hr {
 	text-decoration: underline;
 }
 
+.footer__copyright {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.copyright__year {
+	display: flex;
+}
+
 .page__footer .copyright__year-start:after {
 	content: "-";
 }
