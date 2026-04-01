@@ -9,7 +9,7 @@
 
 # Rick and Morty
 
-[![App Rick and Morty](https://beatrizsmerino.github.io/rick-and-morty/README/videos/rick-morty.gif)](https://beatrizsmerino.github.io/rick-and-morty/)
+[![App Rick and Morty](./README/videos/rick-morty.gif)](https://beatrizsmerino.github.io/rick-and-morty/)
 
 ## 🎯 Description
 
@@ -78,7 +78,7 @@ This project uses [JSDoc](https://jsdoc.app/) to generate documentation from the
 
 The documentation is generated from `assets/js/scripts.js` and exported to the `jsdocs` folder. It is published on GitHub Pages and can be accessed at [beatrizsmerino.github.io/rick-and-morty/jsdocs](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html).
 
-[![JSDoc Documentation](https://beatrizsmerino.github.io/rick-and-morty/README/images/Screenshot_1.jpg)](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html)
+[![JSDoc Documentation](./README/images/Screenshot_1.jpg)](https://beatrizsmerino.github.io/rick-and-morty/jsdocs/index.html)
 
 ## 🚀 Commands
 
