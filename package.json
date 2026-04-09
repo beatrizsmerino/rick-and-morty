@@ -1,6 +1,6 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.8.1",
+	"version": "1.8.2",
 	"private": true,
 	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
@@ -40,7 +40,7 @@
 		"@commitlint/config-conventional": "^20.5.0",
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^10.1.8",
-		"eslint-plugin-jsdoc": "^62.8.0",
+		"eslint-plugin-jsdoc": "^62.9.0",
 		"eslint-plugin-json": "^3.1.0",
 		"eslint-plugin-prettier": "^5.5.5",
 		"husky": "^9.1.7",
