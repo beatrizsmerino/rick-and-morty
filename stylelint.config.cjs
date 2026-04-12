@@ -122,12 +122,18 @@ module.exports = {
 				],
 			},
 		],
+
+		// Allows: BEM pattern (block__element--modifier)
+		// Examples (BEM): card, card-product, card--primary, card-product--primary, card-product__title, card-product__title-text, card-product__title--primary, card-product__title--primary-dark, card-product__title--primary-2, card-product__title--2, is-active
 		"selector-class-pattern": [
-			"^([a-z]+[a-z0-9]*)(-[a-z0-9]+)*(__[a-z]+[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z]+[a-z0-9]+(-[a-z0-9]+)*)?$",
+			"^([a-z]+[a-z0-9]*)(-[a-z0-9]+)*(__[a-z]+[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
 			{
 				"resolveNestedSelectors": true,
 			},
 		],
+
+		// Allows: camelCase pattern
+		// Examples (camelCase): header, mainContent, userProfile2
 		"selector-id-pattern": [
 			"^[a-z][a-zA-Z0-9]*$",
 			{
@@ -148,7 +154,7 @@ module.exports = {
 		"selector-pseudo-class-no-unknown": [
 			true,
 		],
-		"selector-pseudo-element-colon-notation": "single",
+		"selector-pseudo-element-colon-notation": "double",
 		"selector-pseudo-element-no-unknown": [
 			true,
 		],

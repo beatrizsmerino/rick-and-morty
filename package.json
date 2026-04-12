@@ -1,6 +1,6 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.8.2",
+	"version": "1.8.3",
 	"private": true,
 	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
