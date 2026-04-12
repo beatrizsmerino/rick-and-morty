@@ -1,6 +1,6 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.8.2",
+	"version": "1.8.3",
 	"private": true,
 	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
@@ -46,7 +46,7 @@
 		"husky": "^9.1.7",
 		"jsdoc": "^4.0.5",
 		"lint-staged": "^16.4.0",
-		"prettier": "^3.8.1",
+		"prettier": "^3.8.2",
 		"stylelint": "^16.26.1",
 		"stylelint-config-property-sort-order-smacss": "^11.2.0",
 		"stylelint-config-standard": "^39.0.1"
