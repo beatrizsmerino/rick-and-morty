@@ -6,8 +6,10 @@
 # Add below any extra paths that should not be formatted.
 
 
+# Build output
+dist/
+
 # FOLDERS
-dist
 jsdocs
 assets/icomoon
 assets/js/vendor
