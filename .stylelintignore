@@ -9,6 +9,8 @@
 # Build output
 dist/
 
-# FOLDERS
-jsdocs
-assets/icomoon
+# Generated docs
+jsdocs/
+
+# Project assets
+assets/icomoon/
