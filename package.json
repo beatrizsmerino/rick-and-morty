@@ -1,6 +1,6 @@
 {
 	"name": "rick-and-morty",
-	"version": "1.8.4",
+	"version": "1.8.5",
 	"private": true,
 	"type": "module",
 	"description": "Proyect develop with the api Rick and Morty",
@@ -52,7 +52,7 @@
 		"stylelint-config-standard": "^39.0.1"
 	},
 	"engines": {
-		"node": "24.14.1",
-		"npm": "11.11.0"
+		"node": "24.15.0",
+		"npm": "11.12.1"
 	}
 }
