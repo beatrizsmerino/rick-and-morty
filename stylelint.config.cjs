@@ -3,6 +3,9 @@ module.exports = {
 		"stylelint-config-standard",
 		"stylelint-config-property-sort-order-smacss",
 	],
+	"plugins": [
+		"stylelint-declaration-block-no-ignored-properties",
+	],
 	"rules": {
 		"annotation-no-unknown": [
 			true,
@@ -110,6 +113,7 @@ module.exports = {
 		"no-invalid-double-slash-comments": true,
 		"no-invalid-position-at-import-rule": true,
 		"no-irregular-whitespace": true,
+		"plugin/declaration-block-no-ignored-properties": true,
 		"property-no-unknown": true,
 		"rule-empty-line-before": [
 			"always-multi-line",
