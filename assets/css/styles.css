@@ -5,7 +5,7 @@
 	--color-brand-3: #2b2c6c;
 	--color-brand-4: #11b0c8;
 	--color-brand-5: #6dcad6;
-	--color-error: tomato;
+	--color-error: #ff6347;
 	--footer-height: 8rem;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 a {
-	color: black;
+	color: #000000;
 	font-weight: 900;
 }
 
@@ -97,7 +97,7 @@ hr {
 	width: 100%;
 	height: var(--footer-height);
 	padding: 0 2rem;
-	background-color: white;
+	background-color: #ffffff;
 	color: var(--color-brand-4);
 	font-size: 2rem;
 	font-weight: 100;
@@ -129,7 +129,7 @@ hr {
 	padding: 1rem 3rem;
 	border: 0.2rem solid var(--color-brand-3);
 	outline: none;
-	background-color: white;
+	background-color: #ffffff;
 	color: var(--color-brand-3);
 	font-size: 2rem;
 	cursor: pointer;
@@ -138,7 +138,7 @@ hr {
 .button:hover {
 	border-color: var(--color-brand-3);
 	background-color: var(--color-brand-3);
-	color: white;
+	color: #ffffff;
 }
 
 /****** LOADER ******/
@@ -310,7 +310,7 @@ hr {
 	border: 0.5rem solid transparent;
 	border-radius: 1rem;
 	background-color: rgb(0 0 0 / 80%);
-	color: white;
+	color: #ffffff;
 	font-size: 1.8rem;
 	font-weight: 300;
 	cursor: pointer;
@@ -327,7 +327,7 @@ hr {
 	width: 4rem;
 	height: 4rem;
 	margin: 1rem;
-	border: 0.2rem solid white;
+	border: 0.2rem solid #ffffff;
 	border-radius: 50%;
 	background-color: rgb(0 0 0 / 60%);
 	font-size: 1.8rem;
@@ -380,7 +380,7 @@ hr {
 
 .card:hover {
 	border-color: var(--color-brand-4);
-	background-color: black;
+	background-color: #000000;
 }
 
 .card:hover .card__button {
@@ -437,10 +437,10 @@ hr {
 	width: 6rem;
 	height: 6rem;
 	margin: 1rem 2rem;
-	border: 0.5rem solid white;
+	border: 0.5rem solid #ffffff;
 	border-radius: 50%;
 	background-color: var(--color-brand-4);
-	color: white;
+	color: #ffffff;
 	font-size: 3rem;
 	cursor: pointer;
 }
@@ -452,7 +452,7 @@ hr {
 .pagination__counter {
 	padding: 0.8rem 3rem;
 	border-radius: 1rem;
-	background-color: white;
+	background-color: #ffffff;
 	color: var(--color-brand-4);
 	font-size: 3rem;
 	font-weight: 300;
