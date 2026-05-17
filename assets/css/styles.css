@@ -1,11 +1,17 @@
 /****** COLOR ******/
 :root {
+	--color-black: #000000;
+	--color-black-20: rgb(0 0 0 / 20%);
+	--color-black-60: rgb(0 0 0 / 60%);
+	--color-black-80: rgb(0 0 0 / 80%);
 	--color-brand-1: #87c95e;
 	--color-brand-2: #2d8642;
 	--color-brand-3: #2b2c6c;
 	--color-brand-4: #11b0c8;
 	--color-brand-5: #6dcad6;
 	--color-error: #ff6347;
+	--color-white: #ffffff;
+	--color-white-50: rgb(255 255 255 / 50%);
 	--footer-height: 8rem;
 }
 
@@ -28,7 +34,7 @@ body {
 }
 
 a {
-	color: #000000;
+	color: var(--color-black);
 	font-weight: 900;
 }
 
@@ -97,7 +103,7 @@ hr {
 	width: 100%;
 	height: var(--footer-height);
 	padding: 0 2rem;
-	background-color: #ffffff;
+	background-color: var(--color-white);
 	color: var(--color-brand-4);
 	font-size: 2rem;
 	font-weight: 100;
@@ -129,7 +135,7 @@ hr {
 	padding: 1rem 3rem;
 	border: 0.2rem solid var(--color-brand-3);
 	outline: none;
-	background-color: #ffffff;
+	background-color: var(--color-white);
 	color: var(--color-brand-3);
 	font-size: 2rem;
 	cursor: pointer;
@@ -138,7 +144,7 @@ hr {
 .button:hover {
 	border-color: var(--color-brand-3);
 	background-color: var(--color-brand-3);
-	color: #ffffff;
+	color: var(--color-white);
 }
 
 /****** LOADER ******/
@@ -309,8 +315,8 @@ hr {
 	padding: 2rem;
 	border: 0.5rem solid transparent;
 	border-radius: 1rem;
-	background-color: rgb(0 0 0 / 80%);
-	color: #ffffff;
+	background-color: var(--color-black-80);
+	color: var(--color-white);
 	font-size: 1.8rem;
 	font-weight: 300;
 	cursor: pointer;
@@ -327,9 +333,9 @@ hr {
 	width: 4rem;
 	height: 4rem;
 	margin: 1rem;
-	border: 0.2rem solid #ffffff;
+	border: 0.2rem solid var(--color-white);
 	border-radius: 50%;
-	background-color: rgb(0 0 0 / 60%);
+	background-color: var(--color-black-60);
 	font-size: 1.8rem;
 }
 
@@ -380,7 +386,7 @@ hr {
 
 .card:hover {
 	border-color: var(--color-brand-4);
-	background-color: #000000;
+	background-color: var(--color-black);
 }
 
 .card:hover .card__button {
@@ -392,7 +398,7 @@ hr {
 }
 
 .card.is-view .card__data:not(:last-of-type, [data-type="image"]) {
-	border-bottom: 0.1rem solid rgb(255 255 255 / 50%);
+	border-bottom: 0.1rem solid var(--color-white-50);
 }
 
 .card.is-view .card__data:only-child {
@@ -427,7 +433,7 @@ hr {
 	justify-content: center;
 	width: 100%;
 	padding: 0.5rem;
-	background-color: rgb(255 255 255 / 50%);
+	background-color: var(--color-white-50);
 }
 
 .pagination__button {
@@ -437,22 +443,22 @@ hr {
 	width: 6rem;
 	height: 6rem;
 	margin: 1rem 2rem;
-	border: 0.5rem solid #ffffff;
+	border: 0.5rem solid var(--color-white);
 	border-radius: 50%;
 	background-color: var(--color-brand-4);
-	color: #ffffff;
+	color: var(--color-white);
 	font-size: 3rem;
 	cursor: pointer;
 }
 
 .pagination__button[data-url=""] {
-	background-color: #cccccc;
+	background-color: var(--color-black-20);
 }
 
 .pagination__counter {
 	padding: 0.8rem 3rem;
 	border-radius: 1rem;
-	background-color: #ffffff;
+	background-color: var(--color-white);
 	color: var(--color-brand-4);
 	font-size: 3rem;
 	font-weight: 300;
@@ -470,11 +476,11 @@ hr {
 	width: 4rem;
 	height: 4rem;
 	transform: translate(50%, -50%);
-	border: 0.3rem solid #ffffff;
+	border: 0.3rem solid var(--color-white);
 	border-radius: 50%;
 	outline: none;
-	background-color: #ffffff;
-	box-shadow: 0 0 5rem rgb(0 0 0 / 20%);
+	background-color: var(--color-white);
+	box-shadow: 0 0 5rem var(--color-black-20);
 	cursor: pointer;
 }
 
@@ -505,7 +511,7 @@ hr {
 
 .message__button-close:hover::before,
 .message__button-close:hover::after {
-	background-color: #ffffff;
+	background-color: var(--color-white);
 }
 
 .message__button-close:hover::after {
@@ -576,11 +582,11 @@ hr {
 	right: 5rem;
 	bottom: 8rem;
 	padding: 2rem;
-	border: 0.3rem solid #ffffff;
+	border: 0.3rem solid var(--color-white);
 	border-radius: 1rem;
 	background-color: var(--color-error);
-	box-shadow: 0 0 5rem rgb(0 0 0 / 20%);
-	color: #ffffff;
+	box-shadow: 0 0 5rem var(--color-black-20);
+	color: var(--color-white);
 	font-size: 1.5rem;
 }
 
